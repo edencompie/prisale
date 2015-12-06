@@ -1,18 +1,46 @@
 body {
   font-family: 'Open Sans Hebrew', sans-serif;
 
+  // Side menu
   ion-side-menu#side-menu {
+
     .scroll-content {
-      padding-top: 57px;
+      padding: 57px 13px 13px;
       background: #f6a000;
 
       ion-item {
+        border-color: #f9cab1;
         background: #f6a000;
         color: #fff;
+        border-right: none;
+        border-left: none;
+        padding-right: 40px;
+        background: no-repeat right 10px center;
+        background-size: 17px 17px;
+
+        &.home-icon {
+          background-image: url('/img/icon/home.png');
+        }
+        &.about-icon {
+          background-image: url('/img/icon/about.png');
+        }
+        &.contact-icon {
+          background-image: url('/img/icon/contact.png');
+        }
+        &.help-icon {
+          background-image: url('/img/icon/help.png');
+        }
+        &.share-icon {
+          background-image: url('/img/icon/share.png');
+        }
+        &.site-icon {
+          background-image: url('/img/icon/site.png');
+        }
       }
     }
   }
 
+  // Top menu
   ion-header-bar.bar.bar-balanced  {
     background-color: white;
     border-color: #ff6600;
@@ -27,13 +55,19 @@ body {
 
     button.button.button-icon {
       color: #ff6600;
+      margin-top: 3px;
+
+      img {
+        height: 20px;
+      }
     }
   }
 
+  // Bottom menu
   ion-tabs.tabs-balanced.tabs-bottom {
     .tab-nav {
       background: white;
-      height: 42px;
+      height: 41px;
 
       a {
         border: 1px solid #458700;
@@ -70,4 +104,5 @@ body {
       }
     }
   }
+
 }

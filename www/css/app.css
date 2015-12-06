@@ -1,11 +1,29 @@
 body {
   font-family: 'Open Sans Hebrew', sans-serif; }
   body ion-side-menu#side-menu .scroll-content {
-    padding-top: 54px;
+    padding: 57px 13px 13px;
     background: #f6a000; }
     body ion-side-menu#side-menu .scroll-content ion-item {
+      border-color: #f9cab1;
       background: #f6a000;
-      color: #fff; }
+      color: #fff;
+      border-right: none;
+      border-left: none;
+      padding-right: 40px;
+      background: no-repeat right 10px center;
+      background-size: 17px 17px; }
+      body ion-side-menu#side-menu .scroll-content ion-item.home-icon {
+        background-image: url("/img/icon/home.png"); }
+      body ion-side-menu#side-menu .scroll-content ion-item.about-icon {
+        background-image: url("/img/icon/about.png"); }
+      body ion-side-menu#side-menu .scroll-content ion-item.contact-icon {
+        background-image: url("/img/icon/contact.png"); }
+      body ion-side-menu#side-menu .scroll-content ion-item.help-icon {
+        background-image: url("/img/icon/help.png"); }
+      body ion-side-menu#side-menu .scroll-content ion-item.share-icon {
+        background-image: url("/img/icon/share.png"); }
+      body ion-side-menu#side-menu .scroll-content ion-item.site-icon {
+        background-image: url("/img/icon/site.png"); }
   body ion-header-bar.bar.bar-balanced {
     background-color: white;
     border-color: #ff6600;
@@ -17,10 +35,13 @@ body {
       height: 35px;
       margin-right: 10px; }
     body ion-header-bar.bar.bar-balanced button.button.button-icon {
-      color: #ff6600; }
+      color: #ff6600;
+      margin-top: 3px; }
+      body ion-header-bar.bar.bar-balanced button.button.button-icon img {
+        height: 20px; }
   body ion-tabs.tabs-balanced.tabs-bottom .tab-nav {
     background: white;
-    height: 42px; }
+    height: 41px; }
     body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a {
       border: 1px solid #458700;
       border-top: none;

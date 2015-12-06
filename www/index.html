@@ -23,9 +23,15 @@
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <button on-tap="uploadProfileVideo()" class="button button-icon">33</button>
-                <button ui-sref="employees.profileEdit" class="button button-icon">22</button>
-                <button ui-sref="employees.profileEdit" class="button button-icon">11</button>
+                <button on-tap="uploadProfileVideo()" class="button button-icon">
+                    <img src="/img/icon/search.png" />
+                </button>
+                <button ui-sref="employees.profileEdit" class="button button-icon">
+                    <img src="/img/icon/view.png" />
+                </button>
+                <button ui-sref="employees.profileEdit" class="button button-icon">
+                    <img src="/img/icon/date.png" />
+                </button>
             </ion-nav-buttons>
         </ion-nav-bar>
         <div id="content" dir="rtl">
@@ -36,29 +42,23 @@
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
             <ion-list>
-                <ion-item class="item-icon-right" menu-close="">
+                <ion-item class="item-icon-right home-icon" menu-close="">
 ראשי
-                    <i class="icon ion-home"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close="" on-tap="shareApp()">
+                <ion-item class="item-icon-right about-icon" menu-close="" on-tap="shareApp()">
 אודות
-                    <i class="icon ion-document-text"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close="" on-tap="rateApp()">
+                <ion-item class="item-icon-right help-icon" menu-close="" on-tap="rateApp()">
 עזרה
-                    <i class="icon ion-android-star"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close on-tap="mailToCEO()">
+                <ion-item class="item-icon-right contact-icon" menu-close on-tap="mailToCEO()">
 צור קשר
-                    <i class="icon ion-ios-help-outline"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close="">
+                <ion-item class="item-icon-right site-icon" menu-close="">
 אתר הבית
-                    <i class="icon ion-monitor"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close="">
+                <ion-item class="item-icon-right share-icon" menu-close="">
 שיתוף האפליקציה
-                    <i class="icon ion-share"></i>
                 </ion-item>
             </ion-list>
         </ion-content>

@@ -377,7 +377,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('www/views/employees/jobs-feed.html',
-    "<ion-view title=\"משרות\">\n" +
+    "<ion-view>\n" +
     "    <ion-content padding=\"false\" lazy-scroll>\n" +
     "        <div id=\"feed\">\n" +
     "            <ion-refresher\n" +
