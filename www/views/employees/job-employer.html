@@ -1,0 +1,67 @@
+<ion-view ng-attr-title="{{ employer.title || 'סניף' }}">
+    <ion-nav-title><span ng-if="loaded" ng-bind="employer.title"></span></ion-nav-title>
+    <ion-content padding="false">
+      <div ng-if="loaded && !error">
+        <div class="job" ng-style="{ 'background-color': employer.backgroundColor }">
+            <div class="job-profile-image">
+                <img ng-src="{{ employer.profile_image_uri }}">
+            </div>
+            <div class="job-data">
+                <div class="job-employer-name" ng-bind="employer.title"></div>
+                <div class="job-position" ng-bind="employer.address"></div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div id="job" class="padding">
+            <p id="employer-description" ng-bind="employer.description" style="margin-top: 10px;"></p>
+            <hr>
+            <div id="job-more-details">
+                <div id="job-more-details-header">מידע נוסף על הסניף</div>
+                <hr>
+                <div>
+                  <div class="icon">
+                      <i class="icon ion-ios-location-outline"></i>
+                  </div>
+                  <div>
+                      <strong>מיקום:</strong>
+                      <span ng-bind="employer.address"></span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div ng-show="employment && employment.status == 'EMPLOYEE' && employment.status == 'AWAITING_FINAL_APPROVAL'">
+                    <div class="icon">
+                        <i class="icon ion-ios-telephone-outline"></i>
+                    </div>
+                    <div>
+                        <strong>מספר פלאפון:</strong>
+                        <span ng-bind="employer.phone_number"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div id="job-location" ng-if="map.center.latitude && map.center.longitude">
+              <hr>
+              <div id="job-location-header">מיקום הסניף</div>
+              <hr>
+              <div>
+                  <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                      <ui-gmap-marker coords="marker.cords" options="marker.options" idKey="marker.id"></ui-gmap-marker>
+                  </ui-gmap-google-map>
+              </div>
+            </div>
+            <div class="text-center">
+                <button class="button button-balanced icon ion-android-navigate" on-tap="openNavigator()">
+                    נווט למקום
+                </button>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+      <div ng-show="error" class="padding">
+          קיימת תקלה טכנית, אנא נסה שנית
+      </div>
+    </ion-cotent>
+</ion-view>

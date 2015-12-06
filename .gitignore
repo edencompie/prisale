@@ -1,0 +1,24 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+www/lib/
+.sass-cache/
+platforms/
+plugins/
+.idea/
+
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files #
+######################
+*/.DS_Store
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

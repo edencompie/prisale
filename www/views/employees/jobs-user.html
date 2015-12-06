@@ -1,0 +1,31 @@
+<ion-view title="המשרות שלי">
+    <ion-content padding="false" lazy-scroll>
+        <div id="feed" ng-if="user.logged">
+            <ion-refresher
+              on-refresh="refreshMyJobs()">
+            </ion-refresher>
+            <ion-list class="jobs-list" ng-if="loaded && jobs.length && !error">
+                <ion-item ng-repeat="job in jobs" ng-init="job.index = $index">
+                    <job-block job="job" link="true" on-tap="goToJob(job.id, $event)"></job-block>
+                </ion-item>
+            </ion-list>
+            <ion-infinite-scroll ng-if="loaded && !noMoreJobsAvailable && !error" on-infinite="getMyJobs(true)" distance="10%"></ion-infinite-scroll>
+            <div ng-show="loaded && !jobs.length && !error" class="padding">
+                לא נמצאו משרות
+            </div>
+            <div ng-show="error" class="padding">
+                קיימת תקלה טכנית, אנא נסה שנית
+            </div>
+        </div>
+        <div ng-show="!user.logged" class="padding">
+            <p>
+                אינך משתמש רשום ולכן אין לך משרות
+            </p>
+            <p>
+                <div class='divs-middle'>
+                    <button class="button button-balanced icon-right ion-log-in" on-tap="loginAndRefresh()">התחבר למערכת</button>
+                </div>
+            </p>
+        </div>
+    </ion-content>
+</ion-view>

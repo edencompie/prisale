@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="jobhop" ng-controller="MainController">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title>
+
+        <link href="css/ionic.app.min.css" rel="stylesheet">
+        <link href="lib/ionic-datepicker/dist/style.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+
+        <script src="lib/lodash/lodash.min.js"></script>
+        <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+        <script src="lib/angular-google-gapi/angular-google-gapi.min.js"></script>
+        <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+        <script src="lib/ngstorage/ngStorage.min.js"></script>
+        <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+        <script src="lib/ion-image-lazy-load/ionic-image-lazy-load.js"></script>
+        <script src="lib/ionic-datepicker/dist/templates.js"></script>
+        <script src="lib/ionic-datepicker/dist/ionic-datepicker.js"></script>
+        <script src="lib/angular-nl2br/angular-nl2br.min.js"></script>
+        <script src="cordova.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/controllers/Controller.js"></script>
+            <script src="js/controllers/MainController.js"></script>
+            <script src="js/controllers/JobsFeedController.js"></script>
+            <script src="js/controllers/JobsUserController.js"></script>
+            <script src="js/controllers/JobsSearchController.js"></script>
+            <script src="js/controllers/JobController.js"></script>
+            <script src="js/controllers/JobEmployerController.js"></script>
+            <script src="js/controllers/UserProfileController.js"></script>
+            <script src="js/controllers/UserProfileEditController.js"></script>
+            <script src="js/controllers/LoginController.js"></script>
+            <script src="js/controllers/RegisterController.js"></script>
+        <script src="js/directives/Directive.js"></script>
+            <script src="js/directives/jobBlock.js"></script>
+            <script src="js/directives/fileReader.js"></script>
+            <script src="js/directives/hideTabs.js"></script>
+        <script src="js/services/Service.js"></script>
+                <script src="js/services/JobHopAPI.js"></script>
+        <script src="js/filters/Filter.js"></script>
+                <script src="js/filters/cut.js"></script>
+    </head>
+    <body>
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <div id="video-loader" ng-if="isUploadingVideo" ng-style="{ width: videoUploadingPercent + '%' }"></div>
+        <ion-nav-bar class="bar-balanced" align-title="{{ android ? &apos;right&apos; : &apos;center&apos; }}">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear" ng-if="false &amp;&amp; user.logged" on-tap="openNotifications()" ng-class="{
+                    &apos;ion-android-notifications&apos;: user.notifications.length,
+                    &apos;ion-android-notifications-none&apos;: !user.notifications.length
+                }"></button>
+                <button ui-sref="employees.profileEdit" class="button button-icon button-clear ion-edit" ng-show="currentState.name == &apos;employees.profile&apos;"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <div id="content" dir="rtl">
+            <ion-nav-view></ion-nav-view>
+        </div>
+    </ion-side-menu-content>
+
+    <ion-side-menu id="side-menu" side="left" dir="rtl">
+        <ion-content>
+            <div id="user-block">
+                <div>
+                    <div id="user-photo">
+                        <a on-tap="goToProfile()" ng-if="user.logged" menu-close="">
+                            <img ng-src="{{ user.profile.profile_image_uri || &apos;img/jobhop-icon.png&apos; }}" ng-class="{ &apos;image-not-rounded&apos;: !user.profile.profile_image_uri }">
+                        </a>
+                        <img src="img/jobhop-icon.png" class="image-not-rounded" ng-if="!user.logged">
+                    </div>
+                </div>
+                <div id="user-name" ng-if="user.logged" ng-bind-template="{{ user.profile.first_name }} {{ user.profile.last_name }}"></div>
+                <div id="user-name" ng-if="!user.logged">&#x5D0;&#x5D5;&#x5E8;&#x5D7;</div>
+            </div>
+            <ion-list>
+                <ion-item ui-sref="employees.jobsFeed" class="item-icon-right" menu-close="">
+                    &#x5DE;&#x5E9;&#x5E8;&#x5D5;&#x5EA;
+                    <i class="icon ion-ios-paper"></i>
+                </ion-item>
+                <ion-item on-tap="goToProfile()" class="item-icon-right" menu-close="" ng-if="user.logged">
+                    <span ng-bind-template="{{ user.profile.first_name }} {{ user.profile.last_name }}"></span>
+                    <i class="icon ion-ios-person"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" menu-close="" on-tap="shareApp()">
+                    &#x5E9;&#x5EA;&#x5E3; &#x5D0;&#x5EA; &#x5D4;&#x5D0;&#x5E4;&#x5DC;&#x5D9;&#x5E7;&#x5E6;&#x5D9;&#x5D4;
+                    <i class="icon ion-android-share-alt"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" menu-close="" on-tap="rateApp()">
+                    דרג את האפליקציה
+                    <i class="icon ion-android-star"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" menu-close on-tap="mailToCEO()">
+                    מייל למנכ"ל
+                    <i class="icon ion-ios-email"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" menu-close="" ng-show="!user.logged" on-tap="login()">
+                    התחבר למערכת
+                    <i class="icon ion-log-in"></i>
+                </ion-item>
+                <ion-item on-tap="logout()" class="item-icon-right" menu-close="" ng-show="user.logged">
+                    &#x5D4;&#x5EA;&#x5E0;&#x5EA;&#x5E7;
+                    <i class="icon ion-log-out"></i>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+    </body>
+</html>

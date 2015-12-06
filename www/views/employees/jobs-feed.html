@@ -1,0 +1,21 @@
+<ion-view title="משרות">
+    <ion-content padding="false" lazy-scroll>
+        <div id="feed">
+            <ion-refresher
+              on-refresh="refreshFeed()">
+            </ion-refresher>
+            <ion-list class="jobs-list" ng-if="loaded && jobs.length && !error">
+                <ion-item ng-repeat="job in jobs" ng-init="job.index = $index">
+                    <job-block job="job" link="true"></job-block>
+                </ion-item>
+            </ion-list>
+            <ion-infinite-scroll ng-if="loaded && !noMoreJobsAvailable && !error" on-infinite="getFeed(true)" distance="10%"></ion-infinite-scroll>
+            <div ng-show="loaded && !jobs.length && !error" class="padding">
+                לא נמצאו משרות
+            </div>
+            <div ng-show="error" class="padding">
+                קיימת תקלה טכנית, אנא נסה שנית
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

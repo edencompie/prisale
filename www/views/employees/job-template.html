@@ -1,0 +1,39 @@
+<a ui-sref="employees.job({ jobId: job.id })" class="job" ng-class="'job-background-' + job.index % 4" ng-if="link">
+    <div class="job-employment-status" ng-if="job.employment_status">
+        <strong ng-if="job.employment_status == 'APPLICANT'">הינך מועמד למשרה</strong>
+        <strong ng-if="job.employment_status == 'AWAITING_FINAL_APPROVAL'">המעסיק אישר את מועמדותך, היכנס כדי לאשר</strong>
+        <strong ng-if="job.employment_status == 'EMPLOYEE'">הינך מועסק במשרה זו</strong>
+        <strong ng-if="job.employment_status == 'FINISHED_JOB'">סיימת את עבודתך במשרה זו</strong>
+        <strong ng-if="job.employment_status == 'FIRED'">פוטרת ממשרה זו</strong>
+        <strong ng-if="job.employment_status == 'CANCELED'">ביטלת את המועמדות למשרה</strong>
+        <strong ng-if="job.employment_status == 'LIKED'">עשית לייק למשרה זו</strong>
+    </div>
+    <div class="job-profile-image">
+        <img image-lazy-src="{{ job.logo_url }}">
+    </div>
+    <div class="job-data">
+        <p class="job-employer-name" ng-bind="job.employer_name"></p>
+        <p class="job-position" ng-bind="job.position"></p>
+        <p class="job-description" ng-bind="job.description | cut: true: 100"></p>
+    </div>
+    <div class="job-address">
+        <i class="icon ion-ios-location-outline"></i>
+        <address ng-bind="job.employer_address" ng-class="{ 'full-width': job.distance == -1 }"></address>
+        <i class="icon ion-ios-navigate-outline" ng-if="job.distance != -1"></i>
+        <span ng-bind-template='{{ job.distance }} ק"מ ממך' ng-if="job.distance != -1"></span>
+    </div>
+</a>
+
+<div class="job" ng-if="!link">
+    <div class="job-profile-image">
+        <a ui-sref="employees.jobEmployer({ jobId: job.id, employerId: employer.id, employmentId: employee.id || '' })" ng-if="job">
+            <img ng-src="{{ employer.profile_image_uri }}">
+        </a>
+    </div>
+    <div class="job-data">
+        <div class="job-employer-name" ng-bind="employer.title"></div>
+        <div class="job-position" ng-bind="job.position"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
