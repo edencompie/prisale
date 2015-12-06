@@ -497,13 +497,13 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/employees/tabs.html',
     "<ion-view>\n" +
     "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\n" +
-    "        <ion-tab title=\"משרות\" icon-on=\"ion-ios-paper\" icon-off=\"ion-ios-paper-outline\" href=\"#/employees/jobs-feed\">\n" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\">\n" +
     "            <ion-nav-view name=\"jobs-feed-tab\"></ion-nav-view>\n" +
     "        </ion-tab>\n" +
-    "        <ion-tab title=\"המשרות שלי\" icon-on=\"ion-ios-briefcase\" icon-off=\"ion-ios-briefcase-outline\" href=\"#/employees/jobs-user\">\n" +
+    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" href=\"#/employees/jobs-user\">\n" +
     "            <ion-nav-view name=\"jobs-user-tab\"></ion-nav-view>\n" +
     "        </ion-tab>\n" +
-    "        <ion-tab title=\"חיפוש משרות\" icon-on=\"ion-ios-search-strong\" icon-off=\"ion-ios-search\" href=\"#/employees/jobs-search\">\n" +
+    "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\">\n" +
     "            <ion-nav-view name=\"jobs-search-tab\"></ion-nav-view>\n" +
     "        </ion-tab>\n" +
     "    </ion-tabs>\n" +

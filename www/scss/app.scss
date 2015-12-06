@@ -1,3 +1,73 @@
 body {
+  font-family: 'Open Sans Hebrew', sans-serif;
 
+  ion-side-menu#side-menu {
+    .scroll-content {
+      padding-top: 57px;
+      background: #f6a000;
+
+      ion-item {
+        background: #f6a000;
+        color: #fff;
+      }
+    }
+  }
+
+  ion-header-bar.bar.bar-balanced  {
+    background-color: white;
+    border-color: #ff6600;
+    border-bottom-width: 2px;
+    color: blue !important;
+    height: 53px !important;
+
+    img.logo {
+      width: 98px; height: 35px;
+      margin-right: 10px;
+    }
+
+    button.button.button-icon {
+      color: #ff6600;
+    }
+  }
+
+  ion-tabs.tabs-balanced.tabs-bottom {
+    .tab-nav {
+      background: white;
+      height: 42px;
+
+      a {
+        border: 1px solid #458700;
+        border-top: none;
+        border-bottom: none;
+        color: #458800;
+        opacity: 1;
+        font-size: 16px;
+
+        i {
+          background: 50% no-repeat;
+          background-size:contain;
+          height: 20px;
+          margin-top: 3px;
+
+          &.graph {
+            background-image: url('/img/graph.png');
+          }
+          &.farmer {
+            background-image: url('/img/farmer.png');
+          }
+          &.buyer {
+            background-image: url('/img/buyer.png');
+          }
+        }
+
+        .tab-title {
+          font-size: 15px;
+          font-weight: 500;
+        }
+        &.tab-item-active {
+          background: #b5cf99;
+        }
+      }
+    }
+  }
 }

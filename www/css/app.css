@@ -1,0 +1,46 @@
+body {
+  font-family: 'Open Sans Hebrew', sans-serif; }
+  body ion-side-menu#side-menu .scroll-content {
+    padding-top: 54px;
+    background: #f6a000; }
+    body ion-side-menu#side-menu .scroll-content ion-item {
+      background: #f6a000;
+      color: #fff; }
+  body ion-header-bar.bar.bar-balanced {
+    background-color: white;
+    border-color: #ff6600;
+    border-bottom-width: 2px;
+    color: blue !important;
+    height: 53px !important; }
+    body ion-header-bar.bar.bar-balanced img.logo {
+      width: 98px;
+      height: 35px;
+      margin-right: 10px; }
+    body ion-header-bar.bar.bar-balanced button.button.button-icon {
+      color: #ff6600; }
+  body ion-tabs.tabs-balanced.tabs-bottom .tab-nav {
+    background: white;
+    height: 42px; }
+    body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a {
+      border: 1px solid #458700;
+      border-top: none;
+      border-bottom: none;
+      color: #458800;
+      opacity: 1;
+      font-size: 16px; }
+      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i {
+        background: 50% no-repeat;
+        background-size: contain;
+        height: 20px;
+        margin-top: 3px; }
+        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.graph {
+          background-image: url("/img/graph.png"); }
+        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.farmer {
+          background-image: url("/img/farmer.png"); }
+        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.buyer {
+          background-image: url("/img/buyer.png"); }
+      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a .tab-title {
+        font-size: 15px;
+        font-weight: 500; }
+      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a.tab-item-active {
+        background: #b5cf99; }

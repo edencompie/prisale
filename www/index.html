@@ -18,75 +18,47 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced" align-title="right">
-            <ion-nav-back-button></ion-nav-back-button>
             <ion-nav-buttons side="right">
+                <img class="logo" src="img/logo.png" />
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <!--
-                <button class="button button-icon button-clear" ng-if="user.logged" on-tap="openNotifications()" ng-class="{
-                    &apos;ion-android-notifications&apos;: user.notifications.length,
-                    &apos;ion-android-notifications-none&apos;: !user.notifications.length
-                }"></button>
-                -->
-                <button on-tap="uploadProfileVideo()" class="button button-icon button-clear ion-videocamera"></button>
-                <button ui-sref="employees.profileEdit" class="button button-icon button-clear ion-edit"></button>
-                <button ui-sref="employees.profileEdit" class="button button-icon button-clear ion-edit"></button>
+                <button on-tap="uploadProfileVideo()" class="button button-icon">33</button>
+                <button ui-sref="employees.profileEdit" class="button button-icon">22</button>
+                <button ui-sref="employees.profileEdit" class="button button-icon">11</button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-header-bar class="bar-subheader" dir="rtl" ng-if="isUploadingVideo">
-            <div id="video-loader" ng-style="{ width: videoUploadingPercent + '%' }"></div>
-            <h2 class="title">
-                מעלה סרטון...
-            </h2>
-        </ion-header-bar>
-        <div id="content" dir="rtl" ng-class="{ 'uploading-video': isUploadingVideo }">
+        <div id="content" dir="rtl">
             <ion-nav-view></ion-nav-view>
         </div>
     </ion-side-menu-content>
 
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
-            <div id="user-block">
-                <div>
-                    <div id="user-photo">
-                        <a on-tap="goToProfile()" ng-if="user.logged" menu-close="">
-                            <img ng-src="{{ user.profile.profile_image_uri || &apos;img/jobhop-icon.png&apos; }}" ng-class="{ &apos;image-not-rounded&apos;: !user.profile.profile_image_uri }">
-                        </a>
-                        <img src="img/jobhop-icon.png" class="image-not-rounded" ng-if="!user.logged">
-                    </div>
-                </div>
-                <div id="user-name" ng-if="user.logged" ng-bind-template="{{ user.profile.first_name }} {{ user.profile.last_name }}"></div>
-                <div id="user-name" ng-if="!user.logged">&#x5D0;&#x5D5;&#x5E8;&#x5D7;</div>
-            </div>
             <ion-list>
-                <ion-item ui-sref="employees.jobsFeed" class="item-icon-right" menu-close="">
-                    &#x5DE;&#x5E9;&#x5E8;&#x5D5;&#x5EA;
-                    <i class="icon ion-ios-paper"></i>
-                </ion-item>
-                <ion-item on-tap="goToProfile()" class="item-icon-right" menu-close="" ng-if="user.logged">
-                    <span ng-bind-template="{{ user.profile.first_name }} {{ user.profile.last_name }}"></span>
-                    <i class="icon ion-ios-person"></i>
+                <ion-item class="item-icon-right" menu-close="">
+ראשי
+                    <i class="icon ion-home"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close="" on-tap="shareApp()">
-                    &#x5E9;&#x5EA;&#x5E3; &#x5D0;&#x5EA; &#x5D4;&#x5D0;&#x5E4;&#x5DC;&#x5D9;&#x5E7;&#x5E6;&#x5D9;&#x5D4;
-                    <i class="icon ion-android-share-alt"></i>
+אודות
+                    <i class="icon ion-document-text"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close="" on-tap="rateApp()">
-                    דרג את האפליקציה
+עזרה
                     <i class="icon ion-android-star"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close on-tap="mailToCEO()">
-                    מייל למנכ"ל
-                    <i class="icon ion-ios-email"></i>
+צור קשר
+                    <i class="icon ion-ios-help-outline"></i>
                 </ion-item>
-                <ion-item class="item-icon-right" menu-close="" ng-show="!user.logged" on-tap="login()">
-                    התחבר למערכת
-                    <i class="icon ion-log-in"></i>
+                <ion-item class="item-icon-right" menu-close="">
+אתר הבית
+                    <i class="icon ion-monitor"></i>
                 </ion-item>
-                <ion-item on-tap="logout()" class="item-icon-right" menu-close="" ng-show="user.logged">
-                    &#x5D4;&#x5EA;&#x5E0;&#x5EA;&#x5E7;
-                    <i class="icon ion-log-out"></i>
+                <ion-item class="item-icon-right" menu-close="">
+שיתוף האפליקציה
+                    <i class="icon ion-share"></i>
                 </ion-item>
             </ion-list>
         </ion-content>
