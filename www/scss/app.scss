@@ -1,4 +1,10 @@
+
+$bgColor: #fef7eb;
+$topNavHeight: 53px;
+
+
 body {
+  background: $bgColor;
   font-family: 'Open Sans Hebrew', sans-serif;
 
   // Side menu
@@ -42,11 +48,11 @@ body {
 
   // Top menu
   ion-header-bar.bar.bar-balanced  {
-    background-color: white;
+    background-color: $bgColor;
     border-color: #ff6600;
     border-bottom-width: 2px;
     color: blue !important;
-    height: 53px !important;
+    height: $topNavHeight !important;
 
     img.logo {
       width: 98px; height: 35px;
@@ -105,4 +111,31 @@ body {
     }
   }
 
+  .view-container {
+    background: $bgColor;
+    margin-top: $topNavHeight;
+  }
+
+  div#content ion-view {
+    background: $bgColor;
+
+    div.bordered {
+      margin: 25px 18px;
+      border: 1px solid red;
+      position: relative;
+      padding: 17px 6px;
+
+      h2 {
+        position: absolute;
+        color: #95c11f;
+        font-size: 18px;
+        top: -15px;
+        left: 50%;
+        background: $bgColor;
+        padding: 0 16px;
+        transform: translate(-50%, 0);
+        white-space: nowrap;
+      }
+    }
+  }
 }

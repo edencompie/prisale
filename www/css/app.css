@@ -1,4 +1,5 @@
 body {
+  background: #fef7eb;
   font-family: 'Open Sans Hebrew', sans-serif; }
   body ion-side-menu#side-menu .scroll-content {
     padding: 57px 13px 13px;
@@ -25,7 +26,7 @@ body {
       body ion-side-menu#side-menu .scroll-content ion-item.site-icon {
         background-image: url("/img/icon/site.png"); }
   body ion-header-bar.bar.bar-balanced {
-    background-color: white;
+    background-color: #fef7eb;
     border-color: #ff6600;
     border-bottom-width: 2px;
     color: blue !important;
@@ -65,3 +66,23 @@ body {
         font-weight: 500; }
       body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a.tab-item-active {
         background: #b5cf99; }
+  body .view-container {
+    background: #fef7eb;
+    margin-top: 53px; }
+  body div#content ion-view {
+    background: #fef7eb; }
+    body div#content ion-view div.bordered {
+      margin: 25px 18px;
+      border: 1px solid red;
+      position: relative;
+      padding: 17px 6px; }
+      body div#content ion-view div.bordered h2 {
+        position: absolute;
+        color: #95c11f;
+        font-size: 18px;
+        top: -15px;
+        left: 50%;
+        background: #fef7eb;
+        padding: 0 16px;
+        transform: translate(-50%, 0);
+        white-space: nowrap; }

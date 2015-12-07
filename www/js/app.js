@@ -18,13 +18,16 @@ angular.module('jobhop', [
 Config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'];
 
 function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
     $stateProvider
+    .state('about', {
+        url: '/about',
+        templateUrl: 'views/about.html'
+    })
     .state('employees', {
         url: '/employees',
         abstract: true,
-        templateUrl: function() {
-            return 'views/employees/tabs.html';
-        }
+        templateUrl: 'views/employees/tabs.html'
     })
     .state('employees.jobsFeed', {
         url: '/jobs-feed',
@@ -35,7 +38,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             }
         }
     })
-    .state('employees.job', {
+    /*.state('employees.job', {
         url: '/job/:jobId',
         views: {
             'jobs-feed-tab': {
@@ -89,13 +92,6 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             }
         }
     })
-    /*
-    .state('login', {
-        url: '/login/:jobId?',
-        controller: 'LoginController',
-        templateUrl: 'views/auth/login.html'
-    })
-    */
     .state('employees.register', {
         url: '/register/:jobId?/:action?',
         views: {
@@ -104,12 +100,11 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 templateUrl: 'views/auth/register.html'
             }
         }
-    });
+    })*/;
 
     $urlRouterProvider.otherwise('/employees/jobs-feed');
-    if(ionic.Platform.isIOS()) {
-        $ionicConfigProvider.backButton.text('הקודם');
-    }
+
+    // Make bottom menu bottom in android
     $ionicConfigProvider.tabs.style('standard');
     $ionicConfigProvider.tabs.position('bottom');
 };
