@@ -4,7 +4,8 @@ angular.module('jobhop.controllers')
 MainController.$inject = ['$rootScope', '$scope', 'JobHopAPI', '$ionicModal', '$ionicLoading', '$state', '$cordovaEmailComposer', '$cordovaDialogs', '$cordovaToast', '$cordovaSocialSharing', '$cordovaInAppBrowser', '$cordovaFacebook', '$localStorage', '$stateParams', '$timeout', '$cordovaCapture'];
 
 function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
-    $localStorage.user = $localStorage.user || {
+    console.log('MainController');
+    /*$localStorage.user = $localStorage.user || {
         profile: {},
         baseMessage: {},
         logged: false
@@ -17,7 +18,7 @@ function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoadin
     }, function(user) {
         $rootScope.user = user;
     }, true);
-
+*/
     /*
     $ionicModal.fromTemplateUrl('views/employees/notifications-modal.html', {
         scope: $scope,
@@ -35,16 +36,16 @@ function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoadin
     };
     */
 
-    var loginData = {
+    /*var loginData = {
         identifier: '',
         secret: ''
     };
 
     var showPopup = function(title, template) {
         return $cordovaDialogs.alert(message, title, 'המשך');
-    };
+    };*/
 
-    $scope.uploadProfileVideo = function() {
+    /*$scope.uploadProfileVideo = function() {
         if(!$scope.isUploadingVideo) {
             $scope.uploadPercent = 0;
             var firstProgressEvent = true;
@@ -77,9 +78,9 @@ function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoadin
         } else {
             showPopup('מגבלת העלאת סרטונים', 'הינך מעלה ברקע סרטון. אנא המתן שסרטון זה יעלה לגמרי ואז תוכל להעלות סרטון נוסף.');
         }
-    };
+    };*/
 
-    $scope.login = function(action) {
+    /*$scope.login = function(action) {
         if(angular.isUndefined(action) || (action != 'apply' && action != 'like')) {
             action = false;
         }
@@ -140,10 +141,10 @@ function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoadin
     } else {
         $rootScope.android = false;
     }
-
+*/
     /* IOS APP_STORE CONFIG */
 
-    var APP_NAME = 'jobhopapp';
+   /* var APP_NAME = 'jobhopapp';
     var APP_COUNTRY = 'il';
     var APP_ID = '1020643523';
 
@@ -185,5 +186,5 @@ function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoadin
         if(ionic.Platform.isAndroid() != $rootScope.android) {
             $rootScope.android = !$scope.android;
         }
-    });
+    });*/
 };

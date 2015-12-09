@@ -3,7 +3,7 @@ angular.module('jobhop', [
     'angular-google-gapi',
     'ngCordova',
     'ngStorage',
-    'ionicLazyLoad',
+    //'ionicLazyLoad',
     'uiGmapgoogle-maps',
     'nl2br',
     'jobhop.controllers',
@@ -24,6 +24,10 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         url: '/about',
         templateUrl: 'views/about.html'
     })
+    .state('contact', {
+        url: '/contact',
+        templateUrl: 'views/contact.html'
+    })
     .state('employees', {
         url: '/employees',
         abstract: true,
@@ -33,7 +37,6 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         url: '/jobs-feed',
         views: {
             'jobs-feed-tab': {
-                controller: 'JobsFeedController',
                 templateUrl: 'views/employees/jobs-feed.html'
             }
         }
@@ -113,7 +116,7 @@ Run.$inject = ['$rootScope', '$ionicPlatform', 'GApi', 'GAuth', 'JobHopAPI', '$w
 
 function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state) {
     $ionicPlatform.ready(function() {
-        if(window.cordova && window.cordova.plugins.Keyboard) {
+       /* if(window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
         if(window.StatusBar) {
@@ -138,7 +141,7 @@ function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state
                     console.log(error);
                 });
             }
-        }
+        }*/
 
         /*
         Delete comment in JobHopAPI.js:141
@@ -157,7 +160,7 @@ function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state
         */
     });
 
-    var CLIENT = '418558622231-jg4kdcbac9fmgos83akh96377imit7op.apps.googleusercontent.com';
+   /* var CLIENT = '418558622231-jg4kdcbac9fmgos83akh96377imit7op.apps.googleusercontent.com';
     var BASE = 'https://2-dot-jobhopapp.appspot.com/_ah/api';
     var API_NAME = 'jobhopApi';
     var API_VERSION = 'v2';
@@ -175,5 +178,5 @@ function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state
             gapiClient.setApiKey(API_KEY);
             apiKeySetted = true;
         }
-    });
+    });*/
 };

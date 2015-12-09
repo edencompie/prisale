@@ -1,6 +1,30 @@
 angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('www/views/about.html',
+    "<ion-view>\r" +
+    "\n" +
+    "    <ion-content>\r" +
+    "\n" +
+    "        <div class=\"bordered\">\r" +
+    "\n" +
+    "            <h2 style=\"padding: 0 16px;\">אודות החברה</h2>\r" +
+    "\n" +
+    "            <p>לורם איפסום או בקיצור ליפסום (בלטינית: lorem ipsum) הוא מלל מקובל וחסר משמעות המשמש \"ממלא מקום\" בעת עריכה, בתחום הדפוס, ההדפסה והפרסום.</p>\r" +
+    "\n" +
+    "            <p>הטקסט משמש כלי לייצוג דפוס שאמור להתווסף למוצר הפרסום בעתיד. המדובר במלל ארוך במיוחד שניתן לבדוק עמו גופנים, וכן התאמת המלל לעמודים המעוצבים ובדיקת סוגי וגדלי גופן והתאמתם למוצר הסופי.</p>\r" +
+    "\n" +
+    "            <p>בשל הדמיון של המילים בלורם איפסום ללטינית קלאסית, רבים חושבים שיש משמעות לטקסט, אולם לא נועדה להיות לו כל משמעות. המטרה היא רק \"תפיסת מקום\" על ידי מלל חסר משמעות (ראו דוגמה בהמשך).</p>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </ion-content>\r" +
+    "\n" +
+    "</ion-view>\r" +
+    "\n"
+  );
+
+
   $templateCache.put('www/views/auth/login.html',
     "<ion-view title=\"התחברות\">\n" +
     "    <ion-content padding=\"true\">\n" +
@@ -113,6 +137,39 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "        </form>\n" +
     "    </ion-content>\n" +
     "</ion-view>\n"
+  );
+
+
+  $templateCache.put('www/views/contact.html',
+    "<ion-view style=\"text-align: center\">\r" +
+    "\n" +
+    "    <ion-content>\r" +
+    "\n" +
+    "        <h2>צור קשר</h2>\r" +
+    "\n" +
+    "        <div class=\"bordered contact\">\r" +
+    "\n" +
+    "            <img src=\"/img/tozeret.png\" />\r" +
+    "\n" +
+    "            <p style=\"font-size: 16px\">\r" +
+    "\n" +
+    "    חברת השוק הסיטונאי בע\"מ<br />\r" +
+    "\n" +
+    "                אפעל 35, פתח תקווה\r" +
+    "\n" +
+    "            </p>\r" +
+    "\n" +
+    "            <p>מייל: <span style=\"font-size:13px; white-space: nowrap\">contact@israeli-market.org.il</span>\r" +
+    "\n" +
+    "            <br />\r" +
+    "\n" +
+    "            אתר: <span style=\"font-size:13px; white-space: nowrap\">www.israeli-market.gov.il</span></p>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </ion-content>\r" +
+    "\n" +
+    "</ion-view>"
   );
 
 
@@ -378,22 +435,124 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('www/views/employees/jobs-feed.html',
     "<ion-view>\n" +
-    "    <ion-content padding=\"false\" lazy-scroll>\n" +
-    "        <div id=\"feed\">\n" +
-    "            <ion-refresher\n" +
-    "              on-refresh=\"refreshFeed()\">\n" +
-    "            </ion-refresher>\n" +
-    "            <ion-list class=\"jobs-list\" ng-if=\"loaded && jobs.length && !error\">\n" +
-    "                <ion-item ng-repeat=\"job in jobs\" ng-init=\"job.index = $index\">\n" +
-    "                    <job-block job=\"job\" link=\"true\"></job-block>\n" +
-    "                </ion-item>\n" +
-    "            </ion-list>\n" +
-    "            <ion-infinite-scroll ng-if=\"loaded && !noMoreJobsAvailable && !error\" on-infinite=\"getFeed(true)\" distance=\"10%\"></ion-infinite-scroll>\n" +
-    "            <div ng-show=\"loaded && !jobs.length && !error\" class=\"padding\">\n" +
-    "                לא נמצאו משרות\n" +
+    "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\n" +
+    "        <div class=\"list-container\">\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
     "            </div>\n" +
-    "            <div ng-show=\"error\" class=\"padding\">\n" +
-    "                קיימת תקלה טכנית, אנא נסה שנית\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"fruit-item\">\n" +
+    "                <div class=\"image\">\n" +
+    "                    <img src=\"\" alt=\"\">\n" +
+    "                </div>\n" +
+    "                <h4>תפוז</h4>\n" +
+    "                <div class=\"price\">\n" +
+    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
+    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
+    "                </div>\n" +
+    "                <div class=\"buttons\">\n" +
+    "                    כפתורים\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </ion-content>\n" +
@@ -495,19 +654,22 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('www/views/employees/tabs.html',
-    "<ion-view>\n" +
-    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\">\n" +
-    "            <ion-nav-view name=\"jobs-feed-tab\"></ion-nav-view>\n" +
-    "        </ion-tab>\n" +
-    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" href=\"#/employees/jobs-user\">\n" +
-    "            <ion-nav-view name=\"jobs-user-tab\"></ion-nav-view>\n" +
-    "        </ion-tab>\n" +
-    "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\">\n" +
-    "            <ion-nav-view name=\"jobs-search-tab\"></ion-nav-view>\n" +
-    "        </ion-tab>\n" +
-    "    </ion-tabs>\n" +
-    "</ion-view>\n"
+    "<ion-view>\r" +
+    "\n" +
+    "    <ion-nav-view name=\"jobs-feed-tab\"></ion-nav-view>\r" +
+    "\n" +
+    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\r" +
+    "\n" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\"></ion-tab>\r" +
+    "\n" +
+    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" href=\"#/employees/jobs-user\"></ion-tab>\r" +
+    "\n" +
+    "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\"></ion-tab>\r" +
+    "\n" +
+    "    </ion-tabs>\r" +
+    "\n" +
+    "</ion-view>\r" +
+    "\n"
   );
 
 

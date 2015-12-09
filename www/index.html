@@ -1,68 +1,54 @@
 <!DOCTYPE html>
 <html ng-app="jobhop" ng-controller="MainController">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title></title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
 
-        <link href="http://fonts.googleapis.com/earlyaccess/opensanshebrew.css" rel="stylesheet">
-        <link href="css/app.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/earlyaccess/opensanshebrew.css" rel="stylesheet">
+    <link href="css/app.min.css" rel="stylesheet">
 
-        <script src="js/deepLinkingHandler.js"></script>
-        <script src="js/extensions.min.js"></script>
-        <script src="cordova.js"></script>
-        <script src="js/app.min.js"></script>
-        <script src="views/views.js"></script>
-    </head>
-    <body>
+    <script src="js/deepLinkingHandler.js"></script>
+    <script src="js/extensions.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/app.min.js"></script>
+    <script src="views/views.js"></script>
+</head>
+<body>
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-balanced" align-title="right">
+        <ion-nav-bar class="bar-balanced">
             <ion-nav-buttons side="right">
                 <img class="logo" src="img/logo.png" />
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+                <button class="button button-icon ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <button on-tap="uploadProfileVideo()" class="button button-icon">
+                <button on-sref="employees.jobsFeed" class="button button-icon">
                     <img src="/img/icon/search.png" />
                 </button>
-                <button ui-sref="employees.profileEdit" class="button button-icon">
+                <button ui-sref="employees.jobsFeed" class="button button-icon">
                     <img src="/img/icon/view.png" />
                 </button>
-                <button ui-sref="employees.profileEdit" class="button button-icon">
+                <button ui-sref="employees.jobsFeed" class="button button-icon">
                     <img src="/img/icon/date.png" />
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <div id="content" dir="rtl">
-            <ion-nav-view></ion-nav-view>
-        </div>
+        <ion-nav-view></ion-nav-view>
     </ion-side-menu-content>
 
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
             <ion-list>
-                <ion-item class="item-icon-right home-icon">
-ראשי
-                </ion-item>
-                <ion-item class="item-icon-right about-icon" href="#/about" on-tap="shareApp()">
-אודות
-                </ion-item>
-                <ion-item class="item-icon-right help-icon" on-tap="rateApp()">
-עזרה
-                </ion-item>
-                <ion-item class="item-icon-right contact-icon" menu-close on-tap="mailToCEO()">
-צור קשר
-                </ion-item>
-                <ion-item class="item-icon-right site-icon">
-אתר הבית
-                </ion-item>
-                <ion-item class="item-icon-right share-icon">
-שיתוף האפליקציה
-                </ion-item>
+                <ion-item class="item-icon-right home-icon" menu-close ui-sref="employees.jobsFeed">ראשי</ion-item>
+                <ion-item class="item-icon-right about-icon" menu-close ui-sref="about">אודות</ion-item>
+                <!--<ion-item class="item-icon-right help-icon" on-tap="rateApp()">עזרה</ion-item>-->
+                <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact">צור קשר</ion-item>
+                <!--<ion-item class="item-icon-right site-icon">אתר הבית</ion-item>-->
+                <!--<ion-item class="item-icon-right share-icon">שיתוף האפליקציה</ion-item>-->
             </ion-list>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
-    </body>
+</body>
 </html>

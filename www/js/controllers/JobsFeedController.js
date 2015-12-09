@@ -4,7 +4,8 @@ angular.module('jobhop.controllers')
 JobsFeedController.$inject = ['$scope', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
 
 function JobsFeedController($scope, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-    position = {};
+
+/*    position = {};
 
     $scope.setCurrentPosition = function() {
         return $ionicPlatform.ready(function() {
@@ -108,5 +109,5 @@ function JobsFeedController($scope, JobHopAPI, $cordovaGeolocation, $ionicPlatfo
         });
     };
 
-    $scope.init();
+    $scope.init();*/
 };

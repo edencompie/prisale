@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				files: {
 					'www/js/extensions.min.js': [
 						'www/lib/lodash/lodash.min.js',
-						'www/lib/ionic/js/ionic.bundle.min.js',
+						'www/lib/ionic/js/ionic.bundle.js',
 						'www/lib/angular-google-gapi/angular-google-gapi.min.js',
 						'www/lib/ngCordova/dist/ng-cordova.min.js',
 						'www/lib/ngstorage/ngStorage.min.js',
