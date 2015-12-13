@@ -2,13 +2,12 @@
     <ion-content scroll="true" padding="false" class="has-footer">
         <div class="list-container" ng-class="viewClassName">
 
-
-            <div class="fruit-wrapper">
+            <div class="fruit-wrapper" ng-repeat="item in items">
                 <div class="fruit-item">
                     <div class="image">
                         <img src="http://localhost:8100/img/logo.png" alt="">
                     </div>
-                    <h4>תפוז</h4>
+                    <h4>{{item.name}}</h4>
                     <div class="price">
                         <table>
                             <tr><td>מחיר סוג א'</td><td>3.00 ש"ח</td></tr>
@@ -16,7 +15,8 @@
                         </table>
                     </div>
                     <div class="buttons">
-                        כפתורים
+                        <img src="/img/item-push.png" style="float:right;" ng-click="showPushNotificationPopup()">
+                        <img src="/img/item-share.png" style="float:left;">
                     </div>
                 </div>
             </div>

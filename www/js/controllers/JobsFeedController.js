@@ -4,22 +4,42 @@ angular.module('jobhop.controllers')
 JobsFeedController.$inject = ['$rootScope', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
 
 function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-console.log('$ionicPopup', $ionicPopup);
-    $rootScope.viewClassName = 'two-per-row';
 
+    $rootScope.viewClassName = 'two-per-row';
     $rootScope.changeView = function() {
         console.log('changeView');
         $rootScope.viewClassName = $rootScope.viewClassName == 'two-per-row' ? '' : 'two-per-row';
         return false;
     };
 
+    var PushNotificationPopup, FilterPopup;
 
-
-    $rootScope.showPopup = function() {
-        // An elaborate, custom popup
-        var myPopup = $ionicPopup.show({
+    $rootScope.showPushNotificationPopup = function() {
+        PushNotificationPopup = $ionicPopup.show({
             templateUrl: 'views/list/push-popup.html',
             cssClass: 'push-notification',
+            scope: $rootScope,
+            buttons: [
+                {
+                    text: 'שמור',
+                    type: 'button-positive',
+                    onTap: function (e) {
+
+                    }
+                }
+            ]
+        });
+    }
+    $rootScope.closePushNotificationPopup = function() {
+        PushNotificationPopup.close();
+    }
+
+
+
+    $rootScope.showFilterPopup = function() {
+        FilterPopup = $ionicPopup.show({
+            templateUrl: 'views/list/filter-popup.html',
+            cssClass: 'list-filter',
             scope: $rootScope,
             buttons: [
                 {
@@ -31,14 +51,63 @@ console.log('$ionicPopup', $ionicPopup);
                 }
             ]
         });
-
-        myPopup.then(function(res) {
-            console.log('Tapped!', res);
-        });
+    };
+    $rootScope.closeFilterPopup = function() {
+        FilterPopup.close();
     };
 
 
 
+    $scope.items = [{
+        "name": "tomato",
+        "id": 122222,
+        "topQuality": {
+            "wholesale": {
+                "price": 4.3,
+                "percentChange": 20
+            },
+            "agriculture": {
+                "price": 4.3,
+                "percentChange": 20
+            },
+            "weeklyAvg": 5
+        },
+        "primeQuality": {
+            "wholesale": {
+                "price": 4.3,
+                "percentChange": 20
+            },
+            "agriculture": {
+                "price": 4.3,
+                "percentChange": 20
+            }
+        }
+    },
+        {
+            "name": "cucamber",
+            "id": 122222,
+            "topQuality": {
+                "wholesale": {
+                    "price": 4.3,
+                    "percentChange": 20
+                },
+                "agriculture": {
+                    "price": 4.3,
+                    "percentChange": 20
+                },
+                "weeklyAvg": 5
+            },
+            "primeQuality": {
+                "wholesale": {
+                    "price": 4.3,
+                    "percentChange": 20
+                },
+                "agriculture": {
+                    "price": 4.3,
+                    "percentChange": 20
+                }
+            }
+        }];
 
     /*    position = {};
 

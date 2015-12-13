@@ -1,5 +1,5 @@
 <div>
-    <img src="img/icon/x.png" class="close" />
+    <img src="img/icon/x.png" class="close" ng-click="closeFilterPopup()" />
     <div class="row">
         <div class="col">
             <span class="title">סינון</span>
@@ -29,19 +29,19 @@
         <div class="col">
             <span class="title">מיון</span>
             <label>
-                <input type="radio" name="search-by-type" checked="checked">
+                <input type="radio" name="order-by" checked="checked">
                 <span class="style"></span>
-                ירקות ופירות
+                אחוז שינוי יומי
             </label>
             <label>
-                <input type="radio" name="search-by-type">
+                <input type="radio" name="order-by">
                 <span class="style"></span>
-                ירקות בלבד
+                א'-ב'
             </label>
             <label>
-                <input type="radio" name="search-by-type">
+                <input type="radio" name="order-by">
                 <span class="style"></span>
-                פירות בלבד
+                מחיר
             </label>
         </div>
     </div>

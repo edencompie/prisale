@@ -438,13 +438,12 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\n" +
     "        <div class=\"list-container\" ng-class=\"viewClassName\">\n" +
     "\n" +
-    "\n" +
-    "            <div class=\"fruit-wrapper\">\n" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
     "                <div class=\"fruit-item\">\n" +
     "                    <div class=\"image\">\n" +
     "                        <img src=\"http://localhost:8100/img/logo.png\" alt=\"\">\n" +
     "                    </div>\n" +
-    "                    <h4>תפוז</h4>\n" +
+    "                    <h4>{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
     "                        <table>\n" +
     "                            <tr><td>מחיר סוג א'</td><td>3.00 ש\"ח</td></tr>\n" +
@@ -452,7 +451,8 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                        </table>\n" +
     "                    </div>\n" +
     "                    <div class=\"buttons\">\n" +
-    "                        כפתורים\n" +
+    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup()\">\n" +
+    "                        <img src=\"/img/item-share.png\" style=\"float:left;\">\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -563,11 +563,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\"></ion-tab>\r" +
+    "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\"></ion-tab>\r" +
     "\n" +
     "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" href=\"#/employees/jobs-user\"></ion-tab>\r" +
     "\n" +
-    "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\"></ion-tab>\r" +
     "\n" +
     "    </ion-tabs>\r" +
     "\n" +
@@ -726,7 +726,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/filter-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeFilterPopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
@@ -786,31 +786,31 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\" checked=\"checked\">\r" +
+    "                <input type=\"radio\" name=\"order-by\" checked=\"checked\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                ירקות ופירות\r" +
+    "                אחוז שינוי יומי\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "                <input type=\"radio\" name=\"order-by\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                ירקות בלבד\r" +
+    "                א'-ב'\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "                <input type=\"radio\" name=\"order-by\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                פירות בלבד\r" +
+    "                מחיר\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -826,7 +826,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/push-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closePushNotificationPopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
