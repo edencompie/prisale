@@ -37,6 +37,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         url: '/jobs-feed',
         views: {
             'jobs-feed-tab': {
+                controller: 'JobsFeedController',
                 templateUrl: 'views/employees/jobs-feed.html'
             }
         }

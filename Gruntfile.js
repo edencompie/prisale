@@ -58,6 +58,7 @@ module.exports = function(grunt) {
 							'www/js/controllers/ListController.js',
 							'www/js/controllers/JobsUserController.js',
 							'www/js/controllers/JobsSearchController.js',
+							'www/js/controllers/JobsFeedController.js',
 							'www/js/controllers/JobController.js',
 							'www/js/controllers/JobEmployerController.js',
 							'www/js/controllers/UserProfileController.js',

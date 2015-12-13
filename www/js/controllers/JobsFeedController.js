@@ -1,11 +1,46 @@
 angular.module('jobhop.controllers')
 .controller('JobsFeedController', JobsFeedController);
 
-JobsFeedController.$inject = ['$scope', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
+JobsFeedController.$inject = ['$rootScope', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
 
-function JobsFeedController($scope, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
+function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
+console.log('$ionicPopup', $ionicPopup);
+    $rootScope.viewClassName = 'two-per-row';
 
-/*    position = {};
+    $rootScope.changeView = function() {
+        console.log('changeView');
+        $rootScope.viewClassName = $rootScope.viewClassName == 'two-per-row' ? '' : 'two-per-row';
+        return false;
+    };
+
+
+
+    $rootScope.showPopup = function() {
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            templateUrl: 'views/list/push-popup.html',
+            cssClass: 'push-notification',
+            scope: $rootScope,
+            buttons: [
+                {
+                    text: 'שמור',
+                    type: 'button-positive',
+                    onTap: function(e) {
+
+                    }
+                }
+            ]
+        });
+
+        myPopup.then(function(res) {
+            console.log('Tapped!', res);
+        });
+    };
+
+
+
+
+    /*    position = {};
 
     $scope.setCurrentPosition = function() {
         return $ionicPlatform.ready(function() {

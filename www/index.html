@@ -23,11 +23,12 @@
                 <button class="button button-icon ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <button on-sref="employees.jobsFeed" class="button button-icon">
+                <button ng-click="showPopup()" class="button button-icon">
                     <img src="/img/icon/search.png" />
                 </button>
-                <button ui-sref="employees.jobsFeed" class="button button-icon">
-                    <img src="/img/icon/view.png" />
+                <button ng-click="changeView()" class="button button-icon" ng-class="viewClassName">
+                    <img src="/img/icon/view2.png" ng-hide="viewClassName" />
+                    <img src="/img/icon/view1.png" ng-hide="!viewClassName" />
                 </button>
                 <button ui-sref="employees.jobsFeed" class="button button-icon">
                     <img src="/img/icon/date.png" />

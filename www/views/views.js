@@ -436,127 +436,30 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/employees/jobs-feed.html',
     "<ion-view>\n" +
     "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\n" +
-    "        <div class=\"list-container\">\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
+    "        <div class=\"list-container\" ng-class=\"viewClassName\">\n" +
+    "\n" +
+    "\n" +
+    "            <div class=\"fruit-wrapper\">\n" +
+    "                <div class=\"fruit-item\">\n" +
+    "                    <div class=\"image\">\n" +
+    "                        <img src=\"http://localhost:8100/img/logo.png\" alt=\"\">\n" +
+    "                    </div>\n" +
+    "                    <h4>תפוז</h4>\n" +
+    "                    <div class=\"price\">\n" +
+    "                        <table>\n" +
+    "                            <tr><td>מחיר סוג א'</td><td>3.00 ש\"ח</td></tr>\n" +
+    "                            <tr><td>מחיר מובחר</td><td>3.00 ש\"ח</td></tr>\n" +
+    "                        </table>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"buttons\">\n" +
+    "                        כפתורים\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"fruit-item\">\n" +
-    "                <div class=\"image\">\n" +
-    "                    <img src=\"\" alt=\"\">\n" +
-    "                </div>\n" +
-    "                <h4>תפוז</h4>\n" +
-    "                <div class=\"price\">\n" +
-    "                    <span>מחיר סוג א'</span>3.00 ש\"ח<br />\n" +
-    "                    <span>מחיר מובחר</span>3.00 ש\"ח<br />\n" +
-    "                </div>\n" +
-    "                <div class=\"buttons\">\n" +
-    "                    כפתורים\n" +
-    "                </div>\n" +
-    "            </div>\n" +
+    "\n" +
     "        </div>\n" +
     "    </ion-content>\n" +
-    "</ion-view>\n"
+    "</ion-view>"
   );
 
 
@@ -817,6 +720,168 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "        </div>\n" +
     "    </ion-content>\n" +
     "</ion-view>\n"
+  );
+
+
+  $templateCache.put('www/views/list/filter-popup.html',
+    "<div>\r" +
+    "\n" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" />\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">סינון</span>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\" checked=\"checked\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                ירקות ופירות\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                ירקות בלבד\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                פירות בלבד\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">חיפוש לפי שם המוצר</span>\r" +
+    "\n" +
+    "            <input type=\"text\" id=\"search-by-name\" />\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <hr>\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">מיון</span>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\" checked=\"checked\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                ירקות ופירות\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                ירקות בלבד\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                פירות בלבד\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
+  );
+
+
+  $templateCache.put('www/views/list/push-popup.html',
+    "<div>\r" +
+    "\n" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" />\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">הודעת פוש</span>\r" +
+    "\n" +
+    "            <p>\r" +
+    "\n" +
+    "                <label>\r" +
+    "\n" +
+    "                    <input type=\"checkbox\" style=\"width:auto;\" />\r" +
+    "\n" +
+    "                    <span class=\"style\"></span>\r" +
+    "\n" +
+    "                </label>\r" +
+    "\n" +
+    "                אפשר הודעות פוש עבור המוצר\r" +
+    "\n" +
+    "                אפשר הודעות פוש עבור המוצר\r" +
+    "\n" +
+    "                <b>ברוקולי</b>\r" +
+    "\n" +
+    "                כשאר המחיר משתנה ב\r" +
+    "\n" +
+    "                <select name=\"\" id=\"\">\r" +
+    "\n" +
+    "                    <option value=\"10\">10%</option>\r" +
+    "\n" +
+    "                    <option value=\"20\">20%</option>\r" +
+    "\n" +
+    "                    <option value=\"30\">30%</option>\r" +
+    "\n" +
+    "                    <option value=\"40\">40%</option>\r" +
+    "\n" +
+    "                    <option value=\"50\">50%</option>\r" +
+    "\n" +
+    "                    <option value=\"60\">60%</option>\r" +
+    "\n" +
+    "                    <option value=\"70\">70%</option>\r" +
+    "\n" +
+    "                    <option value=\"80\">80%</option>\r" +
+    "\n" +
+    "                    <option value=\"90\">90%</option>\r" +
+    "\n" +
+    "                </select>\r" +
+    "\n" +
+    "            </p>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
   );
 
 }]);

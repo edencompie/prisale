@@ -5,6 +5,12 @@ MainController.$inject = ['$rootScope', '$scope', 'JobHopAPI', '$ionicModal', '$
 
 function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
     console.log('MainController');
+
+
+    /*$scope.changeView = function() {
+        console.log('11$scope.viewMode', $scope.viewMode);
+        $scope.viewMode = !$scope.viewMode;
+    };*/
     /*$localStorage.user = $localStorage.user || {
         profile: {},
         baseMessage: {},

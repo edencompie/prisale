@@ -1,3 +1,6 @@
+ion-content {
+  background: #fef7eb; }
+
 body {
   background: #fef7eb;
   font-family: 'Open Sans Hebrew', sans-serif; }
@@ -76,10 +79,11 @@ body {
     white-space: nowrap;
     font-size: 18px; }
   body div.bordered {
+    direction: rtl;
     margin: 10px 18px;
     border: 1px solid #ff9900;
     position: relative;
-    padding: 68px 6px 17px; }
+    padding: 15px 10px; }
     body div.bordered h2 {
       position: absolute;
       top: -15px;
@@ -102,66 +106,178 @@ body {
       left: 50%;
       background: #fef7eb; }
   body .list-container {
-    padding: 13px; }
-    body .list-container .fruit-item {
-      float: right;
-      margin: 8px 0;
-      width: 50%;
-      background: #fff;
-      border: 2px solid #95c11f;
-      color: #95c11f; }
-      body .list-container .fruit-item div.image {
+    padding: 13px;
+    overflow: auto; }
+    body .list-container div.fruit-wrapper {
+      width: 100%;
+      float: right; }
+      body .list-container div.fruit-wrapper div.fruit-item {
         float: right;
-        width: 38%;
-        height: 105px;
-        background: white;
-        text-align: center;
-        padding: 15px;
-        border-left: 1px solid #95c11f; }
-        body .list-container .fruit-item div.image img {
-          height: 70px;
-          width: 70px; }
-      body .list-container .fruit-item div.price {
-        direction: rtl;
-        padding: 0 15px 0;
-        float: left;
-        width: 62%;
-        height: 46px;
+        margin: 8px 0;
+        width: 100%;
         background: #fff;
-        text-size: 11px;
-        text-align: center; }
-        body .list-container .fruit-item div.price span {
-          display: inline-block;
-          width: 100px; }
-      body .list-container .fruit-item div.buttons {
-        background: #95c11f;
-        float: left;
-        width: 62%;
-        height: 23px;
-        lin-height: 23px;
-        text-align: center;
-        color: #fff; }
-      body .list-container .fruit-item h4 {
-        text-align: center;
-        float: left;
-        width: 62%;
-        background: #fff;
-        margin-top: 0;
-        height: 26px;
-        line-height: 26px;
-        font-size: 16px;
-        border-bottom: 1px solid #95c11f;
+        border: 3px solid #95c11f;
         color: #95c11f; }
-      body .list-container .fruit-item:nth-child(2n) {
+        body .list-container div.fruit-wrapper div.fruit-item div.image {
+          float: right;
+          width: 38%;
+          height: 105px;
+          background: white;
+          text-align: center;
+          padding: 15px;
+          border-left: 1px solid #95c11f; }
+          body .list-container div.fruit-wrapper div.fruit-item div.image img {
+            max-height: 100%;
+            max-width: 100%; }
+        body .list-container div.fruit-wrapper div.fruit-item div.price {
+          direction: rtl;
+          padding: 0 15px 0;
+          float: left;
+          width: 62%;
+          height: 46px;
+          background: #fff;
+          font-size: 12px;
+          text-align: center; }
+          body .list-container div.fruit-wrapper div.fruit-item div.price table {
+            width: 100%; }
+        body .list-container div.fruit-wrapper div.fruit-item div.buttons {
+          background: #95c11f;
+          float: left;
+          width: 62%;
+          height: 23px;
+          lin-height: 23px;
+          text-align: center;
+          color: #fff; }
+        body .list-container div.fruit-wrapper div.fruit-item h4 {
+          text-align: center;
+          float: left;
+          width: 62%;
+          background: #fff;
+          margin-top: 0;
+          height: 26px;
+          line-height: 26px;
+          font-size: 16px;
+          border-bottom: 1px solid #95c11f;
+          color: #95c11f; }
+      body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
         border-color: #ff9900;
         color: #ff9900; }
-        body .list-container .fruit-item:nth-child(2n) div.buttons {
+        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
           background: #ff9900; }
-        body .list-container .fruit-item:nth-child(2n) div.image, body .list-container .fruit-item:nth-child(2n) h4 {
+        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
           border-color: #ff9900; }
-        body .list-container .fruit-item:nth-child(2n) h4 {
+        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
           color: #ff9900; }
+    body .list-container.two-per-row div.fruit-wrapper {
+      width: 50%;
+      padding-right: 0px;
+      padding-left: 7px; }
+      body .list-container.two-per-row div.fruit-wrapper:nth-child(2n) {
+        padding-right: 7px;
+        padding-left: 0px; }
+      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.image {
+        height: 108px;
+        width: 100%;
+        border-left: none; }
+      body .list-container.two-per-row div.fruit-wrapper div.fruit-item h4 {
+        margin-bottom: 0;
+        width: 100%; }
+      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.price {
+        height: 40px;
+        width: 100%; }
+      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons {
+        width: 100%; }
   body .has-footer {
     bottom: 50px; }
   body .has-header {
-    top: 52px; }
+    top: 58px; }
+
+.popup-container .popup-head {
+  display: none; }
+.popup-container .popup-buttons {
+  padding: 0 20px;
+  min-height: 40px; }
+  .popup-container .popup-buttons button {
+    min-height: 0;
+    height: 27px;
+    font-size: 18px;
+    background: #ff6600 !important;
+    border: none; }
+.popup-container .popup {
+  direction: rtl;
+  width: 340px;
+  border: #ff6600 6px solid;
+  background: #fef7eb;
+  color: #ff6600; }
+  .popup-container .popup img.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 31px;
+    height: 31px;
+    z-index: -1; }
+  .popup-container .popup input#search-by-name {
+    border: #ff6600 2px solid;
+    padding: 3px 40px 3px 4px;
+    background: #fff url("/img/icon/search-bg.png") no-repeat right;
+    background-size: contain; }
+  .popup-container .popup span.title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 7px;
+    display: inline-block; }
+  .popup-container .popup hr {
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-color: #ff6600; }
+  .popup-container .popup input[type=radio] {
+    display: none; }
+    .popup-container .popup input[type=radio]:checked + span.style {
+      background-image: url("/img/radio-checked.png"); }
+    .popup-container .popup input[type=radio] + span.style {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url("/img/radio-unchecked.png");
+      background-size: contain;
+      margin-top: 1px; }
+  .popup-container .popup input[type=checkbox] {
+    display: none; }
+    .popup-container .popup input[type=checkbox]:checked + span.style {
+      background-image: url("/img/checkbox-checked.png"); }
+    .popup-container .popup input[type=checkbox] + span.style {
+      display: inline-block;
+      width: 17px;
+      height: 14px;
+      background-image: url("/img/checkbox-unchecked.png");
+      background-size: contain;
+      margin-top: 1px; }
+.popup-container.list-filter .popup label {
+  line-height: 16px;
+  display: block;
+  width: 100%;
+  font-size: 15px; }
+.popup-container.list-filter .popup input#search-by-name {
+  border: #ff6600 2px solid;
+  padding: 3px 40px 3px 4px;
+  background: #fff url("/img/icon/search-bg.png") no-repeat right;
+  background-size: contain; }
+.popup-container.list-filter .popup span.title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 7px;
+  display: inline-block; }
+.popup-container.push-notification .popup {
+  text-align: center; }
+  .popup-container.push-notification .popup label {
+    display: inline; }
+  .popup-container.push-notification .popup input#search-by-name {
+    border: #ff6600 2px solid;
+    padding: 3px 40px 3px 4px;
+    background: #fff url("/img/icon/search-bg.png") no-repeat right;
+    background-size: contain; }
+  .popup-container.push-notification .popup span.title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 7px;
+    display: inline-block; }
