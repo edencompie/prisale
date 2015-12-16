@@ -2,7 +2,7 @@
     <ion-nav-view name="jobs-feed-tab"></ion-nav-view>
     <ion-tabs class="tabs-balanced tabs-icon-top" ng-class="hideTabs">
         <ion-tab title="גרפים" icon-on="graph" icon-off="graph" href="#/employees/jobs-search"></ion-tab>
-        <ion-tab title="מחיר חקלאי" icon-on="farmer" icon-off="farmer" href="#/employees/jobs-user"></ion-tab>
-        <ion-tab title="מחיר סיטונאי" icon-on="buyer" icon-off="buyer" href="#/employees/jobs-feed"></ion-tab>
+        <ion-tab title="מחיר חקלאי" icon-on="farmer" icon-off="farmer" ng-click="setUserType('agriculture')"></ion-tab>
+        <ion-tab title="מחיר סיטונאי" icon-on="buyer" icon-off="buyer" ng-click="setUserType('wholesale')"></ion-tab>
     </ion-tabs>
 </ion-view>

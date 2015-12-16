@@ -1,9 +1,9 @@
 angular.module('jobhop.controllers')
 .controller('JobsFeedController', JobsFeedController);
 
-JobsFeedController.$inject = ['$rootScope', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
+JobsFeedController.$inject = ['$rootScope', '$http', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
 
-function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
+function JobsFeedController($rootScope, $http, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
 
     $rootScope.viewClassName = 'two-per-row';
     $rootScope.changeView = function() {
@@ -12,9 +12,21 @@ function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHop
         return false;
     };
 
-    var PushNotificationPopup, FilterPopup;
+    var PushNotificationPopup, FilterPopup, DetailsPopup;
 
-    $rootScope.showPushNotificationPopup = function() {
+    $rootScope.showDetailsPopup = function(item) {
+        DetailsPopup = $ionicPopup.show({
+            templateUrl: 'views/list/details-popup.html',
+            cssClass: 'details',
+            scope: $rootScope
+        });
+    }
+    $rootScope.closeDetailsPopup = function() {
+        DetailsPopup.close();
+    }
+
+    $rootScope.showPushNotificationPopup = function(item) {
+        $rootScope.itemTitleForPushNotificationPopup = item.name;
         PushNotificationPopup = $ionicPopup.show({
             templateUrl: 'views/list/push-popup.html',
             cssClass: 'push-notification',
@@ -35,7 +47,6 @@ function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHop
     }
 
 
-
     $rootScope.showFilterPopup = function() {
         FilterPopup = $ionicPopup.show({
             templateUrl: 'views/list/filter-popup.html',
@@ -52,62 +63,116 @@ function JobsFeedController($rootScope, $ionicPopup, $scope, $ionicModal, JobHop
             ]
         });
     };
+
     $rootScope.closeFilterPopup = function() {
         FilterPopup.close();
     };
 
+    $rootScope.setListDetails = function(listDetails) {
+        $rootScope.listDetails = listDetails;
+        $rootScope.closeDetailsPopup();
+    };
 
 
-    $scope.items = [{
-        "name": "tomato",
-        "id": 122222,
-        "topQuality": {
-            "wholesale": {
-                "price": 4.3,
-                "percentChange": 20
-            },
-            "agriculture": {
-                "price": 4.3,
-                "percentChange": 20
-            },
-            "weeklyAvg": 5
-        },
-        "primeQuality": {
-            "wholesale": {
-                "price": 4.3,
-                "percentChange": 20
-            },
-            "agriculture": {
-                "price": 4.3,
-                "percentChange": 20
+    // TODO remove a
+    var a = 0;
+    $rootScope.loadMore = function() {
+        a++;
+        console.log('loadMore');
+
+
+        // TODO
+        //$http.get('http://62.219.7.38/api/Public/products?pwd=ck32HGDESf13ekcs&name=&item_type=&date=&page=&order=')
+        //    .success(function(items) {
+        //    console.log('items', items);
+
+
+
+
+            for(var i =0; i< 50; i++) {
+
+                $scope.items.push({
+                    "name": "tomato",
+                    "id": 122222,
+                    "topQuality": {
+                        "wholesale": {
+                            "price": 4.3,
+                            "percentChange": 20,
+                            "weeklyAvg": 5
+                        },
+                        "agriculture": {
+                            "price": 2.3,
+                            "percentChange": 20,
+                            "weeklyAvg": 5
+                        },
+                    },
+                    "primeQuality": {
+                        "wholesale": {
+                            "price": 4.2,
+                            "percentChange": 20,
+                            "weeklyAvg": 5
+                        },
+                        "agriculture": {
+                            "price": 2.2,
+                            "percentChange": 20,
+                            "weeklyAvg": 5
+                        }
+                    }
+                });
+
             }
-        }
-    },
-        {
-            "name": "cucamber",
-            "id": 122222,
-            "topQuality": {
-                "wholesale": {
-                    "price": 4.3,
-                    "percentChange": 20
-                },
-                "agriculture": {
-                    "price": 4.3,
-                    "percentChange": 20
-                },
-                "weeklyAvg": 5
-            },
-            "primeQuality": {
-                "wholesale": {
-                    "price": 4.3,
-                    "percentChange": 20
-                },
-                "agriculture": {
-                    "price": 4.3,
-                    "percentChange": 20
-                }
-            }
-        }];
+
+
+
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        //});
+
+    };
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
+
+    $rootScope.userType = 'agriculture';
+    $rootScope.listDetails = 'price';
+    $scope.topQualityPrice = function(item) {
+        return item.topQuality[$scope.userType].price;
+    };
+    $scope.primeQualityPrice = function(item) {
+        return item.primeQuality[$scope.userType].price;
+    };
+    $scope.topQualityAvgPrice = function(item) {
+        return item.topQuality[$scope.userType].weeklyAvg;
+    };
+    $scope.primeQualityAvgPrice = function(item) {
+        return item.primeQuality[$scope.userType].weeklyAvg;
+    };
+    $scope.topQualityPercentChange = function(item) {
+        return item.topQuality[$scope.userType].percentChange;
+    };
+    $scope.primeQualityPercentChange = function(item) {
+        return item.primeQuality[$scope.userType].percentChange;
+    };
+
+
+
+    $scope.bla = function(item) {
+        // TODO
+        console.log('item clicked:', item)
+    };
+
+    $rootScope.setUserType = function(userType) {
+        $rootScope.userType = userType;
+    };
+
+
+    $scope.moreDataCanBeLoaded = function() {
+        // TODO
+        return a < 4;
+    };
+
+
+    $scope.items = [];
 
     /*    position = {};
 

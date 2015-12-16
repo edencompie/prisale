@@ -436,29 +436,45 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/employees/jobs-feed.html',
     "<ion-view>\n" +
     "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\n" +
+    "        <div class=\"row top-tabs\">\n" +
+    "            <div class=\"col\"><img src=\"/img/icon/basket.png\"><br />סל מוצרים</div>\n" +
+    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"/img/icon/details.png\"><br />פרטים</div>\n" +
+    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"/img/icon/filter.png\"><br />סינון ומיון</div>\n" +
+    "        </div>\n" +
     "        <div class=\"list-container\" ng-class=\"viewClassName\">\n" +
-    "\n" +
     "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
     "                <div class=\"fruit-item\">\n" +
     "                    <div class=\"image\">\n" +
-    "                        <img src=\"http://localhost:8100/img/logo.png\" alt=\"\">\n" +
+    "                        <img src=\"http://localhost:8100/img/logo.png\" ng-click=\"bla(item)\">\n" +
     "                    </div>\n" +
     "                    <h4>{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
-    "                        <table>\n" +
-    "                            <tr><td>מחיר סוג א'</td><td>3.00 ש\"ח</td></tr>\n" +
-    "                            <tr><td>מחיר מובחר</td><td>3.00 ש\"ח</td></tr>\n" +
+    "                        <table ng-show=\"listDetails == 'price'\">\n" +
+    "                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש\"ח</td></tr>\n" +
+    "                            <tr><td>מחיר מובחר</td><td>{{topQualityPrice(item)}} ש\"ח</td></tr>\n" +
+    "                        </table>\n" +
+    "                        <table ng-show=\"listDetails == 'avgPrice'\">\n" +
+    "                            <tr><td>מחיר ממוצע סוג א'</td><td>{{primeQualityAvgPrice(item)}} ש\"ח</td></tr>\n" +
+    "                            <tr><td>מחיר ממוצע מובחר</td><td>{{topQualityAvgPrice(item)}} ש\"ח</td></tr>\n" +
+    "                        </table>\n" +
+    "                        <table ng-show=\"listDetails == 'percentChange'\">\n" +
+    "                            <tr><td>אחוז שינוי סוג א'</td><td>{{primeQualityPercentChange(item)}}%</td></tr>\n" +
+    "                            <tr><td>אחוז שינוי מובחר</td><td>{{topQualityPercentChange(item)}}%</td></tr>\n" +
     "                        </table>\n" +
     "                    </div>\n" +
     "                    <div class=\"buttons\">\n" +
-    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup()\">\n" +
+    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\n" +
     "                        <img src=\"/img/item-share.png\" style=\"float:left;\">\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
-    "\n" +
     "        </div>\n" +
     "    </ion-content>\n" +
+    "    <ion-infinite-scroll\n" +
+    "            ng-if=\"moreDataCanBeLoaded()\"\n" +
+    "            on-infinite=\"loadMore()\"\n" +
+    "            distance=\"10%\">\n" +
+    "    </ion-infinite-scroll>\n" +
     "</ion-view>"
   );
 
@@ -565,9 +581,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\"></ion-tab>\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" href=\"#/employees/jobs-user\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" ng-click=\"setUserType('agriculture')\"></ion-tab>\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" href=\"#/employees/jobs-feed\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" ng-click=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +
     "    </ion-tabs>\r" +
     "\n" +
@@ -723,6 +739,86 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('www/views/help.html',
+    "<ion-view>\r" +
+    "\n" +
+    "    <ion-content>\r" +
+    "\n" +
+    "        <div class=\"bordered\">\r" +
+    "\n" +
+    "            <h2 style=\"padding: 0 16px;\">עזרה</h2>\r" +
+    "\n" +
+    "            <p>לורם איפסום או בקיצור ליפסום (בלטינית: lorem ipsum) הוא מלל מקובל וחסר משמעות המשמש \"ממלא מקום\" בעת עריכה, בתחום הדפוס, ההדפסה והפרסום.</p>\r" +
+    "\n" +
+    "            <p>הטקסט משמש כלי לייצוג דפוס שאמור להתווסף למוצר הפרסום בעתיד. המדובר במלל ארוך במיוחד שניתן לבדוק עמו גופנים, וכן התאמת המלל לעמודים המעוצבים ובדיקת סוגי וגדלי גופן והתאמתם למוצר הסופי.</p>\r" +
+    "\n" +
+    "            <p>בשל הדמיון של המילים בלורם איפסום ללטינית קלאסית, רבים חושבים שיש משמעות לטקסט, אולם לא נועדה להיות לו כל משמעות. המטרה היא רק \"תפיסת מקום\" על ידי מלל חסר משמעות (ראו דוגמה בהמשך).</p>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </ion-content>\r" +
+    "\n" +
+    "</ion-view>\r" +
+    "\n"
+  );
+
+
+  $templateCache.put('www/views/list/details-popup.html',
+    "<div>\r" +
+    "\n" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeDetailsPopup()\" />\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">פרטים</span>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"listDetailsInput\" type=\"radio\" name=\"list-details\" value=\"price\" ng-checked=\"listDetails == 'price'\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                מחיר יומי\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"listDetailsInput\" type=\"radio\" name=\"list-details\" value=\"avgPrice\" ng-checked=\"listDetails == 'avgPrice'\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                מחיר ממוצע\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"listDetailsInput\" type=\"radio\" name=\"list-details\" value=\"percentChange\" ng-checked=\"listDetails == 'percentChange'\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                אחוז שינוי במחיר\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"popup-buttons\">\r" +
+    "\n" +
+    "        <button class=\"button button-positive button-block\" ng-click=\"setListDetails(listDetailsInput)\">שמור</button>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
+  );
+
+
   $templateCache.put('www/views/list/filter-popup.html',
     "<div>\r" +
     "\n" +
@@ -763,14 +859,6 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                פירות בלבד\r" +
     "\n" +
     "            </label>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "        <div class=\"col\">\r" +
-    "\n" +
-    "            <span class=\"title\">חיפוש לפי שם המוצר</span>\r" +
-    "\n" +
-    "            <input type=\"text\" id=\"search-by-name\" />\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -848,9 +936,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                אפשר הודעות פוש עבור המוצר\r" +
     "\n" +
-    "                <b>ברוקולי</b>\r" +
+    "                <b>{{itemTitleForPushNotificationPopup}}</b>\r" +
     "\n" +
-    "                כשאר המחיר משתנה ב\r" +
+    "                <br />\r" +
+    "\n" +
+    "                כאשר המחיר משתנה ב\r" +
     "\n" +
     "                <select name=\"\" id=\"\">\r" +
     "\n" +

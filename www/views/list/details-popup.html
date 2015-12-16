@@ -1,0 +1,26 @@
+<div>
+    <img src="img/icon/x.png" class="close" ng-click="closeDetailsPopup()" />
+    <div class="row">
+        <div class="col">
+            <span class="title">פרטים</span>
+            <label>
+                <input ng-model="listDetailsInput" type="radio" name="list-details" value="price" ng-checked="listDetails == 'price'">
+                <span class="style"></span>
+                מחיר יומי
+            </label>
+            <label>
+                <input ng-model="listDetailsInput" type="radio" name="list-details" value="avgPrice" ng-checked="listDetails == 'avgPrice'">
+                <span class="style"></span>
+                מחיר ממוצע
+            </label>
+            <label>
+                <input ng-model="listDetailsInput" type="radio" name="list-details" value="percentChange" ng-checked="listDetails == 'percentChange'">
+                <span class="style"></span>
+                אחוז שינוי במחיר
+            </label>
+        </div>
+    </div>
+    <div class="popup-buttons">
+        <button class="button button-positive button-block" ng-click="setListDetails(listDetailsInput)">שמור</button>
+    </div>
+</div>
