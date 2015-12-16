@@ -268,7 +268,10 @@ body {
   .popup-container.push-notification .popup select {
     background: #ffe0cc;
     color: #ff6600;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-right: 4px;
+    -webkit-appearance: none;
+    appearance: none; }
     .popup-container.push-notification .popup select::-ms-expand {
       display: none; }
   .popup-container.push-notification .popup label {

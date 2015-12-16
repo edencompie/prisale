@@ -380,7 +380,12 @@ body {
 			background: #ffe0cc;
 			color: #ff6600;
 			font-weight: 600;
-			&::-ms-expand{ display:none; } // Remove arrow
+			margin-right: 4px;
+
+			//Remove arrow
+			-webkit-appearance: none;
+			appearance: none;
+			&::-ms-expand{ display:none; }
 		}
 	  label{ display:inline; }
 	  span.title{ font-weight:600; font-size:14px; margin-bottom:7px; display:inline-block; }

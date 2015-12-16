@@ -445,7 +445,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
     "                <div class=\"fruit-item\">\n" +
     "                    <div class=\"image\">\n" +
-    "                        <img src=\"http://localhost:8100/img/logo.png\" ng-click=\"bla(item)\">\n" +
+    "                        <img src=\"http://localhost:8100/img/logo.png\" ng-click=\"itemClicked(item)\">\n" +
     "                    </div>\n" +
     "                    <h4>{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
@@ -934,15 +934,13 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                אפשר הודעות פוש עבור המוצר\r" +
     "\n" +
-    "                אפשר הודעות פוש עבור המוצר\r" +
-    "\n" +
     "                <b>{{itemTitleForPushNotificationPopup}}</b>\r" +
     "\n" +
     "                <br />\r" +
     "\n" +
     "                כאשר המחיר משתנה ב\r" +
     "\n" +
-    "                <select name=\"\" id=\"\">\r" +
+    "                <select id=\"push-notification-percent\">\r" +
     "\n" +
     "                    <option value=\"10\">10%</option>\r" +
     "\n" +
