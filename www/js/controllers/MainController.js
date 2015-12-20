@@ -1,11 +1,21 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$rootScope', '$scope', 'JobHopAPI', '$ionicModal', '$ionicLoading', '$state', '$cordovaEmailComposer', '$cordovaDialogs', '$cordovaToast', '$cordovaSocialSharing', '$cordovaInAppBrowser', '$cordovaFacebook', '$localStorage', '$stateParams', '$timeout', '$cordovaCapture'];
+MainController.$inject = ['$location', '$scope', 'JobHopAPI', '$ionicModal', '$ionicLoading', '$state', '$cordovaEmailComposer', '$cordovaDialogs', '$cordovaToast', '$cordovaSocialSharing', '$cordovaInAppBrowser', '$cordovaFacebook', '$localStorage', '$stateParams', '$timeout', '$cordovaCapture'];
 
-function MainController($rootScope, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
+function MainController($location, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
     console.log('MainController');
 
+
+    $scope.isTabActive = function(item) {
+        console.log('-------------isTabActive');
+        return $location.path().indexOf(item) > -1;
+    };
+
+    $scope.isItemActive = function(item) {
+        //console.log('isItemActive');
+        return $location.path().indexOf(item) > -1;
+    };
 
     /*$scope.changeView = function() {
         console.log('11$scope.viewMode', $scope.viewMode);

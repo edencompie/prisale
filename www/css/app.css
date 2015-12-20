@@ -41,13 +41,19 @@ body {
       width: 98px;
       height: 35px;
       margin-right: 10px; }
+    body ion-header-bar.bar.bar-balanced .button-date {
+      font-size: 11px;
+      padding: 0;
+      background: url("/img/icon/date.png") no-repeat;
+      background-size: contain; }
     body ion-header-bar.bar.bar-balanced button.button.button-icon {
       color: #ff6600;
       margin-top: 3px; }
       body ion-header-bar.bar.bar-balanced button.button.button-icon img {
         height: 20px; }
   body ion-tabs.tabs-balanced.tabs-bottom .tab-nav {
-    background: white; }
+    background: white;
+    direction: rtl; }
     body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a {
       border: 1px solid #458700;
       border-top: none;
@@ -141,6 +147,7 @@ body {
           body .list-container div.fruit-wrapper div.fruit-item div.price table {
             width: 100%; }
         body .list-container div.fruit-wrapper div.fruit-item div.buttons {
+          position: relative;
           background: #95c11f;
           float: left;
           width: 62%;
@@ -148,9 +155,18 @@ body {
           lin-height: 23px;
           text-align: center;
           color: #fff; }
+          body .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent {
+            font-weight: 600;
+            color: #95c11f;
+            position: absolute;
+            right: 37px;
+            top: 5px;
+            font-size: 10px; }
+            body .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent small {
+              font-size: 8px; }
           body .list-container div.fruit-wrapper div.fruit-item div.buttons img {
             margin: 3px 30px 0 30px;
-            height: 22px; }
+            height: 24px; }
         body .list-container div.fruit-wrapper div.fruit-item h4 {
           text-align: center;
           float: left;
@@ -167,6 +183,8 @@ body {
         color: #ff9900; }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
           background: #ff9900; }
+          body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
+            color: #ff9900; }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
           border-color: #ff9900; }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
@@ -190,6 +208,8 @@ body {
         width: 100%; }
       body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons {
         width: 100%; }
+        body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons .push-percent {
+          right: 17px; }
         body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons img {
           margin-right: 10px;
           margin-left: 10px; }
@@ -253,12 +273,15 @@ body {
       background-image: url("/img/checkbox-unchecked.png");
       background-size: contain;
       margin-top: 1px; }
-.popup-container.list-filter .popup label, .popup-container.details .popup label {
+.popup-container.list-filter .popup input[type=date], .popup-container.details .popup input[type=date], .popup-container.date-filter .popup input[type=date] {
+  border: #ff6600 1px solid;
+  width: 50%; }
+.popup-container.list-filter .popup label, .popup-container.details .popup label, .popup-container.date-filter .popup label {
   line-height: 16px;
   display: block;
   width: 100%;
   font-size: 15px; }
-.popup-container.list-filter .popup span.title, .popup-container.details .popup span.title {
+.popup-container.list-filter .popup span.title, .popup-container.details .popup span.title, .popup-container.date-filter .popup span.title {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 7px;

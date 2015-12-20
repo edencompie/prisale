@@ -4,17 +4,17 @@
         <div class="col">
             <span class="title">סינון</span>
             <label>
-                <input type="radio" name="search-by-type" checked="checked">
+                <input ng-model="typeFilter" value="" type="radio" name="search-by-type" checked="checked">
                 <span class="style"></span>
                 ירקות ופירות
             </label>
             <label>
-                <input type="radio" name="search-by-type">
+                <input ng-model="typeFilter" value="VEG" type="radio" name="search-by-type">
                 <span class="style"></span>
                 ירקות בלבד
             </label>
             <label>
-                <input type="radio" name="search-by-type">
+                <input ng-model="typeFilter" value="FRUITS" type="radio" name="search-by-type">
                 <span class="style"></span>
                 פירות בלבד
             </label>
@@ -25,20 +25,23 @@
         <div class="col">
             <span class="title">מיון</span>
             <label>
-                <input type="radio" name="order-by" checked="checked">
+                <input ng-model="orderFilter" value="DAILY_CHANGE" type="radio" name="order-by" checked="checked">
                 <span class="style"></span>
                 אחוז שינוי יומי
             </label>
             <label>
-                <input type="radio" name="order-by">
+                <input ng-model="orderFilter" value="ABC" type="radio" name="order-by">
                 <span class="style"></span>
                 א'-ב'
             </label>
             <label>
-                <input type="radio" name="order-by">
+                <input ng-model="orderFilter" value="PRICE" type="radio" name="order-by">
                 <span class="style"></span>
                 מחיר
             </label>
         </div>
+    </div>
+    <div class="popup-buttons">
+        <button class="button button-positive button-block" ng-click="setFilters(orderFilter, typeFilter)">שמור</button>
     </div>
 </div>

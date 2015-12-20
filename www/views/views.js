@@ -463,8 +463,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                        </table>\n" +
     "                    </div>\n" +
     "                    <div class=\"buttons\">\n" +
+    "                        <span class=\"push-percent\">30<small>%</small></span>\n" +
     "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\n" +
-    "                        <img src=\"/img/item-share.png\" style=\"float:left;\">\n" +
+    "                        <img src=\"/img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -579,11 +580,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\r" +
     "\n" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
+    "\n" +
+    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" on-select=\"setUserType('agriculture')\"></ion-tab>\r" +
+    "\n" +
     "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" href=\"#/employees/jobs-search\"></ion-tab>\r" +
-    "\n" +
-    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" ng-click=\"setUserType('agriculture')\"></ion-tab>\r" +
-    "\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" ng-click=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +
     "    </ion-tabs>\r" +
     "\n" +
@@ -763,6 +764,34 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('www/views/list/date-popup.html',
+    "<div>\r" +
+    "\n" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeDatePopup()\" />\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"col\">\r" +
+    "\n" +
+    "            <span class=\"title\">תאריך</span>\r" +
+    "\n" +
+    "            <input ng-model=\"dateFilter\" type=\"date\" />\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"popup-buttons\">\r" +
+    "\n" +
+    "        <button class=\"button button-positive button-block\" ng-click=\"setDate(dateFilter)\">שמור</button>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
+  );
+
+
   $templateCache.put('www/views/list/details-popup.html',
     "<div>\r" +
     "\n" +
@@ -832,7 +861,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\" checked=\"checked\">\r" +
+    "                <input ng-model=\"typeFilter\" value=\"\" type=\"radio\" name=\"search-by-type\" checked=\"checked\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -842,7 +871,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "                <input ng-model=\"typeFilter\" value=\"VEG\" type=\"radio\" name=\"search-by-type\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -852,7 +881,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"search-by-type\">\r" +
+    "                <input ng-model=\"typeFilter\" value=\"FRUITS\" type=\"radio\" name=\"search-by-type\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -874,7 +903,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"order-by\" checked=\"checked\">\r" +
+    "                <input ng-model=\"orderFilter\" value=\"DAILY_CHANGE\" type=\"radio\" name=\"order-by\" checked=\"checked\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -884,7 +913,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"order-by\">\r" +
+    "                <input ng-model=\"orderFilter\" value=\"ABC\" type=\"radio\" name=\"order-by\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -894,7 +923,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input type=\"radio\" name=\"order-by\">\r" +
+    "                <input ng-model=\"orderFilter\" value=\"PRICE\" type=\"radio\" name=\"order-by\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
@@ -903,6 +932,12 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "            </label>\r" +
     "\n" +
     "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"popup-buttons\">\r" +
+    "\n" +
+    "        <button class=\"button button-positive button-block\" ng-click=\"setFilters(orderFilter, typeFilter)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -926,7 +961,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <label>\r" +
     "\n" +
-    "                    <input type=\"checkbox\" style=\"width:auto;\" />\r" +
+    "                    <input ng-model=\"pushNotificationEnabled\" type=\"checkbox\" style=\"width:auto;\" />\r" +
     "\n" +
     "                    <span class=\"style\"></span>\r" +
     "\n" +
@@ -940,7 +975,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                כאשר המחיר משתנה ב\r" +
     "\n" +
-    "                <select id=\"push-notification-percent\">\r" +
+    "                <select ng-model=\"pushNotificationPercent\" id=\"push-notification-percent\">\r" +
     "\n" +
     "                    <option value=\"10\">10%</option>\r" +
     "\n" +
@@ -965,6 +1000,12 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "            </p>\r" +
     "\n" +
     "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"popup-buttons\">\r" +
+    "\n" +
+    "        <button class=\"button button-positive button-block\" ng-click=\"setPushNotificationPercent(pushNotificationEnabled, pushNotificationPercent)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +

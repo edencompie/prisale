@@ -19,6 +19,14 @@ Config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'
 
 function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
+    Parse.initialize("mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48", "YygfF1qpxWlma7ab6WytNFOMjWl1vWV1fs8yLRMi");
+
+    //var ProductNotify = Parse.Object.extend("product_notify");
+    //var productNotify = new ProductNotify();
+    //productNotify.get('productID',7).then(function(object) {
+    //    console.log(object);
+    //});
+
     $stateProvider
     .state('about', {
         url: '/about',
