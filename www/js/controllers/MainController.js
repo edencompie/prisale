@@ -6,7 +6,6 @@ MainController.$inject = ['$location', '$scope', 'JobHopAPI', '$ionicModal', '$i
 function MainController($location, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
     console.log('MainController');
 
-
     $scope.isTabActive = function(item) {
         console.log('-------------isTabActive');
         return $location.path().indexOf(item) > -1;

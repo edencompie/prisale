@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 				files: [{
 					src: [
 						'www/css/ionic.app.min.css',
+						'www/lib/angular-chart.js/dist/angular-chart.css',
 						'www/css/app.css',
 					],
 					dest: 'www/css/app.min.css'
@@ -46,6 +47,8 @@ module.exports = function(grunt) {
 						'www/lib/angular-google-maps/dist/angular-google-maps.min.js',
 						'www/lib/ion-image-lazy-load/ionic-image-lazy-load.js',
 						'www/lib/angular-nl2br/angular-nl2br.min.js',
+						//'www/lib/Chart.js/Chart.js',
+						//'www/lib/angular-chart.js/angular-chart.js',
 					]
 				}
 			},
@@ -58,7 +61,7 @@ module.exports = function(grunt) {
 							'www/js/controllers/ListController.js',
 							'www/js/controllers/JobsUserController.js',
 							'www/js/controllers/JobsSearchController.js',
-							'www/js/controllers/JobsFeedController.js',
+							'www/js/controllers/ProductsController.js',
 							'www/js/controllers/JobController.js',
 							'www/js/controllers/JobEmployerController.js',
 							'www/js/controllers/UserProfileController.js',

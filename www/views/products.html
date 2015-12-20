@@ -27,7 +27,7 @@
                         </table>
                     </div>
                     <div class="buttons">
-                        <span class="push-percent">30<small>%</small></span>
+                        <span class="push-percent" ng-click="showPushNotificationPopup(item)">{{item.percent}}<small ng-if="item.percent">%</small></span>
                         <img src="/img/item-push.png" style="float:right;" ng-click="showPushNotificationPopup(item)">
                         <img src="/img/item-share.png" style="float:left;" ng-click="shareProduct(item)">
                     </div>

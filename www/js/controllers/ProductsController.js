@@ -1,18 +1,20 @@
 angular.module('jobhop.controllers')
-.controller('JobsFeedController', JobsFeedController);
+.controller('ProductsController', ProductsController);
 
-JobsFeedController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
+ProductsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
 
-function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-    // TODO
-    var installID = 'myinstallid';
+function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
+console.log('ProductsController');
+
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
     $rootScope.changeView = function() {
-        console.log('changeView');
         $rootScope.viewClassName = $rootScope.viewClassName == 'two-per-row' ? '' : 'two-per-row';
         return false;
     };
+
+
+    var productsNotifications = {};
 
 
 
@@ -34,9 +36,10 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
     //Push notification popup
     var PushNotificationPopup;
     $rootScope.showPushNotificationPopup = function(item) {
-        //todo
-        $rootScope.pushNotificationPercent = 30;
+        $rootScope.pushNotificationPercent = item.percent;
+        $rootScope.pushNotificationEnabled = Boolean(item.percent);
         $rootScope.itemTitleForPushNotificationPopup = item.name;
+        $rootScope.itemForPushNotificationPopup = item;
         PushNotificationPopup = $ionicPopup.show({
             templateUrl: 'views/list/push-popup.html',
             cssClass: 'push-notification',
@@ -46,8 +49,26 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
     $rootScope.closePushNotificationPopup = function() {
         PushNotificationPopup.close();
     }
-    $rootScope.setPushNotificationPercent = function(isEnabled, percent) {
-        console.log(isEnabled, percent);
+    $rootScope.setPushNotificationPercent = function(item, isEnabled, percent) {
+
+        if (item.percent) {
+            if (productsNotifications[item.id]) {
+                // Destroy existing
+                productsNotifications[item.id].destroy();
+            }
+        }
+
+        if (isEnabled) {
+            var ProductNotify = Parse.Object.extend("product_notify");
+            var productNotify = new ProductNotify();
+            productNotify.set('productID', item.id);
+            productNotify.set('percent', parseInt(percent));
+            productNotify.save(null, function(object) {
+                productsNotifications[item.id] = object;
+            });
+        }
+        item.percent = isEnabled ? percent : null;
+
         $rootScope.closePushNotificationPopup();
     }
 
@@ -56,7 +77,6 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
     var FilterPopup;
     $rootScope.showFilterPopup = function() {
         $rootScope.typeFilter = $rootScope.filterType;
-        console.log('$rootScope.filterType', $rootScope.filterType);
         $rootScope.orderFilter = $rootScope.filterOrder;
         FilterPopup = $ionicPopup.show({
             templateUrl: 'views/list/filter-popup.html',
@@ -159,13 +179,8 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
          $rootScope.filterPage
          */
 
-
-        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&date=&page=';
-        $http({
-            url: url,
-            method: 'GET',
-
-        })
+       var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&date=&page=';
+        /*$http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {
                     no_more_data_to_load = true;
@@ -178,44 +193,54 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
                 $scope.$broadcast('scroll.infiniteScrollComplete');
                 console.log('success item3s', items.data);
-            });
-
-//
-        for(var i =0; i< 50; i++) {
-
-            $scope.items.push({
-                "name": "tomato",
-                "id": 122222,
-                "topQuality": {
-                    "wholesale": {
-                        "price": 4.3,
-                        "percentChange": 20,
-                        "weeklyAvg": 5
-                    },
-                    "agriculture": {
-                        "price": 2.3,
-                        "percentChange": 20,
-                        "weeklyAvg": 5
-                    },
-                },
-                "primeQuality": {
-                    "wholesale": {
-                        "price": 4.2,
-                        "percentChange": 20,
-                        "weeklyAvg": 5
-                    },
-                    "agriculture": {
-                        "price": 2.2,
-                        "percentChange": 20,
-                        "weeklyAvg": 5
-                    }
+            });*/
+console.log('using parse1');
+        var ProductNotify = Parse.Object.extend("product_notify");
+        var query = new Parse.Query(ProductNotify);
+        //query.equalTo('percent', 100);
+        query.find({
+            success:function(list) {
+                for (var i=0; i<list.length; i++) {
+                    productsNotifications[list[i].get('productID')] = list[i];
                 }
-            });
-        }
 
 
+                for(var i =0; i< 50; i++) {
+                    $scope.items.push({
+                        "name": "tomato",
+                        "id": 12,
+                        "percent": productsNotifications[12] ? productsNotifications[12].get('percent') : null,//TODO
+                        "topQuality": {
+                            "wholesale": {
+                                "price": 4.3,
+                                "percentChange": 20,
+                                "weeklyAvg": 5
+                            },
+                            "agriculture": {
+                                "price": 2.3,
+                                "percentChange": 20,
+                                "weeklyAvg": 5
+                            },
+                        },
+                        "primeQuality": {
+                            "wholesale": {
+                                "price": 4.2,
+                                "percentChange": 20,
+                                "weeklyAvg": 5
+                            },
+                            "agriculture": {
+                                "price": 2.2,
+                                "percentChange": 20,
+                                "weeklyAvg": 5
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
     };
+
     $scope.$on('$stateChangeSuccess', function() {
         $scope.loadMore();
     });
@@ -224,6 +249,9 @@ function JobsFeedController($rootScope, $http, $cordovaSocialSharing, $filter, $
     }
 
 
+    $scope.showNameFilter = function() {
+
+    }
 
     //Check products
     $scope.itemClicked = function(item) {

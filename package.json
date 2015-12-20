@@ -51,7 +51,6 @@
     "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "ios"
   ]
 }

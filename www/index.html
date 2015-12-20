@@ -11,6 +11,8 @@
     <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
     <script src="js/deepLinkingHandler.js"></script>
     <script src="js/extensions.min.js"></script>
+    <script src="lib/Chart.js/Chart.js"></script>
+    <script src="lib/angular-chart.js/angular-chart.js"></script>
     <script src="cordova.js"></script>
     <script src="js/app.min.js"></script>
     <script src="views/views.js"></script>
@@ -24,7 +26,7 @@
                 <button class="button button-icon ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <button ng-click="showFilterPopup()" class="button button-icon">
+                <button class="button button-icon">
                     <img src="/img/icon/search.png" />
                 </button>
                 <button ng-click="changeView()" class="button button-icon" ng-class="viewClassName">
@@ -43,7 +45,7 @@
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
             <ion-list>
-                <ion-item class="item-icon-right home-icon" menu-close ui-sref="employees.jobsFeed" ng-class="{active: isItemActive(employees.jobsFeed)}">ראשי</ion-item>
+                <ion-item class="item-icon-right home-icon" menu-close ui-sref="withTabs.productsAgriculture" ng-class="{active: isItemActive(employees.jobsFeed)}">ראשי</ion-item>
                 <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive(about)}">אודות</ion-item>
                 <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive(help)}">עזרה</ion-item>
                 <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive(contact)}">צור קשר</ion-item>

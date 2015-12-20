@@ -42,10 +42,13 @@ body {
       height: 35px;
       margin-right: 10px; }
     body ion-header-bar.bar.bar-balanced .button-date {
-      font-size: 11px;
+      font-size: 9px;
       padding: 0;
       background: url("/img/icon/date.png") no-repeat;
-      background-size: contain; }
+      background-size: cover;
+      width: 32px;
+      height: 22px;
+      font-weight: 600; }
     body ion-header-bar.bar.bar-balanced button.button.button-icon {
       color: #ff6600;
       margin-top: 3px; }
