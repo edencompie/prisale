@@ -368,7 +368,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
     "                <div class=\"fruit-item\">\n" +
     "                    <div class=\"image\">\n" +
-    "                        <img src=\"http://localhost:8100/img/logo.png\" ng-click=\"itemClicked(item)\">\n" +
+    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" ng-click=\"itemClicked(item)\">\n" +
     "                    </div>\n" +
     "                    <h4>{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
