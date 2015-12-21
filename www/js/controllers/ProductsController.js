@@ -1,10 +1,9 @@
 angular.module('jobhop.controllers')
-.controller('ProductsController', ProductsController);
+    .controller('ProductsController', ProductsController);
 
-ProductsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope', '$ionicModal', 'JobHopAPI', '$cordovaGeolocation', '$ionicPlatform', '$ionicLoading'];
+ProductsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
 
-function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope, $ionicModal, JobHopAPI, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-console.log('ProductsController');
+function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
 
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
@@ -14,110 +13,11 @@ console.log('ProductsController');
     };
 
 
-    var productsNotifications = {};
-
-
-
-    //Details popup
-    var DetailsPopup;
-    $rootScope.showDetailsPopup = function(item) {
-        DetailsPopup = $ionicPopup.show({
-            templateUrl: 'views/list/details-popup.html',
-            cssClass: 'details',
-            scope: $rootScope
-        });
-    }
-    $rootScope.closeDetailsPopup = function() {
-        DetailsPopup.close();
-    }
-
-
-
-    //Push notification popup
-    var PushNotificationPopup;
-    $rootScope.showPushNotificationPopup = function(item) {
-        $rootScope.pushNotificationPercent = item.percent;
-        $rootScope.pushNotificationEnabled = Boolean(item.percent);
-        $rootScope.itemTitleForPushNotificationPopup = item.name;
-        $rootScope.itemForPushNotificationPopup = item;
-        PushNotificationPopup = $ionicPopup.show({
-            templateUrl: 'views/list/push-popup.html',
-            cssClass: 'push-notification',
-            scope: $rootScope
-        });
-    }
-    $rootScope.closePushNotificationPopup = function() {
-        PushNotificationPopup.close();
-    }
-    $rootScope.setPushNotificationPercent = function(item, isEnabled, percent) {
-
-        if (item.percent) {
-            if (productsNotifications[item.id]) {
-                // Destroy existing
-                productsNotifications[item.id].destroy();
-            }
-        }
-
-        if (isEnabled) {
-            var ProductNotify = Parse.Object.extend("product_notify");
-            var productNotify = new ProductNotify();
-            productNotify.set('productID', item.id);
-            productNotify.set('percent', parseInt(percent));
-            productNotify.save(null, function(object) {
-                productsNotifications[item.id] = object;
-            });
-        }
-        item.percent = isEnabled ? percent : null;
-
-        $rootScope.closePushNotificationPopup();
-    }
-
-
-    //Filter popup
-    var FilterPopup;
-    $rootScope.showFilterPopup = function() {
-        $rootScope.typeFilter = $rootScope.filterType;
-        $rootScope.orderFilter = $rootScope.filterOrder;
-        FilterPopup = $ionicPopup.show({
-            templateUrl: 'views/list/filter-popup.html',
-            cssClass: 'list-filter',
-            scope: $rootScope
-        });
-    };
-    $rootScope.closeFilterPopup = function() {
-        FilterPopup.close();
-    };
-    $rootScope.setFilters = function(order, type) {
-        console.log(order, type);
+    $rootScope.resetProducts = function() {
         $scope.items = [];
-        $rootScope.filterOrder = order;
-        $rootScope.filterType = type;
-        FilterPopup.close();
-    };
-
-
-
-    //Date popup
-    var DatePopup;
-    $rootScope.showDatePopup = function() {
-        $rootScope.dateFilter = new Date($filter('date')($rootScope.filterDate, 'yyyy-MM-dd'));
-        DatePopup = $ionicPopup.show({
-            templateUrl: 'views/list/date-popup.html',
-            cssClass: 'date-filter',
-            scope: $rootScope
-        });
-    };
-    $rootScope.closeDatePopup = function() {
-        DatePopup.close();
-    };
-    $rootScope.setDate = function(date) {
-        console.log('--date--', date);
-        $scope.items = [];
-        $rootScope.filterDate = $filter('date')(date, 'yyyy-MM-dd');
-        DatePopup.close();
-    };
-
-
+        no_more_data_to_load = false;
+        $rootScope.loadMore();
+    }
 
 
     $scope.shareProduct = function(product) {
@@ -165,80 +65,31 @@ console.log('ProductsController');
     $rootScope.filterType  = '';
     $rootScope.filterOrder = 'DAILY_CHANGE';
     $rootScope.filterSort  = undefined;
-    $rootScope.filterPage  = undefined;
     var no_more_data_to_load = false;
     $rootScope.loadMore = function() {
-        console.log('loadMore');
 
-        /*
-         $rootScope.filterName
-         $rootScope.filterDate
-         $rootScope.filterType
-         $rootScope.filterOrder
-         $rootScope.filterSort
-         $rootScope.filterPage
-         */
+        // Workaround to make sure productsNotifications are ready
+        if ($rootScope.productsNotifications === undefined) {
+            setTimeout($rootScope.loadMore, 300);
+            return;
+        }
 
-       var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&date=&page=';
-        /*$http.get(url)
+        //todo $rootScope.filterName
+
+        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$rootScope.filterDate+'&page='+parseInt($scope.items.length/50);
+        $http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {
                     no_more_data_to_load = true;
-                } else {
+                }
 
-                    for(var i =0; i<items.data.length; i++) {
-                        $scope.items.push(items.data[i]);
-                    }
+                for(var i =0; i<items.data.length; i++) {
+                    items.data[i].percent = $rootScope.productsNotifications[items.data[i].id] ? $rootScope.productsNotifications[items.data[i].id].get('percent') : null;
+                    $scope.items.push(items.data[i]);
                 }
 
                 $scope.$broadcast('scroll.infiniteScrollComplete');
-                console.log('success item3s', items.data);
-            });*/
-console.log('using parse1');
-        var ProductNotify = Parse.Object.extend("product_notify");
-        var query = new Parse.Query(ProductNotify);
-        //query.equalTo('percent', 100);
-        query.find({
-            success:function(list) {
-                for (var i=0; i<list.length; i++) {
-                    productsNotifications[list[i].get('productID')] = list[i];
-                }
-
-
-                for(var i =0; i< 50; i++) {
-                    $scope.items.push({
-                        "name": "tomato",
-                        "id": 12,
-                        "percent": productsNotifications[12] ? productsNotifications[12].get('percent') : null,//TODO
-                        "topQuality": {
-                            "wholesale": {
-                                "price": 4.3,
-                                "percentChange": 20,
-                                "weeklyAvg": 5
-                            },
-                            "agriculture": {
-                                "price": 2.3,
-                                "percentChange": 20,
-                                "weeklyAvg": 5
-                            },
-                        },
-                        "primeQuality": {
-                            "wholesale": {
-                                "price": 4.2,
-                                "percentChange": 20,
-                                "weeklyAvg": 5
-                            },
-                            "agriculture": {
-                                "price": 2.2,
-                                "percentChange": 20,
-                                "weeklyAvg": 5
-                            }
-                        }
-                    });
-                }
-            }
-        });
-
+            });
     };
 
     $scope.$on('$stateChangeSuccess', function() {

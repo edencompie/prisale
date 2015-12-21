@@ -1,11 +1,11 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$location', '$scope', 'JobHopAPI', '$ionicModal', '$ionicLoading', '$state', '$cordovaEmailComposer', '$cordovaDialogs', '$cordovaToast', '$cordovaSocialSharing', '$cordovaInAppBrowser', '$cordovaFacebook', '$localStorage', '$stateParams', '$timeout', '$cordovaCapture'];
+MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup'];
 
-function MainController($location, $scope, JobHopAPI, $ionicModal, $ionicLoading, $state, $cordovaEmailComposer, $cordovaDialogs, $cordovaToast, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaFacebook, $localStorage, $stateParams, $timeout, $cordovaCapture) {
+function MainController($location, $scope, $rootScope, $ionicPopup) {
     console.log('MainController');
-
+''
     $scope.isTabActive = function(item) {
         console.log('-------------isTabActive');
         return $location.path().indexOf(item) > -1;
@@ -16,190 +16,95 @@ function MainController($location, $scope, JobHopAPI, $ionicModal, $ionicLoading
         return $location.path().indexOf(item) > -1;
     };
 
-    /*$scope.changeView = function() {
-        console.log('11$scope.viewMode', $scope.viewMode);
-        $scope.viewMode = !$scope.viewMode;
-    };*/
-    /*$localStorage.user = $localStorage.user || {
-        profile: {},
-        baseMessage: {},
-        logged: false
-    };
 
-    $rootScope.user = $localStorage.user;
 
-    $rootScope.$watch(function() {
-        return $localStorage.user;
-    }, function(user) {
-        $rootScope.user = user;
-    }, true);
-*/
-    /*
-    $ionicModal.fromTemplateUrl('views/employees/notifications-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.notificationsModal = modal;
-    });
 
-    $scope.openNotifications = function() {
-        $scope.notificationsModal.show();
-    };
 
-    $scope.closeNotifications = function() {
-        $scope.notificationsModal.hide();
-    };
-    */
 
-    /*var loginData = {
-        identifier: '',
-        secret: ''
-    };
-
-    var showPopup = function(title, template) {
-        return $cordovaDialogs.alert(message, title, 'המשך');
-    };*/
-
-    /*$scope.uploadProfileVideo = function() {
-        if(!$scope.isUploadingVideo) {
-            $scope.uploadPercent = 0;
-            var firstProgressEvent = true;
-            $ionicLoading.show();
-            $cordovaCapture.captureVideo({
-                duration: 30
-            }).then(function(videoData) {
-                JobHopAPI.uploadVideo(videoData[0]).then(function(videoUri) {
-                    JobHopAPI.updateProfileVideo(videoUri).then(function() {
-                        $scope.isUploadingVideo = false;
-                        $cordovaToast.showShortBottom('הסרטון הועלה בהצלחה');
-                    }, function() {
-                        $scope.isUploadingVideo = false;
-                        showPopup('איראה שגיאה', 'אירעה שגיאה במהלך העלאת הסרטון, אנא נסה שנית');
-                    });
-                }, function(error) {
-                    showPopup('איראה שגיאה', 'אירעה שגיאה במהלך העלאת הסרטון, אנא נסה שנית');
-                    $ionicLoading.hide();
-                }, function(progress) {
-                    if(firstProgressEvent) {
-                        firstProgressEvent = false;
-                        $scope.isUploadingVideo = true;
-                        $ionicLoading.hide();
-                    }
-                    $scope.videoUploadingPercent = (progress.loaded / progress.total) * 100;
-                });
-            }, function(error) {
-                $ionicLoading.hide();
-            });
-        } else {
-            showPopup('מגבלת העלאת סרטונים', 'הינך מעלה ברקע סרטון. אנא המתן שסרטון זה יעלה לגמרי ואז תוכל להעלות סרטון נוסף.');
-        }
-    };*/
-
-    /*$scope.login = function(action) {
-        if(angular.isUndefined(action) || (action != 'apply' && action != 'like')) {
-            action = false;
-        }
-        JobHopAPI.logout();
-        return $cordovaFacebook.login(['user_friends', 'email', 'user_birthday']).then(function(results) {
-            $ionicLoading.show();
-            loginData.identifier = results.authResponse.userID;
-            loginData.secret = results.authResponse.accessToken;
-            $cordovaToast.showShortBottom('מתחבר...');
-            return JobHopAPI.login('FACEBOOK', loginData).then(function(isAlreadyRegistered) {
-                $ionicLoading.hide();
-                if(isAlreadyRegistered) {
-                    $cordovaToast.showShortBottom('ההתחברות בוצעה בהצלחה');
-                    return true;
-                } else {
-                    if(!angular.isUndefined($stateParams.jobId) && $stateParams.jobId != '' && action) {
-                        $state.go('employees.register', {
-                            jobId: $stateParams.jobId,
-                            action: action
-                        });
-                    } else {
-                        $state.go('employees.register');
-                    }
-                    return false;
-                }
-            });
-        }, function(error) {
-            $ionicLoading.hide();
-            console.log(error);
-            return error;
+    $rootScope.showDetailsPopup = function(item) {
+        $rootScope.DetailsPopup = $ionicPopup.show({
+            templateUrl: 'views/list/details-popup.html',
+            cssClass: 'details',
+            scope: $rootScope
         });
-    };
-
-    $scope.logout = function() {
-        $cordovaDialogs.confirm(
-            'האם אתה בטוח שאתה רוצה להתנתק?',
-            'התנתקות',
-            [
-                'אישור',
-                'יציאה'
-            ]
-        ).then(function(results) {
-            if(results) {
-                $cordovaToast.showShortBottom('ההתנתקות בוצעה בהצלחה');
-                JobHopAPI.logout().then(function() {
-                    $state.go('employees.jobsFeed');
-                }, function() {
-                    $state.go('employees.jobsFeed');
-                });
-            }
-        });
-    };
-
-    $rootScope.android = false;
-
-    if(ionic.Platform.isAndroid()) {
-        $rootScope.android = true;
-    } else {
-        $rootScope.android = false;
     }
-*/
-    /* IOS APP_STORE CONFIG */
+    $rootScope.closeDetailsPopup = function() {
+        $rootScope.DetailsPopup.close();
+    }
 
-   /* var APP_NAME = 'jobhopapp';
-    var APP_COUNTRY = 'il';
-    var APP_ID = '1020643523';
+    $rootScope.showPushNotificationPopup = function(item) {
+        $rootScope.pushNotificationPercent = item.percent;
+        $rootScope.pushNotificationEnabled = Boolean(item.percent);
+        $rootScope.itemTitleForPushNotificationPopup = item.name;
+        $rootScope.itemForPushNotificationPopup = item;
+        $rootScope.PushNotificationPopup = $ionicPopup.show({
+            templateUrl: 'views/list/push-popup.html',
+            cssClass: 'push-notification',
+            scope: $rootScope
+        });
+    }
+    $rootScope.closePushNotificationPopup = function() {
+        $rootScope.PushNotificationPopup.close();
+    }
+    $rootScope.setPushNotificationPercent = function(item, isEnabled, percent) {
 
-    var CEO_EMAIL_ADDRESS = 'raz@jobhop.co.il';
+        if (item.percent) {
+            if ($rootScope.productsNotifications[item.id]) {
+                // Destroy existing
+                $rootScope.productsNotifications[item.id].destroy();
+            }
+        }
 
-    $scope.shareApp = function() {
-        $cordovaSocialSharing.share(
-            'היי! מצאתי אפליקציה ממש טובה לחיפוש עבודות... ממליץ לך להוריד:',
-            false,
-            false,
-            'http://itunes.apple.com/' + APP_COUNTRY + '/app/' + APP_NAME + '/id' + APP_ID + '?mt=8'
-        );
-    };
-
-    $scope.rateApp = function() {
-        $cordovaInAppBrowser.open('itms-apps://itunes.apple.com/app/' + APP_ID, '_system');
-    };
-
-    $scope.mailToCEO = function() {
-        $cordovaEmailComposer.isAvailable().then(function() {
-            $cordovaEmailComposer.open({
-                to: CEO_EMAIL_ADDRESS,
-                subject: '',
-                body: '',
-                isHtml: false
+        if (isEnabled) {
+            var ProductNotify = Parse.Object.extend("product_notify");
+            var productNotify = new ProductNotify();
+            productNotify.set('productID', item.id);
+            productNotify.set('percent', parseInt(percent));
+            productNotify.save(null, function(object) {
+                $rootScope.productsNotifications[item.id] = object;
             });
-        }, function() {
-            showPopup('מכשיר לא תומך', 'מכשיר הפלאפון שלך לא תומך בשליחת אימייל');
+        }
+        item.percent = isEnabled ? percent : null;
+
+        $rootScope.closePushNotificationPopup();
+    }
+
+
+    //Filter popup
+    $rootScope.showFilterPopup = function() {
+        $rootScope.typeFilter = $rootScope.filterType;
+        $rootScope.orderFilter = $rootScope.filterOrder;
+        $rootScope.FilterPopup = $ionicPopup.show({
+            templateUrl: 'views/list/filter-popup.html',
+            cssClass: 'list-filter',
+            scope: $rootScope
         });
     };
-
-    $scope.goToProfile = function() {
-        $state.go('employees.profile');
+    $rootScope.closeFilterPopup = function() {
+        $rootScope.FilterPopup.close();
+    };
+    $rootScope.setFilters = function(order, type) {
+        $rootScope.filterOrder = order;
+        $rootScope.filterType = type;
+        $rootScope.resetProducts();
+        $rootScope.closeFilterPopup();
     };
 
-    $rootScope.$on('$stateChangeSuccess', function(event, current, previous) {
-        $scope.currentState = current;
+    $rootScope.showDatePopup = function() {
+        $rootScope.dateFilter = new Date($filter('date')($rootScope.filterDate, 'yyyy-MM-dd'));
+        $rootScope.DatePopup = $ionicPopup.show({
+            templateUrl: 'views/list/date-popup.html',
+            cssClass: 'date-filter',
+            scope: $rootScope
+        });
+    };
+    $rootScope.closeDatePopup = function() {
+        $rootScope.DatePopup.close();
+    };
+    $rootScope.setDate = function(date) {
+        $rootScope.filterDate = $filter('date')(date, 'yyyy-MM-dd');
+        $rootScope.resetProducts();
+        $rootScope.closeDatePopup();
+    };
 
-        if(ionic.Platform.isAndroid() != $rootScope.android) {
-            $rootScope.android = !$scope.android;
-        }
-    });*/
 };

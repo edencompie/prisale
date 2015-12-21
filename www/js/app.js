@@ -78,6 +78,25 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 Run.$inject = ['$rootScope', '$ionicPlatform', 'GApi', 'GAuth', 'JobHopAPI', '$window', '$state'];
 
 function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state) {
+
+    var productsNotifications = [],
+        ProductNotify = Parse.Object.extend("product_notify"),
+        query = new Parse.Query(ProductNotify);
+
+    //query.equalTo('percent', 100);
+    $rootScope.appReady = false; //todo
+    query.find({
+        success:function(list) {
+            for (var i = 0; i < list.length; i++) {
+                productsNotifications[list[i].get('productID')] = list[i];
+            }
+
+            $rootScope.productsNotifications = productsNotifications;
+            $rootScope.appReady = true;
+        }
+    });
+
+
     $ionicPlatform.ready(function() {
 
     });
