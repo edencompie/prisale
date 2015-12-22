@@ -16,6 +16,7 @@ angular.module('jobhop', [
 .config(Config)
 .run(Run);
 
+
 Config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'];
 
 function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
