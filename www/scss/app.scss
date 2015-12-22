@@ -336,7 +336,7 @@ body {
     bottom: 50px;
   }
   .has-header {
-    top: 58px;
+    top: 54px;
   }
 }
 
@@ -451,5 +451,32 @@ body {
     img {
       height: 19px;
     }
+  }
+}
+
+#charts-page {
+  .filters {
+    direction: rtl;
+    padding: 0;
+    height: 45px;
+    background: #d9e6b0;
+    text-align: center;
+
+    select {
+      background: #fff;
+      color: #95c11f;
+      font-weight: 600;
+      height: 32px;
+      width:100%;
+
+      //Remove arrow
+      -webkit-appearance: none;
+      appearance: none;
+      &::-ms-expand{ display:none; }
+    }
+  }
+
+  div.chart {
+    margin-top: 20px;
   }
 }

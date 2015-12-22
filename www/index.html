@@ -11,8 +11,8 @@
     <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
     <script src="js/deepLinkingHandler.js"></script>
     <script src="js/extensions.min.js"></script>
-    <script src="lib/Chart.js/Chart.js"></script>
-    <script src="lib/angular-chart.js/angular-chart.js"></script>
+    <script src="http://code.highcharts.com/highcharts.src.js"></script>
+    <script src="lib/highcharts-ng/dist/highcharts-ng.js"></script>
     <script src="cordova.js"></script>
     <script src="js/app.min.js"></script>
     <script src="views/views.js"></script>
@@ -35,7 +35,6 @@
                 </button>
                 <button ng-click="showDatePopup()" class="button button-icon button-date">
                     {{filterDate | date:'d/M'}}
-                    <!--<img src="/img/icon/date.png" />-->
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>

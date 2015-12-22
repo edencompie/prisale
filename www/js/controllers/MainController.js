@@ -1,9 +1,9 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup'];
+MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup', '$filter'];
 
-function MainController($location, $scope, $rootScope, $ionicPopup) {
+function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
     console.log('MainController');
 ''
     $scope.isTabActive = function(item) {

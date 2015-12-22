@@ -230,7 +230,7 @@ body {
   body .has-footer {
     bottom: 50px; }
   body .has-header {
-    top: 58px; }
+    top: 54px; }
 
 .popup-container .popup-head {
   display: none; }
@@ -334,3 +334,22 @@ body {
       background: #dbe8b3; }
     .top-tabs .col img {
       height: 19px; }
+
+#charts-page .filters {
+  direction: rtl;
+  padding: 0;
+  height: 45px;
+  background: #d9e6b0;
+  text-align: center; }
+  #charts-page .filters select {
+    background: #fff;
+    color: #95c11f;
+    font-weight: 600;
+    height: 32px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none; }
+    #charts-page .filters select::-ms-expand {
+      display: none; }
+#charts-page div.chart {
+  margin-top: 20px; }

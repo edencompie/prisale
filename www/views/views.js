@@ -30,15 +30,89 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-content>\r" +
     "\n" +
-    "        <div class=\"bordered\">\r" +
+    "        <div id=\"charts-page\">\r" +
     "\n" +
-    "            <h2 style=\"padding: 0 16px;\">אודות החברה</h2>\r" +
+    "            <div class=\"filters row\">\r" +
     "\n" +
-    "            <p>לורם איפסום או בקיצור ליפסום (בלטינית: lorem ipsum) הוא מלל מקובל וחסר משמעות המשמש \"ממלא מקום\" בעת עריכה, בתחום הדפוס, ההדפסה והפרסום.</p>\r" +
+    "                <div class=\"col\">\r" +
     "\n" +
-    "            <p>הטקסט משמש כלי לייצוג דפוס שאמור להתווסף למוצר הפרסום בעתיד. המדובר במלל ארוך במיוחד שניתן לבדוק עמו גופנים, וכן התאמת המלל לעמודים המעוצבים ובדיקת סוגי וגדלי גופן והתאמתם למוצר הסופי.</p>\r" +
+    "                    <select ng-model=\"chartType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
     "\n" +
-    "            <p>בשל הדמיון של המילים בלורם איפסום ללטינית קלאסית, רבים חושבים שיש משמעות לטקסט, אולם לא נועדה להיות לו כל משמעות. המטרה היא רק \"תפיסת מקום\" על ידי מלל חסר משמעות (ראו דוגמה בהמשך).</p>\r" +
+    "                        <option value=\"line\">השוואה לאורך זמן</option>\r" +
+    "\n" +
+    "                        <option value=\"column\">השוואה בין מוצרים</option>\r" +
+    "\n" +
+    "                        <option value=\"bar\">השוואה בין מקטעים</option>\r" +
+    "\n" +
+    "                    </select>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"col\" ng-if=\"chartType == 'line' || chartType == 'column'\">\r" +
+    "\n" +
+    "                    <select ng-model=\"userType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
+    "\n" +
+    "                        <option value=\"agriculturalPrice\">מחיר סיטונאי</option>\r" +
+    "\n" +
+    "                        <option value=\"wholesalePrice\">מחיר חקלאי</option>\r" +
+    "\n" +
+    "                    </select>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"col\" ng-if=\"chartType == 'line'\">\r" +
+    "\n" +
+    "                    <select ng-model=\"price_avg2\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
+    "\n" +
+    "                        <option value=\"WEEK\">שבוע</option>\r" +
+    "\n" +
+    "                        <option value=\"MONTH\">חודש</option>\r" +
+    "\n" +
+    "                        <option value=\"QUARTER\">רבעון</option>\r" +
+    "\n" +
+    "                        <option value=\"YEAR\">שנה</option>\r" +
+    "\n" +
+    "                    </select>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"col\" ng-if=\"chartType == 'bar'\">\r" +
+    "\n" +
+    "                    <select ng-model=\"price_avg1\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
+    "\n" +
+    "                        <option value=\"DAY\">ממוצע יומי</option>\r" +
+    "\n" +
+    "                        <option value=\"WEEK\">ממוצע שבועי</option>\r" +
+    "\n" +
+    "                        <option value=\"MONTH\">ממוצע חודשי</option>\r" +
+    "\n" +
+    "                        <option value=\"QUARTER\">ממוצע רבעוני</option>\r" +
+    "\n" +
+    "                        <option value=\"YEAR\">ממוצע שנתי</option>\r" +
+    "\n" +
+    "                    </select>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"col\" ng-if=\"chartType == 'column'\">\r" +
+    "\n" +
+    "                    <select ng-model=\"priceToShow\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
+    "\n" +
+    "                        <option value=\"DAY\">ממוצע יומי</option>\r" +
+    "\n" +
+    "                        <option value=\"WEEK\">ממוצע שבועי</option>\r" +
+    "\n" +
+    "                    </select>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"chart\">\r" +
+    "\n" +
+    "                <highchart id=\"chart1\" config=\"chartConfig\"></highchart>\r" +
+    "\n" +
+    "            </div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
