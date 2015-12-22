@@ -62,7 +62,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         url: '/chart',
         views: {
             'content': {
-                //controller: 'ProductsController',
+                controller: 'ChartsController',
                 templateUrl: 'views/chart.html'
             }
         }

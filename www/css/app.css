@@ -124,9 +124,18 @@ body {
         float: right;
         margin: 8px 0;
         width: 100%;
+        position: relative;
         background: #fff;
         border: 3px solid #95c11f;
         color: #95c11f; }
+        body .list-container div.fruit-wrapper div.fruit-item div.checked {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 26px;
+          height: 26px;
+          background: url("/img/v-green.png") no-repeat;
+          background-size: contain; }
         body .list-container div.fruit-wrapper div.fruit-item div.image {
           float: right;
           width: 38%;
@@ -184,6 +193,8 @@ body {
       body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
         border-color: #ff9900;
         color: #ff9900; }
+        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
+          background-image: url("/img/v-orange.png"); }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
           background: #ff9900; }
           body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {

@@ -190,9 +190,20 @@ body {
         float: right;
         margin: 8px 0;
         width: 100%;
+        position: relative;
         background: #fff;
         border: 3px solid #95c11f;
         color: #95c11f;
+
+        div.checked {
+          position:absolute;
+          top:0;
+          right:0;
+          width:26px;
+          height:26px;
+          background: url('/img/v-green.png') no-repeat;
+          background-size: contain;
+        }
 
         div.image {
           float: right;
@@ -266,6 +277,9 @@ body {
           border-color: #ff9900;
           color: #ff9900;
 
+          div.checked {
+            background-image: url('/img/v-orange.png');
+          }
           div.buttons{
             background:#ff9900;
 
@@ -332,9 +346,7 @@ body {
   .popup-head{ display:none; }
   .popup-buttons {
     padding-bottom: 0;
-    //.col{ padding-bottom:0; height:auto; }
 
-    //
     button{
       min-height:0;
       height:27px;

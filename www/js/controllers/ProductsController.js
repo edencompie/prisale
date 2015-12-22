@@ -14,17 +14,17 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
 
     $rootScope.resetProducts = function() {
-        $scope.items = [];
+        $rootScope.items = [];
         no_more_data_to_load = false;
         $rootScope.loadMore();
-    }
+    };
 
 
     $scope.shareProduct = function(product) {
         console.log('share');
         $cordovaSocialSharing.share(
             'פריסייל - '+product.name);
-    }
+    };
 
 
     //Set which product info will be displayed in list
@@ -76,7 +76,7 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
         //todo $rootScope.filterName
 
-        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$rootScope.filterDate+'&page='+parseInt($scope.items.length/50);
+        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$rootScope.filterDate+'&page='+parseInt($rootScope.items.length/50);
         $http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {
@@ -85,7 +85,7 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
                 for(var i =0; i<items.data.length; i++) {
                     items.data[i].percent = $rootScope.productsNotifications[items.data[i].id] ? $rootScope.productsNotifications[items.data[i].id].get('percent') : null;
-                    $scope.items.push(items.data[i]);
+                    $rootScope.items.push(items.data[i]);
                 }
 
                 $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -106,8 +106,7 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
     //Check products
     $scope.itemClicked = function(item) {
-        // TODO
-        console.log('item clicked:', item);
+        item.checked = ! item.checked;
     };
 
-};
+}

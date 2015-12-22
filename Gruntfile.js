@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 							'www/js/controllers/MainController.js',
 							'www/js/controllers/ListController.js',
 							'www/js/controllers/JobsUserController.js',
-							'www/js/controllers/JobsSearchController.js',
+							'www/js/controllers/ChartsController.js',
 							'www/js/controllers/ProductsController.js',
 							'www/js/controllers/JobController.js',
 							'www/js/controllers/JobEmployerController.js',

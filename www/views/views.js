@@ -367,10 +367,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "        <div class=\"list-container\" ng-class=\"viewClassName\">\n" +
     "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
     "                <div class=\"fruit-item\">\n" +
-    "                    <div class=\"image\">\n" +
-    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='/img/logo.png'\" ng-click=\"itemClicked(item)\">\n" +
+    "                    <div ng-if=\"item.checked\" ng-click=\"closeFilterPopup()\" class=\"checked\"></div>\n" +
+    "                    <div class=\"image\" ng-click=\"itemClicked(item)\">\n" +
+    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='/img/logo.png'\">\n" +
     "                    </div>\n" +
-    "                    <h4>{{item.name}}</h4>\n" +
+    "                    <h4 ng-click=\"itemClicked(item)\">{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
     "                        <table ng-show=\"listDetails == 'price'\">\n" +
     "                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש\"ח</td></tr>\n" +
