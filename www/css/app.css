@@ -55,11 +55,12 @@ body {
       body ion-header-bar.bar.bar-balanced button.button.button-icon img {
         height: 20px; }
   body ion-tabs.tabs-balanced.tabs-bottom .tab-nav {
+    padding: 0;
     background: white;
     direction: rtl; }
     body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a {
       border: 1px solid #458700;
-      border-top: none;
+      border-top: 2px solid #458700;
       border-bottom: none;
       color: #458800;
       opacity: 1;
