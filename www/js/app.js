@@ -1,10 +1,7 @@
 angular.module('jobhop', [
     'ionic',
-    'angular-google-gapi',
     'ngCordova',
     'ngStorage',
-    //'ionicLazyLoad',
-    'uiGmapgoogle-maps',
     'nl2br',
     'jobhop.controllers',
     'jobhop.directives',
@@ -15,7 +12,6 @@ angular.module('jobhop', [
 ])
 .config(Config)
 .run(Run);
-
 
 Config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'];
 
@@ -76,9 +72,9 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 };
 
-Run.$inject = ['$rootScope', '$ionicPlatform', 'GApi', 'GAuth', 'JobHopAPI', '$window', '$state'];
+Run.$inject = ['$rootScope', '$ionicPlatform', '$window', '$state', 'Installation'];
 
-function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state) {
+function Run($rootScope, $ionicPlatform, $window, $state, Installation) {
 
     var productsNotifications = [],
         ProductNotify = Parse.Object.extend("product_notify"),
@@ -96,9 +92,10 @@ function Run($rootScope, $ionicPlatform, GApi, GAuth, JobHopAPI, $window, $state
             $rootScope.appReady = true;
         }
     });
+    window.addEventListener('deviceready', function() {
 
-
-    $ionicPlatform.ready(function() {
-
-    });
+      alert('Device ready');
+      console.log('device is ready');
+      Installation();
+    }, false)
 };

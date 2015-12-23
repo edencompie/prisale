@@ -4,7 +4,6 @@ angular.module('jobhop.controllers')
 ChartsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
 
 function ChartsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
-
     function getCheckedProducts() {
         var checked = [];
         for (var i=0; i<$rootScope.items.length; i++) {
@@ -12,7 +11,6 @@ function ChartsController($rootScope, $http, $cordovaSocialSharing, $filter, $io
                 checked.push($rootScope.items[i]);
             }
         }
-
         return checked;
     }
 }

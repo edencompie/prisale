@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "prisale"
+    },
+    "prisale": {
+      "applicationId": "mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48"
+    }
+  }
+}
