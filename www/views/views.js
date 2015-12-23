@@ -132,7 +132,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"bordered contact\">\r" +
     "\n" +
-    "            <img src=\"/img/tozeret.png\" />\r" +
+    "            <img src=\"img/tozeret.png\" />\r" +
     "\n" +
     "            <p style=\"font-size: 16px\">\r" +
     "\n" +
@@ -152,7 +152,8 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </ion-content>\r" +
     "\n" +
-    "</ion-view>"
+    "</ion-view>\r" +
+    "\n"
   );
 
 
@@ -437,11 +438,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"row top-tabs\">\r" +
     "\n" +
-    "            <div class=\"col\"><img src=\"/img/icon/basket.png\"><br />סל מוצרים</div>\r" +
+    "            <div class=\"col\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
     "\n" +
-    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"/img/icon/details.png\"><br />פרטים</div>\r" +
+    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />פרטים</div>\r" +
     "\n" +
-    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"/img/icon/filter.png\"><br />סינון ומיון</div>\r" +
+    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"><br />סינון ומיון</div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -455,7 +456,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    <div class=\"image\" ng-click=\"itemClicked(item)\">\r" +
     "\n" +
-    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='/img/logo.png'\">\r" +
+    "                        <img ng-src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='img/logo.png'\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
@@ -493,9 +494,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                        <span class=\"push-percent\" ng-click=\"showPushNotificationPopup(item)\">{{item.percent}}<small ng-if=\"item.percent\">%</small></span>\r" +
     "\n" +
-    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\r" +
+    "                        <img src=\"img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\r" +
     "\n" +
-    "                        <img src=\"/img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\r" +
+    "                        <img src=\"img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
@@ -517,7 +518,8 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </ion-infinite-scroll>\r" +
     "\n" +
-    "</ion-view>"
+    "</ion-view>\r" +
+    "\n"
   );
 
 

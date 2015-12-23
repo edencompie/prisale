@@ -17,17 +17,17 @@ body {
       background: no-repeat right 10px center;
       background-size: 17px 17px; }
       body ion-side-menu#side-menu .scroll-content ion-item.home-icon {
-        background-image: url("/img/icon/home.png"); }
+        background-image: url("../img/icon/home.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item.about-icon {
-        background-image: url("/img/icon/about.png"); }
+        background-image: url("../img/icon/about.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item.contact-icon {
-        background-image: url("/img/icon/contact.png"); }
+        background-image: url("../img/icon/contact.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item.help-icon {
-        background-image: url("/img/icon/help.png"); }
+        background-image: url("../img/icon/help.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item.share-icon {
-        background-image: url("/img/icon/share.png"); }
+        background-image: url("../img/icon/share.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item.site-icon {
-        background-image: url("/img/icon/site.png"); }
+        background-image: url("../img/icon/site.png"); }
       body ion-side-menu#side-menu .scroll-content ion-item a {
         padding-right: 0;
         background: none; }
@@ -44,7 +44,7 @@ body {
     body ion-header-bar.bar.bar-balanced .button-date {
       font-size: 9px;
       padding: 0;
-      background: url("/img/icon/date.png") no-repeat;
+      background: url("../img/icon/date.png") no-repeat;
       background-size: cover;
       width: 32px;
       height: 22px;
@@ -70,11 +70,11 @@ body {
         height: 20px;
         margin-top: 3px; }
         body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.graph {
-          background-image: url("/img/graph.png"); }
+          background-image: url("../img/graph.png"); }
         body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.farmer {
-          background-image: url("/img/farmer.png"); }
+          background-image: url("../img/farmer.png"); }
         body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.buyer {
-          background-image: url("/img/buyer.png"); }
+          background-image: url("../img/buyer.png"); }
       body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a .tab-title {
         font-size: 15px;
         font-weight: 500; }
@@ -134,7 +134,7 @@ body {
           right: 0;
           width: 26px;
           height: 26px;
-          background: url("/img/v-green.png") no-repeat;
+          background: url("../img/v-green.png") no-repeat;
           background-size: contain; }
         body .list-container div.fruit-wrapper div.fruit-item div.image {
           float: right;
@@ -194,7 +194,7 @@ body {
         border-color: #ff9900;
         color: #ff9900; }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
-          background-image: url("/img/v-orange.png"); }
+          background-image: url("../img/v-orange.png"); }
         body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
           background: #ff9900; }
           body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
@@ -268,23 +268,23 @@ body {
   .popup-container .popup input[type=radio] {
     display: none; }
     .popup-container .popup input[type=radio]:checked + span.style {
-      background-image: url("/img/radio-checked.png"); }
+      background-image: url("../img/radio-checked.png"); }
     .popup-container .popup input[type=radio] + span.style {
       display: inline-block;
       width: 16px;
       height: 16px;
-      background-image: url("/img/radio-unchecked.png");
+      background-image: url("../img/radio-unchecked.png");
       background-size: contain;
       margin-top: 1px; }
   .popup-container .popup input[type=checkbox] {
     display: none; }
     .popup-container .popup input[type=checkbox]:checked + span.style {
-      background-image: url("/img/checkbox-checked.png"); }
+      background-image: url("../img/checkbox-checked.png"); }
     .popup-container .popup input[type=checkbox] + span.style {
       display: inline-block;
       width: 17px;
       height: 14px;
-      background-image: url("/img/checkbox-unchecked.png");
+      background-image: url("../img/checkbox-unchecked.png");
       background-size: contain;
       margin-top: 1px; }
 .popup-container.list-filter .popup input[type=date], .popup-container.details .popup input[type=date], .popup-container.date-filter .popup input[type=date] {
@@ -346,7 +346,7 @@ body {
     padding-left: 0; }
     #charts-page .filters .col select {
       padding-right: 18px;
-      background: #fff url("/img/select-arrow.png") right center no-repeat;
+      background: #fff url("/../img/select-arrow.png") right center no-repeat;
       background-size: 21px 29px;
       color: #95c11f;
       font-size: 11px;
