@@ -13,13 +13,13 @@ body {
   font-family: 'Open Sans Hebrew', sans-serif;
 
   // Side menu
-  ion-side-menu#side-menu {
+  #side-menu {
 
     .scroll-content {
       padding: 57px 13px 13px;
       background: $lightOrangeColor;
 
-      ion-item {
+      .item {
         border-color: #f9cab1;
         background: $lightOrangeColor;
         color: #fff;
@@ -57,7 +57,7 @@ body {
   }
 
   // Top menu
-  ion-header-bar.bar.bar-balanced  {
+  .bar.bar-balanced  {
     direction: ltr;
     background-color: $bgColor;
     border-color: #ff6600;
@@ -89,7 +89,7 @@ body {
   }
 
   // Bottom menu
-  ion-tabs.tabs-balanced.tabs-bottom {
+  .tabs-balanced.tabs-bottom {
     .tab-nav {
       padding:0;
       background: white;
