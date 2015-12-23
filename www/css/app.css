@@ -4,234 +4,244 @@ ion-content {
 body {
   background: #fef7eb;
   font-family: 'Open Sans Hebrew', sans-serif; }
-  body ion-side-menu#side-menu .scroll-content {
-    padding: 57px 13px 13px;
-    background: #f6a000; }
-    body ion-side-menu#side-menu .scroll-content ion-item {
-      border-color: #f9cab1;
-      background: #f6a000;
-      color: #fff;
-      border-right: none;
-      border-left: none;
-      padding-right: 40px;
-      background: no-repeat right 10px center;
-      background-size: 17px 17px; }
-      body ion-side-menu#side-menu .scroll-content ion-item.home-icon {
-        background-image: url("../img/icon/home.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item.about-icon {
-        background-image: url("../img/icon/about.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item.contact-icon {
-        background-image: url("../img/icon/contact.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item.help-icon {
-        background-image: url("../img/icon/help.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item.share-icon {
-        background-image: url("../img/icon/share.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item.site-icon {
-        background-image: url("../img/icon/site.png"); }
-      body ion-side-menu#side-menu .scroll-content ion-item a {
-        padding-right: 0;
-        background: none; }
-  body ion-header-bar.bar.bar-balanced {
-    direction: ltr;
-    background-color: #fef7eb;
-    border-color: #ff6600;
-    border-bottom-width: 2px;
-    height: 53px !important; }
-    body ion-header-bar.bar.bar-balanced img.logo {
-      width: 98px;
-      height: 35px;
-      margin-right: 10px; }
-    body ion-header-bar.bar.bar-balanced .button-date {
-      font-size: 9px;
-      padding: 0;
-      background: url("../img/icon/date.png") no-repeat;
-      background-size: cover;
-      width: 32px;
-      height: 22px;
-      font-weight: 600; }
-    body ion-header-bar.bar.bar-balanced button.button.button-icon {
-      color: #ff6600;
-      margin-top: 3px; }
-      body ion-header-bar.bar.bar-balanced button.button.button-icon img {
-        height: 20px; }
-  body ion-tabs.tabs-balanced.tabs-bottom .tab-nav {
+
+#side-menu .scroll-content {
+  padding: 57px 13px 13px;
+  background: #f6a000; }
+  #side-menu .scroll-content .item {
+    border-color: #f9cab1;
+    background: #f6a000;
+    color: #fff;
+    border-right: none;
+    border-left: none;
+    padding-right: 40px;
+    background: no-repeat right 10px center;
+    background-size: 17px 17px; }
+    #side-menu .scroll-content .item.home-icon {
+      background-image: url("../img/icon/home.png"); }
+    #side-menu .scroll-content .item.about-icon {
+      background-image: url("../img/icon/about.png"); }
+    #side-menu .scroll-content .item.contact-icon {
+      background-image: url("../img/icon/contact.png"); }
+    #side-menu .scroll-content .item.help-icon {
+      background-image: url("../img/icon/help.png"); }
+    #side-menu .scroll-content .item.share-icon {
+      background-image: url("../img/icon/share.png"); }
+    #side-menu .scroll-content .item.site-icon {
+      background-image: url("../img/icon/site.png"); }
+    #side-menu .scroll-content .item a {
+      padding-right: 0;
+      background: none; }
+
+.bar.bar-balanced {
+  direction: ltr;
+  background-color: #fef7eb;
+  border-color: #ff6600;
+  border-bottom-width: 2px;
+  height: 53px !important; }
+  .bar.bar-balanced img.logo {
+    width: 98px;
+    height: 35px;
+    margin-right: 10px; }
+  .bar.bar-balanced .button-date {
+    font-size: 9px;
     padding: 0;
-    background: white;
-    direction: rtl; }
-    body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a {
-      border: 1px solid #458700;
-      border-top: 2px solid #458700;
-      border-bottom: none;
-      color: #458800;
-      opacity: 1;
-      font-size: 16px; }
-      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i {
-        background: 50% no-repeat;
-        background-size: contain;
-        height: 20px;
-        margin-top: 3px; }
-        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.graph {
-          background-image: url("../img/graph.png"); }
-        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.farmer {
-          background-image: url("../img/farmer.png"); }
-        body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a i.buyer {
-          background-image: url("../img/buyer.png"); }
-      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a .tab-title {
-        font-size: 15px;
-        font-weight: 500; }
-      body ion-tabs.tabs-balanced.tabs-bottom .tab-nav a.tab-item-active {
-        background: #b5cf99; }
-  body .view-container {
+    background: url("../img/icon/date.png") no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 22px;
+    font-weight: 600; }
+  .bar.bar-balanced button.button.button-icon {
+    color: #ff6600;
+    margin-top: 3px; }
+    .bar.bar-balanced button.button.button-icon img {
+      height: 20px; }
+
+.tabs-balanced.tabs-bottom .tab-nav {
+  padding: 0;
+  background: white;
+  direction: rtl; }
+  .tabs-balanced.tabs-bottom .tab-nav a {
+    border: 1px solid #458700;
+    border-top: 2px solid #458700;
+    border-bottom: none;
+    color: #458800;
+    opacity: 1;
+    font-size: 16px; }
+    .tabs-balanced.tabs-bottom .tab-nav a i {
+      background: 50% no-repeat;
+      background-size: contain;
+      height: 20px;
+      margin-top: 3px; }
+      .tabs-balanced.tabs-bottom .tab-nav a i.graph {
+        background-image: url("../img/graph.png"); }
+      .tabs-balanced.tabs-bottom .tab-nav a i.farmer {
+        background-image: url("../img/farmer.png"); }
+      .tabs-balanced.tabs-bottom .tab-nav a i.buyer {
+        background-image: url("../img/buyer.png"); }
+    .tabs-balanced.tabs-bottom .tab-nav a .tab-title {
+      font-size: 15px;
+      font-weight: 500; }
+    .tabs-balanced.tabs-bottom .tab-nav a.tab-item-active {
+      background: #b5cf99; }
+
+.view-container {
+  background: #fef7eb; }
+
+h2 {
+  text-align: center;
+  color: #95c11f;
+  white-space: nowrap;
+  font-size: 18px; }
+
+div.bordered {
+  direction: rtl;
+  margin: 10px 18px;
+  border: 1px solid #ff9900;
+  position: relative;
+  padding: 15px 10px; }
+  div.bordered h2 {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    background: #fef7eb;
+    transform: translate(-50%, 0); }
+
+div.contact {
+  width: 240px;
+  display: inline-block;
+  margin-top: 45px;
+  font-size: 14px;
+  color: #ea590c;
+  padding: 45px 10px; }
+  div.contact img {
+    position: absolute;
+    width: 133px;
+    padding: 0 5px;
+    top: -35px;
+    transform: translate(-50%, 0);
+    left: 50%;
     background: #fef7eb; }
-  body h2 {
-    text-align: center;
-    color: #95c11f;
-    white-space: nowrap;
-    font-size: 18px; }
-  body div.bordered {
-    direction: rtl;
-    margin: 10px 18px;
-    border: 1px solid #ff9900;
-    position: relative;
-    padding: 15px 10px; }
-    body div.bordered h2 {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      background: #fef7eb;
-      transform: translate(-50%, 0); }
-  body div.contact {
-    width: 240px;
-    display: inline-block;
-    margin-top: 45px;
-    font-size: 14px;
-    color: #ea590c;
-    padding: 45px 10px; }
-    body div.contact img {
-      position: absolute;
-      width: 133px;
-      padding: 0 5px;
-      top: -35px;
-      transform: translate(-50%, 0);
-      left: 50%;
-      background: #fef7eb; }
-  body .list-container {
-    padding: 0 13px 13px 13px;
-    overflow: auto; }
-    body .list-container div.fruit-wrapper {
+
+.list-container {
+  padding: 0 13px 13px 13px;
+  overflow: auto; }
+  .list-container div.fruit-wrapper {
+    width: 100%;
+    float: right; }
+    .list-container div.fruit-wrapper div.fruit-item {
+      float: right;
+      margin: 8px 0;
       width: 100%;
-      float: right; }
-      body .list-container div.fruit-wrapper div.fruit-item {
+      position: relative;
+      background: #fff;
+      border: 3px solid #95c11f;
+      color: #95c11f; }
+      .list-container div.fruit-wrapper div.fruit-item div.checked {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 26px;
+        height: 26px;
+        background: url("../img/v-green.png") no-repeat;
+        background-size: contain; }
+      .list-container div.fruit-wrapper div.fruit-item div.image {
         float: right;
-        margin: 8px 0;
-        width: 100%;
-        position: relative;
+        width: 38%;
+        height: 110px;
+        background: white;
+        text-align: center;
+        padding: 15px;
+        border-left: 1px solid #95c11f; }
+        .list-container div.fruit-wrapper div.fruit-item div.image img {
+          max-height: 100%;
+          max-width: 100%; }
+      .list-container div.fruit-wrapper div.fruit-item div.price {
+        direction: rtl;
+        padding: 0 15px 0;
+        float: left;
+        width: 62%;
+        height: 46px;
         background: #fff;
-        border: 3px solid #95c11f;
-        color: #95c11f; }
-        body .list-container div.fruit-wrapper div.fruit-item div.checked {
+        font-size: 12px;
+        text-align: center; }
+        .list-container div.fruit-wrapper div.fruit-item div.price table {
+          width: 100%; }
+      .list-container div.fruit-wrapper div.fruit-item div.buttons {
+        position: relative;
+        background: #95c11f;
+        float: left;
+        width: 62%;
+        height: 28px;
+        lin-height: 23px;
+        text-align: center;
+        color: #fff; }
+        .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent {
+          font-weight: 600;
+          color: #95c11f;
           position: absolute;
-          top: 0;
-          right: 0;
-          width: 26px;
-          height: 26px;
-          background: url("../img/v-green.png") no-repeat;
-          background-size: contain; }
-        body .list-container div.fruit-wrapper div.fruit-item div.image {
-          float: right;
-          width: 38%;
-          height: 110px;
-          background: white;
-          text-align: center;
-          padding: 15px;
-          border-left: 1px solid #95c11f; }
-          body .list-container div.fruit-wrapper div.fruit-item div.image img {
-            max-height: 100%;
-            max-width: 100%; }
-        body .list-container div.fruit-wrapper div.fruit-item div.price {
-          direction: rtl;
-          padding: 0 15px 0;
-          float: left;
-          width: 62%;
-          height: 46px;
-          background: #fff;
-          font-size: 12px;
-          text-align: center; }
-          body .list-container div.fruit-wrapper div.fruit-item div.price table {
-            width: 100%; }
-        body .list-container div.fruit-wrapper div.fruit-item div.buttons {
-          position: relative;
-          background: #95c11f;
-          float: left;
-          width: 62%;
-          height: 28px;
-          lin-height: 23px;
-          text-align: center;
-          color: #fff; }
-          body .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent {
-            font-weight: 600;
-            color: #95c11f;
-            position: absolute;
-            right: 37px;
-            top: 5px;
-            font-size: 10px; }
-            body .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent small {
-              font-size: 8px; }
-          body .list-container div.fruit-wrapper div.fruit-item div.buttons img {
-            margin: 3px 30px 0 30px;
-            height: 24px; }
-        body .list-container div.fruit-wrapper div.fruit-item h4 {
-          text-align: center;
-          float: left;
-          width: 62%;
-          background: #fff;
-          margin-top: 0;
-          height: 26px;
-          line-height: 26px;
-          font-size: 16px;
-          border-bottom: 1px solid #95c11f;
-          color: #95c11f; }
-      body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
-        border-color: #ff9900;
-        color: #ff9900; }
-        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
-          background-image: url("../img/v-orange.png"); }
-        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
-          background: #ff9900; }
-          body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
-            color: #ff9900; }
-        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
-          border-color: #ff9900; }
-        body .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
+          right: 37px;
+          top: 5px;
+          font-size: 10px; }
+          .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent small {
+            font-size: 8px; }
+        .list-container div.fruit-wrapper div.fruit-item div.buttons img {
+          margin: 3px 30px 0 30px;
+          height: 24px; }
+      .list-container div.fruit-wrapper div.fruit-item h4 {
+        text-align: center;
+        float: left;
+        width: 62%;
+        background: #fff;
+        margin-top: 0;
+        height: 26px;
+        line-height: 26px;
+        font-size: 16px;
+        border-bottom: 1px solid #95c11f;
+        color: #95c11f; }
+    .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
+      border-color: #ff9900;
+      color: #ff9900; }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
+        background-image: url("../img/v-orange.png"); }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
+        background: #ff9900; }
+        .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
           color: #ff9900; }
-    body .list-container.two-per-row div.fruit-wrapper {
-      width: 50%;
-      padding-right: 0px;
-      padding-left: 7px; }
-      body .list-container.two-per-row div.fruit-wrapper:nth-child(2n) {
-        padding-right: 7px;
-        padding-left: 0px; }
-      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.image {
-        height: 108px;
-        width: 100%;
-        border-left: none; }
-      body .list-container.two-per-row div.fruit-wrapper div.fruit-item h4 {
-        margin-bottom: 0;
-        width: 100%; }
-      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.price {
-        height: 40px;
-        width: 100%; }
-      body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons {
-        width: 100%; }
-        body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons .push-percent {
-          right: 17px; }
-        body .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons img {
-          margin-right: 10px;
-          margin-left: 10px; }
-  body .has-footer {
-    bottom: 50px; }
-  body .has-header {
-    top: 54px; }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
+        border-color: #ff9900; }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
+        color: #ff9900; }
+  .list-container.two-per-row div.fruit-wrapper {
+    width: 50%;
+    padding-right: 0px;
+    padding-left: 7px; }
+    .list-container.two-per-row div.fruit-wrapper:nth-child(2n) {
+      padding-right: 7px;
+      padding-left: 0px; }
+    .list-container.two-per-row div.fruit-wrapper div.fruit-item div.image {
+      height: 108px;
+      width: 100%;
+      border-left: none; }
+    .list-container.two-per-row div.fruit-wrapper div.fruit-item h4 {
+      margin-bottom: 0;
+      width: 100%; }
+    .list-container.two-per-row div.fruit-wrapper div.fruit-item div.price {
+      height: 40px;
+      width: 100%; }
+    .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons {
+      width: 100%; }
+      .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons .push-percent {
+        right: 17px; }
+      .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons img {
+        margin-right: 10px;
+        margin-left: 10px; }
+
+.has-footer {
+  bottom: 50px; }
+
+.has-header {
+  top: 54px; }
 
 .popup-container .popup-head {
   display: none; }
@@ -362,6 +372,7 @@ body {
   #charts-page .filters {
     height: 33px; }
     #charts-page .filters select {
+      white-space: nowrap;
       background-size: 18px 24px;
       font-size: 10px;
       height: 24px; } }

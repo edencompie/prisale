@@ -28,7 +28,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/chart.html',
     "<ion-view>\r" +
     "\n" +
-    "    <ion-content>\r" +
+    "    <ion-content class=\"has-footer\">\r" +
     "\n" +
     "        <div id=\"charts-page\">\r" +
     "\n" +
