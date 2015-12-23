@@ -431,49 +431,92 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('www/views/products.html',
-    "<ion-view>\n" +
-    "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\n" +
-    "        <div class=\"row top-tabs\">\n" +
-    "            <div class=\"col\"><img src=\"/img/icon/basket.png\"><br />סל מוצרים</div>\n" +
-    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"/img/icon/details.png\"><br />פרטים</div>\n" +
-    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"/img/icon/filter.png\"><br />סינון ומיון</div>\n" +
-    "        </div>\n" +
-    "        <div class=\"list-container\" ng-class=\"viewClassName\">\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\n" +
-    "                <div class=\"fruit-item\">\n" +
-    "                    <div ng-if=\"item.checked\" ng-click=\"closeFilterPopup()\" class=\"checked\"></div>\n" +
-    "                    <div class=\"image\" ng-click=\"itemClicked(item)\">\n" +
-    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='/img/logo.png'\">\n" +
-    "                    </div>\n" +
-    "                    <h4 ng-click=\"itemClicked(item)\">{{item.name}}</h4>\n" +
-    "                    <div class=\"price\">\n" +
-    "                        <table ng-show=\"listDetails == 'price'\">\n" +
-    "                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש\"ח</td></tr>\n" +
-    "                            <tr><td>מחיר מובחר</td><td>{{topQualityPrice(item)}} ש\"ח</td></tr>\n" +
-    "                        </table>\n" +
-    "                        <table ng-show=\"listDetails == 'avgPrice'\">\n" +
-    "                            <tr><td>מחיר ממוצע סוג א'</td><td>{{primeQualityAvgPrice(item)}} ש\"ח</td></tr>\n" +
-    "                            <tr><td>מחיר ממוצע מובחר</td><td>{{topQualityAvgPrice(item)}} ש\"ח</td></tr>\n" +
-    "                        </table>\n" +
-    "                        <table ng-show=\"listDetails == 'percentChange'\">\n" +
-    "                            <tr><td>אחוז שינוי סוג א'</td><td>{{primeQualityPercentChange(item)}}%</td></tr>\n" +
-    "                            <tr><td>אחוז שינוי מובחר</td><td>{{topQualityPercentChange(item)}}%</td></tr>\n" +
-    "                        </table>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"buttons\">\n" +
-    "                        <span class=\"push-percent\" ng-click=\"showPushNotificationPopup(item)\">{{item.percent}}<small ng-if=\"item.percent\">%</small></span>\n" +
-    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\n" +
-    "                        <img src=\"/img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </ion-content>\n" +
-    "    <ion-infinite-scroll\n" +
-    "            ng-if=\"moreDataCanBeLoaded()\"\n" +
-    "            on-infinite=\"loadMore()\"\n" +
-    "            distance=\"10%\">\n" +
-    "    </ion-infinite-scroll>\n" +
+    "<ion-view>\r" +
+    "\n" +
+    "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\r" +
+    "\n" +
+    "        <div class=\"row top-tabs\">\r" +
+    "\n" +
+    "            <div class=\"col\"><img src=\"/img/icon/basket.png\"><br />סל מוצרים</div>\r" +
+    "\n" +
+    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"/img/icon/details.png\"><br />פרטים</div>\r" +
+    "\n" +
+    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"/img/icon/filter.png\"><br />סינון ומיון</div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"list-container\" ng-class=\"viewClassName\">\r" +
+    "\n" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\r" +
+    "\n" +
+    "                <div class=\"fruit-item\">\r" +
+    "\n" +
+    "                    <div ng-if=\"item.checked\" ng-click=\"closeFilterPopup()\" class=\"checked\"></div>\r" +
+    "\n" +
+    "                    <div class=\"image\" ng-click=\"itemClicked(item)\">\r" +
+    "\n" +
+    "                        <img src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='/img/logo.png'\">\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <h4 ng-click=\"itemClicked(item)\">{{item.name}}</h4>\r" +
+    "\n" +
+    "                    <div class=\"price\">\r" +
+    "\n" +
+    "                        <table ng-show=\"listDetails == 'price'\">\r" +
+    "\n" +
+    "                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש\"ח</td></tr>\r" +
+    "\n" +
+    "                            <tr><td>מחיר מובחר</td><td>{{topQualityPrice(item)}} ש\"ח</td></tr>\r" +
+    "\n" +
+    "                        </table>\r" +
+    "\n" +
+    "                        <table ng-show=\"listDetails == 'avgPrice'\">\r" +
+    "\n" +
+    "                            <tr><td>מחיר ממוצע סוג א'</td><td>{{primeQualityAvgPrice(item)}} ש\"ח</td></tr>\r" +
+    "\n" +
+    "                            <tr><td>מחיר ממוצע מובחר</td><td>{{topQualityAvgPrice(item)}} ש\"ח</td></tr>\r" +
+    "\n" +
+    "                        </table>\r" +
+    "\n" +
+    "                        <table ng-show=\"listDetails == 'percentChange'\">\r" +
+    "\n" +
+    "                            <tr><td>אחוז שינוי סוג א'</td><td>{{primeQualityPercentChange(item)}}%</td></tr>\r" +
+    "\n" +
+    "                            <tr><td>אחוז שינוי מובחר</td><td>{{topQualityPercentChange(item)}}%</td></tr>\r" +
+    "\n" +
+    "                        </table>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <div class=\"buttons\">\r" +
+    "\n" +
+    "                        <span class=\"push-percent\" ng-click=\"showPushNotificationPopup(item)\">{{item.percent}}<small ng-if=\"item.percent\">%</small></span>\r" +
+    "\n" +
+    "                        <img src=\"/img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\r" +
+    "\n" +
+    "                        <img src=\"/img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </ion-content>\r" +
+    "\n" +
+    "    <ion-infinite-scroll\r" +
+    "\n" +
+    "            ng-if=\"moreDataCanBeLoaded()\"\r" +
+    "\n" +
+    "            on-infinite=\"loadMore()\"\r" +
+    "\n" +
+    "            distance=\"10%\">\r" +
+    "\n" +
+    "    </ion-infinite-scroll>\r" +
+    "\n" +
     "</ion-view>"
   );
 

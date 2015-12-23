@@ -16,11 +16,6 @@ function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
         return $location.path().indexOf(item) > -1;
     };
 
-
-
-
-
-
     $rootScope.showDetailsPopup = function(item) {
         $rootScope.DetailsPopup = $ionicPopup.show({
             templateUrl: 'views/list/details-popup.html',

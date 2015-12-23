@@ -47,8 +47,8 @@ module.exports = function(grunt) {
 						'www/lib/angular-google-maps/dist/angular-google-maps.min.js',
 						'www/lib/ion-image-lazy-load/ionic-image-lazy-load.js',
 						'www/lib/angular-nl2br/angular-nl2br.min.js',
-						//'www/lib/Chart.js/Chart.js',
-						//'www/lib/angular-chart.js/angular-chart.js',
+						'www/lib/Chart.js/Chart.js',
+						'www/lib/angular-chart.js/angular-chart.js',
 					]
 				}
 			},
@@ -67,16 +67,16 @@ module.exports = function(grunt) {
 							'www/js/controllers/UserProfileController.js',
 							'www/js/controllers/UserProfileEditController.js',
 							'www/js/controllers/RegisterController.js',
-						'www/js/directives/Directive.js',
-						    'www/js/directives/jobBlock.js',
-						    'www/js/directives/fileReader.js',
-						    'www/js/directives/hideTabs.js',
-						'www/js/services/Service.js',
-                            'www/js/services/JobHopAPI.js',
-						'www/js/filters/Filter.js',
-						    'www/js/filters/cut.js',
-						'www/views/View.js',
-						'www/views/views.js',
+							'www/js/directives/Directive.js',
+					    'www/js/directives/jobBlock.js',
+					    'www/js/directives/fileReader.js',
+					    'www/js/directives/hideTabs.js',
+							'www/js/services/Service.js',
+              'www/js/services/JobHopAPI.js',
+							'www/js/filters/Filter.js',
+					    'www/js/filters/cut.js',
+							'www/views/View.js',
+							'www/views/views.js',
 					]
 				}
 			}

@@ -30,22 +30,22 @@ body {
         background-size: 17px 17px;
 
         &.home-icon {
-          background-image: url('/img/icon/home.png');
+          background-image: url('img/icon/home.png');
         }
         &.about-icon {
-          background-image: url('/img/icon/about.png');
+          background-image: url('img/icon/about.png');
         }
         &.contact-icon {
-          background-image: url('/img/icon/contact.png');
+          background-image: url('img/icon/contact.png');
         }
         &.help-icon {
-          background-image: url('/img/icon/help.png');
+          background-image: url('img/icon/help.png');
         }
         &.share-icon {
-          background-image: url('/img/icon/share.png');
+          background-image: url('img/icon/share.png');
         }
         &.site-icon {
-          background-image: url('/img/icon/site.png');
+          background-image: url('img/icon/site.png');
         }
 
         a {
@@ -72,7 +72,7 @@ body {
     .button-date{
       font-size: 9px;
       padding: 0;
-      background: url('/img/icon/date.png') no-repeat;
+      background: url('img/icon/date.png') no-repeat;
       background-size: cover;
       width: 32px;
       height: 22px;
@@ -82,7 +82,7 @@ body {
       color: #ff6600;
       margin-top: 3px;
 
-      img {
+      img/ {
         height: 20px;
       }
     }
@@ -109,13 +109,13 @@ body {
           margin-top: 3px;
 
           &.graph {
-            background-image: url('/img/graph.png');
+            background-image: url('img/graph.png');
           }
           &.farmer {
-            background-image: url('/img/farmer.png');
+            background-image: url('img/farmer.png');
           }
           &.buyer {
-            background-image: url('/img/buyer.png');
+            background-image: url('img/buyer.png');
           }
         }
 
@@ -201,7 +201,7 @@ body {
           right:0;
           width:26px;
           height:26px;
-          background: url('/img/v-green.png') no-repeat;
+          background: url('img/v-green.png') no-repeat;
           background-size: contain;
         }
 
@@ -278,7 +278,7 @@ body {
           color: #ff9900;
 
           div.checked {
-            background-image: url('/img/v-orange.png');
+            background-image: url('img/v-orange.png');
           }
           div.buttons{
             background:#ff9900;
@@ -372,14 +372,14 @@ body {
       display:none;
 
       &:checked{
-        +span.style{ background-image:url('/img/radio-checked.png'); }
+        +span.style{ background-image:url('img/radio-checked.png'); }
       }
 
       +span.style{
         display: inline-block;
         width: 16px;
         height: 16px;
-        background-image: url('/img/radio-unchecked.png');
+        background-image: url('img/radio-unchecked.png');
         background-size: contain;
         margin-top: 1px;
       }
@@ -388,14 +388,14 @@ body {
       display:none;
 
       &:checked{
-        +span.style{ background-image:url('/img/checkbox-checked.png'); }
+        +span.style{ background-image:url('img/checkbox-checked.png'); }
       }
 
       +span.style{
         display: inline-block;
         width: 17px;
         height: 14px;
-        background-image: url('/img/checkbox-unchecked.png');
+        background-image: url('img/checkbox-unchecked.png');
         background-size: contain;
         margin-top: 1px;
       }
