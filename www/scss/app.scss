@@ -30,6 +30,7 @@ body {
       background: no-repeat right 10px center;
       background-size: 17px 17px;
 
+      &.active { background-color: #f07c06; }
       &.home-icon {
         background-image: url('../img/icon/home.png');
       }
@@ -73,10 +74,11 @@ body {
   .button-date{
     font-size: 9px;
     padding: 0;
-    background: url('../img/icon/date.png') no-repeat;
-    background-size: cover;
-    width: 32px;
-    height: 22px;
+    background: url('../img/icon/date.png') center no-repeat;
+    background-size: 32px 23px;
+    width: 34px;
+    height: 20px;
+    margin-left: 10px;
     font-weight: 600;
   }
   button.button.button-icon {

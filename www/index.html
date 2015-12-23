@@ -16,7 +16,7 @@
     <script src="views/views.js"></script>
 </head>
 <body>
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced">
             <ion-nav-buttons side="right">
@@ -24,17 +24,18 @@
                 <button class="button button-icon ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
-                <button class="button button-icon" ng-click="openNameFilter()">
-                    <img src="img/icon/search.png" />
-                </button>
-                <button ng-click="changeView()" class="button button-icon" ng-class="viewClassName">
-                    <img src="img/icon/view2.png" ng-hide="viewClassName" />
-                    <img src="img/icon/view1.png" ng-hide="!viewClassName" />
-                </button>
-                <button ng-click="showDatePopup()" class="button button-icon button-date">
-                    {{filterDate | date:'d/M'}}
-                    <!--<img src="img/icon/date.png" />-->
-                </button>
+                <div ng-show="isItemActive(['/main/products-agriculture', '/main/products-wholesale'])">
+                    <button class="button button-icon" ng-click="openNameFilter()">
+                        <img src="img/icon/search.png" />
+                    </button>
+                    <button ng-click="changeView()" class="button button-icon" ng-class="viewClassName">
+                        <img src="img/icon/view2.png" ng-hide="viewClassName" />
+                        <img src="img/icon/view1.png" ng-hide="!viewClassName" />
+                    </button>
+                    <button ng-click="showDatePopup()" class="button button-icon button-date">
+                        {{filterDate | date:'d/M'}}
+                    </button>
+                </div>
             </ion-nav-buttons>
         </ion-nav-bar>
         <!--<div id="search-bar">-->
@@ -46,10 +47,10 @@
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
             <ion-list>
-                <ion-item class="item-icon-right home-icon" menu-close ui-sref="withTabs.productsAgriculture" ng-class="{active: isItemActive(employees.jobsFeed)}">ראשי</ion-item>
-                <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive(about)}">אודות</ion-item>
-                <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive(help)}">עזרה</ion-item>
-                <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive(contact)}">צור קשר</ion-item>
+                <ion-item class="item-icon-right home-icon" menu-close ui-sref="withTabs.productsAgriculture" ng-class="{active: isItemActive(['/main/products-agriculture', '/main/products-wholesale'])}">ראשי</ion-item>
+                <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive(['/about'])}">אודות</ion-item>
+                <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive(['/help'])}">עזרה</ion-item>
+                <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive(['/contact'])}">צור קשר</ion-item>
                 <!--<ion-item class="item-icon-right site-icon">אתר הבית</ion-item>-->
                 <!--<ion-item class="item-icon-right share-icon">שיתוף האפליקציה</ion-item>-->
             </ion-list>

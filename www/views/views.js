@@ -382,15 +382,15 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    <span class=\"style\"></span>\r" +
     "\n" +
-    "                </label>\r" +
+    "                    אפשר הודעות פוש עבור המוצר\r" +
     "\n" +
-    "                אפשר הודעות פוש עבור המוצר\r" +
+    "                    <b>{{itemTitleForPushNotificationPopup}}</b>\r" +
     "\n" +
-    "                <b>{{itemTitleForPushNotificationPopup}}</b>\r" +
+    "                    <br />\r" +
     "\n" +
-    "                <br />\r" +
+    "                    כאשר המחיר משתנה\r" +
     "\n" +
-    "                כאשר המחיר משתנה ב\r" +
+    "                </label> ב\r" +
     "\n" +
     "                <select ng-model=\"pushNotificationPercent\" id=\"push-notification-percent\">\r" +
     "\n" +

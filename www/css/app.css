@@ -17,6 +17,8 @@ body {
     padding-right: 40px;
     background: no-repeat right 10px center;
     background-size: 17px 17px; }
+    #side-menu .scroll-content .item.active {
+      background-color: #f07c06; }
     #side-menu .scroll-content .item.home-icon {
       background-image: url("../img/icon/home.png"); }
     #side-menu .scroll-content .item.about-icon {
@@ -46,10 +48,11 @@ body {
   .bar.bar-balanced .button-date {
     font-size: 9px;
     padding: 0;
-    background: url("../img/icon/date.png") no-repeat;
-    background-size: cover;
-    width: 32px;
-    height: 22px;
+    background: url("../img/icon/date.png") center no-repeat;
+    background-size: 32px 23px;
+    width: 34px;
+    height: 20px;
+    margin-left: 10px;
     font-weight: 600; }
   .bar.bar-balanced button.button.button-icon {
     color: #ff6600;

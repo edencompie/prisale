@@ -38,6 +38,14 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
                 labels: { enabled: true }
             }
         },
+        plotOptions: {
+            bar: {
+                animation: false,
+                dataLabels: {
+                    align: 'right'
+                }
+            }
+        },
         series: [ ],
         title: { text: null }
     };
@@ -106,10 +114,10 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
                         // left labels
                         $scope.chartConfig.options.xAxis.categories.push(item.name);
                     });
-//
+
                     $scope.chartConfig.options.chart.type = 'bar';
                     $scope.chartConfig.options.yAxis.title.text = '';
-                    $scope.chartConfig.options.xAxis.title.text = 'מקטע';
+                    $scope.chartConfig.options.xAxis.title.text = '';
                     $scope.chartConfig.options.yAxis.labels.enabled = false;
                     $scope.chartConfig.options.legend.enabled = true;
 
@@ -127,7 +135,7 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
                         $scope.chartConfig.series[0].data.push( [item.name, item[userType]] );
                         $scope.chartConfig.options.xAxis.categories.push(item.name);
                     });
-//
+
                     $scope.chartConfig.options.chart.type = 'column';
                     $scope.chartConfig.options.yAxis.title.text = 'ש"ח';
                     $scope.chartConfig.options.xAxis.title.text = '';

@@ -4,16 +4,10 @@ angular.module('jobhop.controllers')
 MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup', '$filter'];
 
 function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
-    console.log('MainController');
-''
-    $scope.isTabActive = function(item) {
-        console.log('-------------isTabActive');
-        return $location.path().indexOf(item) > -1;
-    };
 
-    $scope.isItemActive = function(item) {
-        //console.log('isItemActive');
-        return $location.path().indexOf(item) > -1;
+    $rootScope.isItemActive = function(item) {
+        console.log('item', item,$location.path(), item.indexOf($location.path()) != -1);
+        return item.indexOf($location.path()) != -1;
     };
 
     $rootScope.showDetailsPopup = function(item) {
@@ -28,7 +22,7 @@ function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
     }
 
     $rootScope.showPushNotificationPopup = function(item) {
-        $rootScope.pushNotificationPercent = item.percent;
+        $rootScope.pushNotificationPercent = item.percent > 0 ? item.percent : 20; // Default 20%
         $rootScope.pushNotificationEnabled = Boolean(item.percent);
         $rootScope.itemTitleForPushNotificationPopup = item.name;
         $rootScope.itemForPushNotificationPopup = item;
