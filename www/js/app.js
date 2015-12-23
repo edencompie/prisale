@@ -8,7 +8,7 @@ angular.module('jobhop', [
     'jobhop.services',
     'jobhop.filters',
     'jobhop.views',
-    'chart.js',
+    'highcharts-ng',
 ])
 .config(Config)
 .run(Run);
