@@ -335,21 +335,53 @@ body {
     .top-tabs .col img {
       height: 19px; }
 
-#charts-page .filters {
-  direction: rtl;
-  padding: 0;
-  height: 45px;
-  background: #d9e6b0;
+#charts-page {
+  /* */ }
+  #charts-page .filters {
+    direction: rtl;
+    padding: 0;
+    height: 40px;
+    background: #d9e6b0;
+    text-align: center; }
+    #charts-page .filters .col {
+      padding-right: 0;
+      padding-left: 0; }
+    #charts-page .filters select {
+      padding-right: 18px;
+      background: #fff url("/img/select-arrow.png") right center no-repeat;
+      background-size: 21px 29px;
+      color: #95c11f;
+      font-size: 11px;
+      font-weight: 600;
+      height: 29px;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none; }
+      #charts-page .filters select::-ms-expand {
+        display: none; }
+  @media screen and (max-width: 355px) {
+    #charts-page .filters {
+      height: 33px; }
+      #charts-page .filters select {
+        background-size: 18px 24px;
+        font-size: 10px;
+        height: 24px; } }
+  #charts-page div.chart {
+    margin-top: 20px; }
+
+div#search-bar {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  top: 10px;
+  height: 18px;
+  width: 100%;
   text-align: center; }
-  #charts-page .filters select {
+  div#search-bar input[type=search] {
+    width: 92%;
     background: #fff;
-    color: #95c11f;
-    font-weight: 600;
-    height: 32px;
-    width: 100%;
-    -webkit-appearance: none;
-    appearance: none; }
-    #charts-page .filters select::-ms-expand {
-      display: none; }
-#charts-page div.chart {
-  margin-top: 20px; }
+    height: 18px;
+    border-radius: 63px;
+    padding: 4px 5px;
+    direction: rtl;
+    border: 2px solid orange; }

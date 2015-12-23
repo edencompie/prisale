@@ -458,15 +458,23 @@ body {
   .filters {
     direction: rtl;
     padding: 0;
-    height: 45px;
+    height: 40px;
     background: #d9e6b0;
     text-align: center;
 
+    .col {
+
+      padding-right:0;
+      padding-left:0;
+    }
     select {
-      background: #fff;
+      padding-right: 18px;
+      background: #fff url('/img/select-arrow.png') right center no-repeat;
+      background-size: 21px 29px;
       color: #95c11f;
+      font-size: 11px;
       font-weight: 600;
-      height: 32px;
+      height: 29px;
       width:100%;
 
       //Remove arrow
@@ -475,8 +483,44 @@ body {
       &::-ms-expand{ display:none; }
     }
   }
+  @media screen and (max-width: 355px) {
+    .filters {
+      height: 33px;
+      select {
+        background-size: 18px 24px;
+        font-size: 10px;
+        height: 24px;
+      }
+    }
+  }
+
+
+ /* */
 
   div.chart {
     margin-top: 20px;
+  }
+}
+
+div#search-bar {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  top: 10px;
+  //left: 0;
+  //right: 0;
+  //margin-left: auto;
+  //margin-right: auto;
+  height: 18px;
+  width: 100%;
+  text-align: center;
+  input[type=search] {
+    width: 92%;
+    background: #fff;
+    height: 18px;
+    border-radius: 63px;
+    padding: 4px 5px;
+    direction: rtl;
+    border: 2px solid orange;
   }
 }

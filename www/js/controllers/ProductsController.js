@@ -4,7 +4,6 @@ angular.module('jobhop.controllers')
 ProductsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
 
 function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
-console.log('$filter', $filter);
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
     $rootScope.changeView = function() {
@@ -21,7 +20,6 @@ console.log('$filter', $filter);
 
 
     $scope.shareProduct = function(product) {
-        console.log('share');
         $cordovaSocialSharing.share(
             'פריסייל - '+product.name);
     };
@@ -100,8 +98,8 @@ console.log('$filter', $filter);
     };
 
 
-    $scope.showNameFilter = function() {
-
+    $rootScope.openNameFilter = function() {
+        console.log('openNameFilter');
     };
 
     //Check products
