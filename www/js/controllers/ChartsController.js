@@ -34,7 +34,7 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
                 crosshair: true
             },
             yAxis: {
-                title: { text: '' },
+                title: { text: '', style: { color: '#ff6600' } },
                 labels: { enabled: true }
             }
         },
