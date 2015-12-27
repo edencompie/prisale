@@ -2,9 +2,7 @@ angular.module('jobhop', [
     'ionic',
     'ngCordova',
     'ngStorage',
-    'nl2br',
     'jobhop.controllers',
-    'jobhop.directives',
     'jobhop.services',
     'jobhop.filters',
     'jobhop.views',
@@ -84,7 +82,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         abstract: true,
         templateUrl: 'views/tabs.html'
     })
-    .state('withTabs.productsAgriculture', {
+    /*.state('withTabs.productsAgriculture', {
         url: '/products-agriculture',
         views: {
             'content': {
@@ -92,7 +90,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 templateUrl: 'views/products.html'
             }
         }
-    })
+    })*/
     .state('withTabs.productsWholesale', {
         url: '/products-wholesale',
         views: {
@@ -112,7 +110,9 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         }
     });
 
-    $urlRouterProvider.otherwise('/main/products-agriculture');
+    $urlRouterProvider.otherwise('/main/products-wholesale');
+
+    $ionicConfigProvider.views.transition('none');
 
     // Make bottom menu bottom in android
     $ionicConfigProvider.tabs.style('standard');

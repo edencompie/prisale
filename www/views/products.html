@@ -2,17 +2,17 @@
     <ion-content scroll="true" padding="false" class="has-footer">
         <div class="row top-tabs">
             <div class="col"><img src="img/icon/basket.png"><br />סל מוצרים</div>
-            <div class="col" ng-click="showDetailsPopup()"><img src="img/icon/details.png"><br />פרטים</div>
-            <div class="col" ng-click="showFilterPopup()"><img src="img/icon/filter.png"><br />סינון ומיון</div>
+            <div class="col" on-tap="showDetailsPopup()"><img src="img/icon/details.png"><br />פרטים</div>
+            <div class="col" on-tap="showFilterPopup()"><img src="img/icon/filter.png"><br />סינון ומיון</div>
         </div>
         <div class="list-container" ng-class="viewClassName">
             <div class="fruit-wrapper" ng-repeat="item in items">
                 <div class="fruit-item">
-                    <div ng-if="item.checked" ng-click="closeFilterPopup()" class="checked"></div>
-                    <div class="image" ng-click="itemClicked(item)">
+                    <div ng-if="item.checked" on-tap="closeFilterPopup()" class="checked"></div>
+                    <div class="image" on-tap="itemClicked(item)">
                         <img ng-src="http://62.219.7.38/items/{{item.PicNum}}.png" onerror="this.onerror='';this.src='img/logo.png'">
                     </div>
-                    <h4 ng-click="itemClicked(item)">{{item.name}}</h4>
+                    <h4 on-tap="itemClicked(item)">{{item.name}}</h4>
                     <div class="price">
                         <table ng-show="listDetails == 'price'">
                             <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש"ח</td></tr>
@@ -28,9 +28,9 @@
                         </table>
                     </div>
                     <div class="buttons">
-                        <span class="push-percent" ng-click="showPushNotificationPopup(item)">{{item.percent}}<small ng-if="item.percent">%</small></span>
-                        <img src="img/item-push.png" style="float:right;" ng-click="showPushNotificationPopup(item)">
-                        <img src="img/item-share.png" style="float:left;" ng-click="shareProduct(item)">
+                        <span class="push-percent" on-tap="showPushNotificationPopup(item)">{{item.percent}}<small ng-if="item.percent">%</small></span>
+                        <img src="img/item-push.png" style="float:right;" on-tap="showPushNotificationPopup(item)">
+                        <img src="img/item-share.png" style="float:left;" on-tap="shareProduct(item)">
                     </div>
                 </div>
             </div>
@@ -39,6 +39,6 @@
     <ion-infinite-scroll
             ng-if="moreDataCanBeLoaded()"
             on-infinite="loadMore()"
-            distance="10%">
+            distance="20%">
     </ion-infinite-scroll>
 </ion-view>

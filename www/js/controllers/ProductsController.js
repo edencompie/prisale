@@ -1,14 +1,14 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
-ProductsController.$inject = ['$rootScope', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
+ProductsController.$inject = ['$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
 
-function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
+function ProductsController($rootScope, $location, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
+
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
     $rootScope.changeView = function() {
         $rootScope.viewClassName = $rootScope.viewClassName == 'two-per-row' ? '' : 'two-per-row';
-        return false;
     };
 
 
@@ -34,6 +34,10 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
     $rootScope.userType = 'wholesale';
     $rootScope.listDetails = 'price';
     $rootScope.setUserType = function(userType) {
+        if ($location.path() != '/main/products-wholesale') {
+            $location.path('/main/products-wholesale');
+        }
+
         $rootScope.userType = userType;
     };
     $scope.topQualityPrice = function(item) {
@@ -92,7 +96,7 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
     };
 
     $scope.$on('$stateChangeSuccess', function() {
-        $scope.loadMore();
+        $rootScope.loadMore();
     });
     $scope.moreDataCanBeLoaded = function() {
         return ! no_more_data_to_load;
@@ -101,7 +105,6 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
     $scope.itemClicked = function(item) {
         item.checked = ! item.checked;
     };
-
 
 
     $rootScope.openNameFilter = function() {

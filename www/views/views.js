@@ -312,7 +312,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/date-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeDatePopup()\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" on-tap=\"closeDatePopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
@@ -328,7 +328,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div class=\"popup-buttons\">\r" +
     "\n" +
-    "        <button class=\"button button-positive button-block\" ng-click=\"setDate(dateFilter)\">שמור</button>\r" +
+    "        <button class=\"button button-positive button-block\" on-tap=\"setDate(dateFilter)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -340,7 +340,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/details-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeDetailsPopup()\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" on-tap=\"closeDetailsPopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
@@ -384,7 +384,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div class=\"popup-buttons\">\r" +
     "\n" +
-    "        <button class=\"button button-positive button-block\" ng-click=\"setListDetails(listDetailsInput)\">שמור</button>\r" +
+    "        <button class=\"button button-positive button-block\" on-tap=\"setListDetails(listDetailsInput)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -396,7 +396,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/filter-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closeFilterPopup()\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" on-tap=\"closeFilterPopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
@@ -482,7 +482,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div class=\"popup-buttons\">\r" +
     "\n" +
-    "        <button class=\"button button-positive button-block\" ng-click=\"setFilters(orderFilter, typeFilter)\">שמור</button>\r" +
+    "        <button class=\"button button-positive button-block\" on-tap=\"setFilters(orderFilter, typeFilter)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -494,7 +494,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/list/push-popup.html',
     "<div>\r" +
     "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" ng-click=\"closePushNotificationPopup()\" />\r" +
+    "    <img src=\"img/icon/x.png\" class=\"close\" on-tap=\"closePushNotificationPopup()\" />\r" +
     "\n" +
     "    <div class=\"row\">\r" +
     "\n" +
@@ -550,7 +550,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div class=\"popup-buttons\">\r" +
     "\n" +
-    "        <button class=\"button button-positive button-block\" ng-click=\"setPushNotificationPercent(itemForPushNotificationPopup, pushNotificationEnabled, pushNotificationPercent)\">שמור</button>\r" +
+    "        <button class=\"button button-positive button-block\" on-tap=\"setPushNotificationPercent(itemForPushNotificationPopup, pushNotificationEnabled, pushNotificationPercent)\">שמור</button>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -568,9 +568,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <div class=\"col\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
     "\n" +
-    "            <div class=\"col\" ng-click=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />פרטים</div>\r" +
+    "            <div class=\"col\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />פרטים</div>\r" +
     "\n" +
-    "            <div class=\"col\" ng-click=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"><br />סינון ומיון</div>\r" +
+    "            <div class=\"col\" on-tap=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"><br />סינון ומיון</div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -580,15 +580,15 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
-    "                    <div ng-if=\"item.checked\" ng-click=\"closeFilterPopup()\" class=\"checked\"></div>\r" +
+    "                    <div ng-if=\"item.checked\" on-tap=\"closeFilterPopup()\" class=\"checked\"></div>\r" +
     "\n" +
-    "                    <div class=\"image\" ng-click=\"itemClicked(item)\">\r" +
+    "                    <div class=\"image\" on-tap=\"itemClicked(item)\">\r" +
     "\n" +
     "                        <img ng-src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='img/logo.png'\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <h4 ng-click=\"itemClicked(item)\">{{item.name}}</h4>\r" +
+    "                    <h4 on-tap=\"itemClicked(item)\">{{item.name}}</h4>\r" +
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +
@@ -620,11 +620,11 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    <div class=\"buttons\">\r" +
     "\n" +
-    "                        <span class=\"push-percent\" ng-click=\"showPushNotificationPopup(item)\">{{item.percent}}<small ng-if=\"item.percent\">%</small></span>\r" +
+    "                        <span class=\"push-percent\" on-tap=\"showPushNotificationPopup(item)\">{{item.percent}}<small ng-if=\"item.percent\">%</small></span>\r" +
     "\n" +
-    "                        <img src=\"img/item-push.png\" style=\"float:right;\" ng-click=\"showPushNotificationPopup(item)\">\r" +
+    "                        <img src=\"img/item-push.png\" style=\"float:right;\" on-tap=\"showPushNotificationPopup(item)\">\r" +
     "\n" +
-    "                        <img src=\"img/item-share.png\" style=\"float:left;\" ng-click=\"shareProduct(item)\">\r" +
+    "                        <img src=\"img/item-share.png\" style=\"float:left;\" on-tap=\"shareProduct(item)\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
@@ -642,7 +642,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            on-infinite=\"loadMore()\"\r" +
     "\n" +
-    "            distance=\"10%\">\r" +
+    "            distance=\"20%\">\r" +
     "\n" +
     "    </ion-infinite-scroll>\r" +
     "\n" +
@@ -658,9 +658,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\"  ui-sref=\"withTabs.productsWholesale\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\"  ui-sref=\"withTabs.productsAgriculture\" on-select=\"setUserType('agriculture')\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" on-select=\"setUserType('agriculture')\"></ion-tab>\r" +
     "\n" +
     "        <ion-tab title=\"גרפים\" icon-on=\"graph\" icon-off=\"graph\" ui-sref=\"withTabs.chart\"></ion-tab>\r" +
     "\n" +

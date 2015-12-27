@@ -1,12 +1,16 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup', '$filter'];
+MainController.$inject = ['$location', '$ionicTabsDelegate', '$cordovaSocialSharing', '$rootScope', '$ionicPopup', '$filter'];
 
-function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
+function MainController($location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter) {
+
+    $rootScope.selectTabWithIndex = function(index) {
+        $ionicTabsDelegate.select(index);
+    }
 
     $rootScope.isItemActive = function(item) {
-        return item.indexOf($location.path()) != -1;
+        return item == $location.path();
     };
 
     $rootScope.showDetailsPopup = function() {
@@ -56,6 +60,20 @@ function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
 
         $rootScope.closePushNotificationPopup();
     }
+
+    // TODO
+    var APP_NAME = 'jobhopapp';
+    var APP_COUNTRY = 'il';
+    var APP_ID = '1020643523';
+
+    $rootScope.shareApp = function() {
+        $cordovaSocialSharing.share(
+            'מצורף קישור לאפליקציית פריסייל החדשה',
+            false,
+            false,
+            'http://itunes.apple.com/' + APP_COUNTRY + '/app/' + APP_NAME + '/id' + APP_ID + '?mt=8'
+        );
+    };
 
 
     //Filter popup

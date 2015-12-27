@@ -6,7 +6,7 @@ ChartsController.$inject = ['$rootScope', '$http', '$location', '$filter', '$sco
 function ChartsController($rootScope, $http, $location, $filter, $scope) {
 
     if (getCheckedProductIDs().length == 0) {
-        alert('לא נבחרו מוצרים להשוואה');
+        setTimeout(function() { alert('לא נבחרו מוצרים להשוואה') }, 1000);
     }
 
     $scope.chartType = 'column';

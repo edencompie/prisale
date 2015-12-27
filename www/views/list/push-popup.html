@@ -1,5 +1,5 @@
 <div>
-    <img src="img/icon/x.png" class="close" ng-click="closePushNotificationPopup()" />
+    <img src="img/icon/x.png" class="close" on-tap="closePushNotificationPopup()" />
     <div class="row">
         <div class="col">
             <span class="title">הודעת פוש</span>
@@ -27,6 +27,6 @@
         </div>
     </div>
     <div class="popup-buttons">
-        <button class="button button-positive button-block" ng-click="setPushNotificationPercent(itemForPushNotificationPopup, pushNotificationEnabled, pushNotificationPercent)">שמור</button>
+        <button class="button button-positive button-block" on-tap="setPushNotificationPercent(itemForPushNotificationPopup, pushNotificationEnabled, pushNotificationPercent)">שמור</button>
     </div>
 </div>
