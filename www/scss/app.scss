@@ -74,7 +74,7 @@ body {
   .button-date{
     font-size: 9px;
     padding: 0;
-    background: url('../img/icon/date.png') center no-repeat;
+    background: url('../img/icon/date.png') top no-repeat;
     background-size: 32px 23px;
     width: 34px;
     height: 20px;
@@ -83,7 +83,7 @@ body {
   }
   button.button.button-icon {
     color: #ff6600;
-    margin-top: 3px;
+    margin-top: 9px;
 
     img {
       height: 20px;
@@ -477,6 +477,7 @@ div.contact {
         font-weight: 600;
         height: 29px;
         width:100%;
+        white-space: nowrap;
 
         //Remove arrow
         -webkit-appearance: none;
@@ -489,7 +490,6 @@ div.contact {
     .filters {
       height: 33px;
       select {
-        white-space: nowrap;
         background-size: 18px 24px;
         font-size: 10px;
         height: 24px;
@@ -502,25 +502,67 @@ div.contact {
   }
 }
 
-/*div#search-bar {
+
+@keyframes example {
+  from {width: 0%;}
+  to {width: 92%;}
+}
+
+div#search-bar {
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: $bgColor;
   z-index: 10;
   top: 10px;
-  //left: 0;
-  //right: 0;
-  //margin-left: auto;
-  //margin-right: auto;
-  height: 18px;
+  height: 33px;
   width: 100%;
-  text-align: center;
+  text-align: left;
+  padding-left: 7px;
+
+  &.open-search-bar {
+    input {
+      animation-name: example;
+      animation-duration: 0.5s;
+    }
+  }
   input[type=search] {
+    float: right;
     width: 92%;
     background: #fff;
-    height: 18px;
+    height: 33px;
     border-radius: 63px;
     padding: 4px 5px;
     direction: rtl;
     border: 2px solid $orangeColor;
   }
-}*/
+
+  .close-search {
+    float: right;
+    width: 8%;
+    display: block;
+
+    i {
+      font-size: 20px;
+      margin: 5px;
+      display: block;
+    }
+  }
+
+  ul{
+    width: 92%;
+    float: left;
+    background: $bgColor;
+    padding: 0 20px;
+
+    li{
+      height: 32px;
+      line-height: 32px;
+      text-align: right;
+
+      &:not(:first-child) {
+        border-top: 1px solid black;
+      }
+    }
+  }
+
+  * { box-sizing: border-box; }
+}

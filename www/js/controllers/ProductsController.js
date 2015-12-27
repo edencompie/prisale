@@ -21,7 +21,8 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
 
     $scope.shareProduct = function(product) {
         $cordovaSocialSharing.share(
-            'פריסייל - '+product.name);
+            'עדכון מעניין מאפליקציית פריסייל על '
+            +product.name+"\nhttp://google.com");
     };
 
 
@@ -97,14 +98,36 @@ function ProductsController($rootScope, $http, $cordovaSocialSharing, $filter, $
         return ! no_more_data_to_load;
     };
 
-
-    $rootScope.openNameFilter = function() {
-        console.log('openNameFilter');
-    };
-
-    //Check products
     $scope.itemClicked = function(item) {
         item.checked = ! item.checked;
+    };
+
+
+
+    $rootScope.openNameFilter = function() {
+        $rootScope.showSearchBar = true;
+    };
+
+    $rootScope.closeNameFilter = function() {
+        $rootScope.showSearchBar = false;
+        angular.element(document.getElementById('search')).val('');
+        $rootScope.searchInput = '';
+        $rootScope.searchResults = [];
+    };
+
+    $rootScope.hasSearchResults = function() {
+        return $rootScope.searchResults.length;
+    };
+
+    $rootScope.showSearchBar = false;
+    $rootScope.searchInput = '';
+    $rootScope.searchResults = [ ];
+    $rootScope.prepareSearchResults = function(newValue) {
+        $rootScope.searchResults = [ 'בלהבלה','בלו בלו' ];
+    };
+    $rootScope.setNameFilter = function(newNameFilter) {
+        $rootScope.filterName = newNameFilter;
+        $rootScope.closeNameFilter();
     };
 
 }

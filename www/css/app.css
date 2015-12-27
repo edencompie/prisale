@@ -48,7 +48,7 @@ body {
   .bar.bar-balanced .button-date {
     font-size: 9px;
     padding: 0;
-    background: url("../img/icon/date.png") center no-repeat;
+    background: url("../img/icon/date.png") top no-repeat;
     background-size: 32px 23px;
     width: 34px;
     height: 20px;
@@ -56,7 +56,7 @@ body {
     font-weight: 600; }
   .bar.bar-balanced button.button.button-icon {
     color: #ff6600;
-    margin-top: 3px; }
+    margin-top: 9px; }
     .bar.bar-balanced button.button.button-icon img {
       height: 20px; }
 
@@ -367,6 +367,7 @@ div.contact {
       font-weight: 600;
       height: 29px;
       width: 100%;
+      white-space: nowrap;
       -webkit-appearance: none;
       appearance: none; }
       #charts-page .filters .col select::-ms-expand {
@@ -375,32 +376,56 @@ div.contact {
   #charts-page .filters {
     height: 33px; }
     #charts-page .filters select {
-      white-space: nowrap;
       background-size: 18px 24px;
       font-size: 10px;
       height: 24px; } }
 #charts-page div.chart {
   margin-top: 20px; }
 
-/*div#search-bar {
+@keyframes example {
+  from {
+    width: 0%; }
+  to {
+    width: 92%; } }
+div#search-bar {
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: #fef7eb;
   z-index: 10;
   top: 10px;
-  //left: 0;
-  //right: 0;
-  //margin-left: auto;
-  //margin-right: auto;
-  height: 18px;
+  height: 33px;
   width: 100%;
-  text-align: center;
-  input[type=search] {
+  text-align: left;
+  padding-left: 7px; }
+  div#search-bar.open-search-bar input {
+    animation-name: example;
+    animation-duration: 0.5s; }
+  div#search-bar input[type=search] {
+    float: right;
     width: 92%;
     background: #fff;
-    height: 18px;
+    height: 33px;
     border-radius: 63px;
     padding: 4px 5px;
     direction: rtl;
-    border: 2px solid $orangeColor;
-  }
-}*/
+    border: 2px solid #ff6600; }
+  div#search-bar .close-search {
+    float: right;
+    width: 8%;
+    display: block; }
+    div#search-bar .close-search i {
+      font-size: 20px;
+      margin: 5px;
+      display: block; }
+  div#search-bar ul {
+    width: 92%;
+    float: left;
+    background: #fef7eb;
+    padding: 0 20px; }
+    div#search-bar ul li {
+      height: 32px;
+      line-height: 32px;
+      text-align: right; }
+      div#search-bar ul li:not(:first-child) {
+        border-top: 1px solid black; }
+  div#search-bar * {
+    box-sizing: border-box; }

@@ -38,12 +38,15 @@
                 </div>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <!--<div id="search-bar">-->
-            <!--<input type="search" >-->
-        <!--</div>-->
+        <div id="search-bar" ng-show="showSearchBar" ng-class="{'open-search-bar': showSearchBar}">
+            <span class="close-search" ng-click="closeNameFilter()"><i class="ion-close-round"></i></span>
+            <input type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' />
+            <ul ng-show="hasSearchResults()">
+                <li ng-repeat="searchResult in searchResults" ng-click="setNameFilter(searchResult)">{{searchResult}}</li>
+            </ul>
+        </div>
         <ion-nav-view></ion-nav-view>
     </ion-side-menu-content>
-
     <ion-side-menu id="side-menu" side="right" dir="rtl">
         <ion-content>
             <ion-list>
@@ -51,8 +54,8 @@
                 <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive(['/about'])}">אודות</ion-item>
                 <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive(['/help'])}">עזרה</ion-item>
                 <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive(['/contact'])}">צור קשר</ion-item>
-                <!--<ion-item class="item-icon-right site-icon">אתר הבית</ion-item>-->
-                <!--<ion-item class="item-icon-right share-icon">שיתוף האפליקציה</ion-item>-->
+                <ion-item class="item-icon-right site-icon" menu-close>אתר הבית</ion-item>
+                <ion-item class="item-icon-right share-icon" menu-close>שיתוף האפליקציה</ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>

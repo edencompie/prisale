@@ -8,6 +8,7 @@ angular.module('jobhop', [
     'jobhop.services',
     'jobhop.filters',
     'jobhop.views',
+    'ngCordova.plugins.socialSharing',
     'highcharts-ng'
 ])
 .config(Config)

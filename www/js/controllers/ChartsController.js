@@ -6,8 +6,7 @@ ChartsController.$inject = ['$rootScope', '$http', '$location', '$filter', '$sco
 function ChartsController($rootScope, $http, $location, $filter, $scope) {
 
     if (getCheckedProductIDs().length == 0) {
-        //alert('לא נבחרו מוצרים להשוואה');
-        //$location.path("/main/products-agriculture");
+        alert('לא נבחרו מוצרים להשוואה');
     }
 
     $scope.chartType = 'column';
@@ -52,11 +51,6 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
 
     $scope.generateChartConfig = function(chartType, userType, price_avg2, priceToShow, price_avg1) {
         var productIDs = getCheckedProductIDs();
-
-        //todo remove
-        if (productIDs.length == 0) {
-            productIDs = [1,2,3,4];
-        }
 
         if (chartType == 'line') {
             $http.get('http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&productIds='+productIDs.join(',')+'&price_avg2='+price_avg2)

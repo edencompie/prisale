@@ -6,11 +6,10 @@ MainController.$inject = ['$location', '$scope', '$rootScope', '$ionicPopup', '$
 function MainController($location, $scope, $rootScope, $ionicPopup, $filter) {
 
     $rootScope.isItemActive = function(item) {
-        console.log('item', item,$location.path(), item.indexOf($location.path()) != -1);
         return item.indexOf($location.path()) != -1;
     };
 
-    $rootScope.showDetailsPopup = function(item) {
+    $rootScope.showDetailsPopup = function() {
         $rootScope.DetailsPopup = $ionicPopup.show({
             templateUrl: 'views/list/details-popup.html',
             cssClass: 'details',
