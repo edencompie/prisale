@@ -8,23 +8,23 @@
         <div class="list-container" ng-class="viewClassName">
             <div class="fruit-wrapper" ng-repeat="item in items">
                 <div class="fruit-item">
-                    <div ng-if="item.checked" on-tap="closeFilterPopup()" class="checked"></div>
+                    <div ng-if="item.checked" class="checked"></div>
                     <div class="image" on-tap="itemClicked(item)">
                         <img ng-src="http://62.219.7.38/items/{{item.PicNum}}.png" onerror="this.onerror='';this.src='img/logo.png'">
                     </div>
                     <h4 on-tap="itemClicked(item)">{{item.name}}</h4>
                     <div class="price">
-                        <table ng-show="listDetails == 'price'">
-                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש"ח</td></tr>
-                            <tr><td>מחיר מובחר</td><td>{{topQualityPrice(item)}} ש"ח</td></tr>
+                        <table ng-if="listDetails == 'price'">
+                            <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
+                            <tr><td>מחיר מובחר</td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
                         </table>
-                        <table ng-show="listDetails == 'avgPrice'">
-                            <tr><td>מחיר ממוצע סוג א'</td><td>{{primeQualityAvgPrice(item)}} ש"ח</td></tr>
-                            <tr><td>מחיר ממוצע מובחר</td><td>{{topQualityAvgPrice(item)}} ש"ח</td></tr>
+                        <table ng-if="listDetails == 'avgPrice'">
+                            <tr><td>מחיר ממוצע סוג א'</td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
+                            <tr><td>מחיר ממוצע מובחר</td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
                         </table>
-                        <table ng-show="listDetails == 'percentChange'">
-                            <tr><td>אחוז שינוי סוג א'</td><td>{{primeQualityPercentChange(item)}}%</td></tr>
-                            <tr><td>אחוז שינוי מובחר</td><td>{{topQualityPercentChange(item)}}%</td></tr>
+                        <table ng-if="listDetails == 'percentChange'">
+                            <tr><td>אחוז שינוי סוג א'</td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
+                            <tr><td>אחוז שינוי מובחר</td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
                         </table>
                     </div>
                     <div class="buttons">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <ion-infinite-scroll
+        <ion-infinite-scroll class="ispinner"
                 ng-if="moreDataCanBeLoaded()"
                 on-infinite="loadMore()"
                 distance="20%">

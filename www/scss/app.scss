@@ -17,7 +17,7 @@ body {
 #side-menu {
 
   .scroll-content {
-    padding: 57px 13px 13px;
+    padding: 57px 0 13px;
     background: $lightOrangeColor;
 
     .item {
@@ -147,12 +147,13 @@ h2 {
 
 div.bordered {
   direction: rtl;
-  margin: 10px 18px;
+  margin: 36px 18px 10px;
   border: 1px solid #ff9900;
   position: relative;
   padding: 15px 10px;
 
   h2 {
+    margin-top:0;
     position: absolute;
     top: -15px;
     left: 50%;
@@ -545,6 +546,7 @@ div#search-bar {
     display: block;
 
     i {
+      color: #000;
       font-size: 20px;
       margin: 5px;
       display: block;
@@ -569,4 +571,9 @@ div#search-bar {
   }
 
   * { box-sizing: border-box; }
+}
+
+.ispinner .spinner {
+  stroke: $orangeColor;
+  fill: $orangeColor;
 }

@@ -256,7 +256,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-content>\r" +
     "\n" +
-    "        <h2>צור קשר</h2>\r" +
+    "        <h2 style=\"margin-top: 10px;\">צור קשר</h2>\r" +
     "\n" +
     "        <div class=\"bordered contact\">\r" +
     "\n" +
@@ -580,7 +580,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
-    "                    <div ng-if=\"item.checked\" on-tap=\"closeFilterPopup()\" class=\"checked\"></div>\r" +
+    "                    <div ng-if=\"item.checked\" class=\"checked\"></div>\r" +
     "\n" +
     "                    <div class=\"image\" on-tap=\"itemClicked(item)\">\r" +
     "\n" +
@@ -592,27 +592,27 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +
-    "                        <table ng-show=\"listDetails == 'price'\">\r" +
+    "                        <table ng-if=\"listDetails == 'price'\">\r" +
     "\n" +
-    "                            <tr><td>מחיר סוג א'</td><td>{{primeQualityPrice(item)}} ש\"ח</td></tr>\r" +
+    "                            <tr><td>מחיר סוג א'</td><td style=\"min-width: 40px\">{{primeQualityPrice(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>מחיר מובחר</td><td>{{topQualityPrice(item)}} ש\"ח</td></tr>\r" +
-    "\n" +
-    "                        </table>\r" +
-    "\n" +
-    "                        <table ng-show=\"listDetails == 'avgPrice'\">\r" +
-    "\n" +
-    "                            <tr><td>מחיר ממוצע סוג א'</td><td>{{primeQualityAvgPrice(item)}} ש\"ח</td></tr>\r" +
-    "\n" +
-    "                            <tr><td>מחיר ממוצע מובחר</td><td>{{topQualityAvgPrice(item)}} ש\"ח</td></tr>\r" +
+    "                            <tr><td>מחיר מובחר</td><td style=\"min-width: 40px\">{{topQualityPrice(item)}}</td></tr>\r" +
     "\n" +
     "                        </table>\r" +
     "\n" +
-    "                        <table ng-show=\"listDetails == 'percentChange'\">\r" +
+    "                        <table ng-if=\"listDetails == 'avgPrice'\">\r" +
     "\n" +
-    "                            <tr><td>אחוז שינוי סוג א'</td><td>{{primeQualityPercentChange(item)}}%</td></tr>\r" +
+    "                            <tr><td>מחיר ממוצע סוג א'</td><td style=\"min-width: 40px\">{{primeQualityAvgPrice(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>אחוז שינוי מובחר</td><td>{{topQualityPercentChange(item)}}%</td></tr>\r" +
+    "                            <tr><td>מחיר ממוצע מובחר</td><td style=\"min-width: 40px\">{{topQualityAvgPrice(item)}}</td></tr>\r" +
+    "\n" +
+    "                        </table>\r" +
+    "\n" +
+    "                        <table ng-if=\"listDetails == 'percentChange'\">\r" +
+    "\n" +
+    "                            <tr><td>אחוז שינוי סוג א'</td><td style=\"min-width: 40px\">{{primeQualityPercentChange(item)}}</td></tr>\r" +
+    "\n" +
+    "                            <tr><td>אחוז שינוי מובחר</td><td style=\"min-width: 40px\">{{topQualityPercentChange(item)}}</td></tr>\r" +
     "\n" +
     "                        </table>\r" +
     "\n" +
@@ -634,7 +634,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <ion-infinite-scroll\r" +
+    "        <ion-infinite-scroll class=\"ispinner\"\r" +
     "\n" +
     "                ng-if=\"moreDataCanBeLoaded()\"\r" +
     "\n" +

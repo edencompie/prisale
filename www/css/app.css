@@ -6,7 +6,7 @@ body {
   font-family: 'Open Sans Hebrew', sans-serif; }
 
 #side-menu .scroll-content {
-  padding: 57px 13px 13px;
+  padding: 57px 0 13px;
   background: #f6a000; }
   #side-menu .scroll-content .item {
     border-color: #f9cab1;
@@ -99,11 +99,12 @@ h2 {
 
 div.bordered {
   direction: rtl;
-  margin: 10px 18px;
+  margin: 36px 18px 10px;
   border: 1px solid #ff9900;
   position: relative;
   padding: 15px 10px; }
   div.bordered h2 {
+    margin-top: 0;
     position: absolute;
     top: -15px;
     left: 50%;
@@ -415,6 +416,7 @@ div#search-bar {
     width: 8%;
     display: block; }
     div#search-bar .close-search i {
+      color: #000;
       font-size: 20px;
       margin: 5px;
       display: block; }
@@ -431,3 +433,7 @@ div#search-bar {
         border-top: 1px solid black; }
   div#search-bar * {
     box-sizing: border-box; }
+
+.ispinner .spinner {
+  stroke: #ff6600;
+  fill: #ff6600; }

@@ -1,9 +1,9 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
-ProductsController.$inject = ['$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$ionicPopup', '$scope'];
+ProductsController.$inject = ['$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
 
-function ProductsController($rootScope, $location, $http, $cordovaSocialSharing, $filter, $ionicPopup, $scope) {
+function ProductsController($rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
 
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
@@ -41,22 +41,23 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
         $rootScope.userType = userType;
     };
     $scope.topQualityPrice = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].price);
+        console.log(item.topQuality[$scope.userType].price, item.topQuality[$scope.userType].price > 0);
+        return item.topQuality[$scope.userType].price > 0 ? item.topQuality[$scope.userType].price+' ש"ח' : '--';
     };
     $scope.primeQualityPrice = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].price);
+        return item.primeQuality[$scope.userType].price > 0 ? item.primeQuality[$scope.userType].price+' ש"ח' : '--';
     };
     $scope.topQualityAvgPrice = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].weeklyAvg);
+        return item.topQuality[$scope.userType].weeklyAvg > 0 ? item.topQuality[$scope.userType].weeklyAvg+' ש"ח' : '--';
     };
     $scope.primeQualityAvgPrice = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].weeklyAvg);
+        return item.primeQuality[$scope.userType].weeklyAvg > 0 ? item.primeQuality[$scope.userType].weeklyAvg+' ש"ח' : '--';
     };
     $scope.topQualityPercentChange = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].percentChange);
+        return item.topQuality[$scope.userType].percentChange > 0 ? item.topQuality[$scope.userType].percentChange+'%' : '--';
     };
     $scope.primeQualityPercentChange = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].percentChange);
+        return item.primeQuality[$scope.userType].percentChange > 0 ? item.primeQuality[$scope.userType].percentChange+'%' : '--';
     };
 
 
