@@ -14,7 +14,7 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
 
     $rootScope.resetProducts = function() {
         $rootScope.items = [];
-        no_more_data_to_load = false;
+        $scope.no_more_data_to_load = false;
         $rootScope.loadMore();
     };
 
@@ -41,22 +41,22 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
         $rootScope.userType = userType;
     };
     $scope.topQualityPrice = function(item) {
-        return item.topQuality[$scope.userType].price;
+        return parseFloat(item.topQuality[$scope.userType].price);
     };
     $scope.primeQualityPrice = function(item) {
-        return item.primeQuality[$scope.userType].price;
+        return parseFloat(item.primeQuality[$scope.userType].price);
     };
     $scope.topQualityAvgPrice = function(item) {
-        return item.topQuality[$scope.userType].weeklyAvg;
+        return parseFloat(item.topQuality[$scope.userType].weeklyAvg);
     };
     $scope.primeQualityAvgPrice = function(item) {
-        return item.primeQuality[$scope.userType].weeklyAvg;
+        return parseFloat(item.primeQuality[$scope.userType].weeklyAvg);
     };
     $scope.topQualityPercentChange = function(item) {
-        return item.topQuality[$scope.userType].percentChange;
+        return parseFloat(item.topQuality[$scope.userType].percentChange);
     };
     $scope.primeQualityPercentChange = function(item) {
-        return item.primeQuality[$scope.userType].percentChange;
+        return parseFloat(item.primeQuality[$scope.userType].percentChange);
     };
 
 
@@ -68,8 +68,12 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
     $rootScope.filterType  = '';
     $rootScope.filterOrder = 'DAILY_CHANGE';
     $rootScope.filterSort  = undefined;
-    var no_more_data_to_load = false;
+    $scope.no_more_data_to_load = false;
     $rootScope.loadMore = function() {
+        console.trace();
+        if ($scope.no_more_data_to_load) {
+            return;
+        }
 
         // Workaround to make sure productsNotifications are ready
         if ($rootScope.productsNotifications === undefined) {
@@ -83,7 +87,7 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
         $http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {
-                    no_more_data_to_load = true;
+                    $scope.no_more_data_to_load = true;
                 }
 
                 for(var i =0; i<items.data.length; i++) {
@@ -91,15 +95,19 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
                     $rootScope.items.push(items.data[i]);
                 }
 
-                $scope.$broadcast('scroll.infiniteScrollComplete');
+                $scope.$broadcast('scroll.infweeklyAvginiteScrollComplete');
             });
     };
 
-    $scope.$on('$stateChangeSuccess', function() {
-        $rootScope.loadMore();
-    });
-    $scope.moreDataCanBeLoaded = function() {
-        return ! no_more_data_to_load;
+    /*$scope.$on('$stateChangeSuccess', function(a,b) {
+        console.log('$rootScope.items.length', $rootScope.items.length);
+        console.log('$rootScope.moreDataCanBeLoaded', $rootScope.moreDataCanBeLoaded());
+        if (b.name == 'withTabs.productsWholesale' && $rootScope.moreDataCanBeLoaded() && $rootScope.items.length == 0) {
+            //$rootScope.loadMore();
+        }
+    });*/
+    $rootScope.moreDataCanBeLoaded = function() {
+        return ! $scope.no_more_data_to_load;
     };
 
     $scope.itemClicked = function(item) {

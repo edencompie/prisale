@@ -82,15 +82,6 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         abstract: true,
         templateUrl: 'views/tabs.html'
     })
-    /*.state('withTabs.productsAgriculture', {
-        url: '/products-agriculture',
-        views: {
-            'content': {
-                controller: 'ProductsController',
-                templateUrl: 'views/products.html'
-            }
-        }
-    })*/
     .state('withTabs.productsWholesale', {
         url: '/products-wholesale',
         views: {

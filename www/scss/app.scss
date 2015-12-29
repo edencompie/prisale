@@ -224,7 +224,7 @@ div.contact {
 
       div.price {
         direction: rtl;
-        padding: 0 15px 0;
+        padding: 0;
         float: left;
         width: 62%;
         height: 46px;
@@ -232,7 +232,11 @@ div.contact {
         font-size: 12px;
         text-align: center;
 
-        table{ width:100%; }
+        table{
+          width:100%;
+
+          td { white-space: nowrap; }
+        }
       }
       div.buttons {
         position: relative;

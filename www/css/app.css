@@ -161,7 +161,7 @@ div.contact {
           max-width: 100%; }
       .list-container div.fruit-wrapper div.fruit-item div.price {
         direction: rtl;
-        padding: 0 15px 0;
+        padding: 0;
         float: left;
         width: 62%;
         height: 46px;
@@ -170,6 +170,8 @@ div.contact {
         text-align: center; }
         .list-container div.fruit-wrapper div.fruit-item div.price table {
           width: 100%; }
+          .list-container div.fruit-wrapper div.fruit-item div.price table td {
+            white-space: nowrap; }
       .list-container div.fruit-wrapper div.fruit-item div.buttons {
         position: relative;
         background: #95c11f;

@@ -634,17 +634,17 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
+    "        <ion-infinite-scroll\r" +
+    "\n" +
+    "                ng-if=\"moreDataCanBeLoaded()\"\r" +
+    "\n" +
+    "                on-infinite=\"loadMore()\"\r" +
+    "\n" +
+    "                distance=\"20%\">\r" +
+    "\n" +
+    "        </ion-infinite-scroll>\r" +
+    "\n" +
     "    </ion-content>\r" +
-    "\n" +
-    "    <ion-infinite-scroll\r" +
-    "\n" +
-    "            ng-if=\"moreDataCanBeLoaded()\"\r" +
-    "\n" +
-    "            on-infinite=\"loadMore()\"\r" +
-    "\n" +
-    "            distance=\"20%\">\r" +
-    "\n" +
-    "    </ion-infinite-scroll>\r" +
     "\n" +
     "</ion-view>\r" +
     "\n"
