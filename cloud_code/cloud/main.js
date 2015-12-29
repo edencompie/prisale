@@ -40,7 +40,7 @@ Parse.Cloud.job('priceStatus', function(request, response) {
 	  var OrginizedAPIProducts = {};
 	  for(var j = 0; j<APIProducts.length;++j) {
 	    var percentChange = null;
-	    if(products[i].primeQuality && products[i].primeQuality.agriculture) percentChange = products[i].primeQuality.agriculture.percentChange;
+		if(Products[j].primeQuality && Products[j].primeQuality.agriculture) percentChange = Products[j].primeQuality.agriculture.percentChange;
 	    OrginizedAPIProducts[APIProducts[j].id] = {
 	        'name': APIProducts[j].name,
 	        'percentChange': percentChange

@@ -3,14 +3,24 @@ angular.module('jobhop.services', [])
   return function() {
     console.log('Enter service');
     if(!window.localStorage.getItem('device_token')) {
+
+        var Push = window.PushNotification.init({ "android": {
+            'senderID': '735697708694',
+            'sound': 'true',
+            'vibrate': 'true'
+        }});
+        Push.on('error', function(evt) {
+            console.error && console.error('Notifications: ' + evt.message);
+        });
+
       console.log('Passed flag');
 
       window.localStorage.setItem('device_token', true);
       Push.on('registration', function(data) {
         console.log('Registered');
         var deviceToken = data.registrationId;
-        var platformType = device.platform;
-        var instId = device.uuid; // Using the device uuid.
+        var platformType = window.device.platform;
+        var instId = window.device.uuid; // Using the device uuid.
         function generateParseUUID(str) {
           var gen = '', i = 0;
           while(gen.length < 32) {
@@ -27,10 +37,10 @@ angular.module('jobhop.services', [])
         }
         var finalInstId = instId;
         // iOS return the parse-valid form of uuid, maybe other such as windows phones doing the same but I don't know(for now).
-        if(device.platform !== 'iOS') {
+        if(window.device.platform !== 'iOS') {
           finalInstId = generateParseUUID(instId); // The original instId is not acceptable by parse.
         }
-        // I use toLowerCase() because the platformType device.platform will produce upper cased names like: "Android" while parse accepts "android".
+        // I use toLowerCase() because the platformType window.device.platform will produce upper cased names like: "Android" while parse accepts "android".
         Parse.Cloud.run('Install', { 'deviceToken': deviceToken, 'instId': finalInstId, 'deviceType': platformType.toLowerCase() }, {
             success: function(response) {
               console.log('Finish');
