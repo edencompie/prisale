@@ -1,20 +1,20 @@
 <ion-view>
-    <ion-content scroll="true" padding="false" class="has-footer">
+    <ion-content scroll="true" padding="false" class="has-footer products">
         <div class="row top-tabs">
             <div class="col"><img src="img/icon/basket.png"><br />סל מוצרים</div>
-            <div class="col" on-tap="showDetailsPopup()"><img src="img/icon/details.png"><br />פרטים</div>
+            <div class="col" on-tap="showDetailsPopup()"><img src="img/icon/details.png"><br />הוספת נתונים</div>
             <div class="col" on-tap="showFilterPopup()"><img src="img/icon/filter.png"><br />סינון ומיון</div>
         </div>
-        <div class="list-container" ng-class="viewClassName">
-            <div class="fruit-wrapper" ng-repeat="item in items">
+        <ion-list class="list-container" ng-class="viewClassName">
+            <div class="fruit-wrapper" ng-repeat="item in items | filter:hideProductsWithoutPrice">
                 <div class="fruit-item">
-                    <div ng-if="item.checked" class="checked"></div>
-                    <div class="image" on-tap="itemClicked(item)">
+                    <div ng-class="itemChecked(item)" on-tap="itemClicked(item)"></div>
+                    <div class="image" on-hold="itemClicked(item)">
                         <img ng-src="http://62.219.7.38/items/{{item.PicNum}}.png" onerror="this.onerror='';this.src='img/logo.png'">
                     </div>
-                    <h4 on-tap="itemClicked(item)">{{item.name}}</h4>
+                    <h4 on-hold="itemClicked(item)">{{item.name}}</h4>
                     <div class="price">
-                        <table ng-if="listDetails == 'price'">
+                        <table>
                             <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
                             <tr><td>מחיר מובחר</td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
                         </table>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </ion-list>
         <ion-infinite-scroll class="ispinner"
                 ng-if="moreDataCanBeLoaded()"
                 on-infinite="loadMore()"

@@ -135,18 +135,26 @@ div.contact {
     float: right; }
     .list-container div.fruit-wrapper div.fruit-item {
       float: right;
-      margin: 8px 0;
+      margin: 0 0 16px 0;
       width: 100%;
       position: relative;
       background: #fff;
       border: 3px solid #95c11f;
       color: #95c11f; }
+      .list-container div.fruit-wrapper div.fruit-item div.unchecked {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 32px;
+        height: 32px;
+        background: url("../img/no-v-green.png") no-repeat;
+        background-size: contain; }
       .list-container div.fruit-wrapper div.fruit-item div.checked {
         position: absolute;
         top: 0;
         right: 0;
-        width: 26px;
-        height: 26px;
+        width: 32px;
+        height: 32px;
         background: url("../img/v-green.png") no-repeat;
         background-size: contain; }
       .list-container div.fruit-wrapper div.fruit-item div.image {
@@ -203,13 +211,15 @@ div.contact {
         height: 26px;
         line-height: 26px;
         font-size: 16px;
-        border-bottom: 1px solid #95c11f;
+        border-bottom: 2px solid #95c11f;
         color: #95c11f; }
     .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
       border-color: #ff9900;
       color: #ff9900; }
       .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
         background-image: url("../img/v-orange.png"); }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.unchecked {
+        background-image: url("../img/no-v-orange.png"); }
       .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
         background: #ff9900; }
         .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
@@ -337,7 +347,7 @@ div.contact {
     display: inline-block; }
 
 .top-tabs {
-  padding: 5px 14px 0 14px;
+  padding: 5px 0 0 0;
   color: #95c11f; }
   .top-tabs .col {
     border: 2px solid #95c11f;
@@ -347,10 +357,33 @@ div.contact {
     padding: 3px 0 0 0; }
     .top-tabs .col:not(:last-child) {
       border-right: 0; }
-    .top-tabs .col:first-child {
+    .top-tabs .col:active, .top-tabs .col:hover, .top-tabs .col:focus {
       background: #dbe8b3; }
     .top-tabs .col img {
       height: 19px; }
+
+.filterDate {
+  color: black;
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 12px;
+  white-space: nowrap;
+  line-height: 20px;
+  width: 53px;
+  height: 19px;
+  color: #ff6600; }
+  .filterDate input {
+    width: 53px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: inline-block;
+    height: 30px;
+    opacity: 0; }
 
 #charts-page .filters {
   direction: rtl;
@@ -426,6 +459,7 @@ div#search-bar {
     background: #fef7eb;
     padding: 0 20px; }
     div#search-bar ul li {
+      color: #458800;
       height: 32px;
       line-height: 32px;
       text-align: right; }
@@ -437,3 +471,7 @@ div#search-bar {
 .ispinner .spinner {
   stroke: #ff6600;
   fill: #ff6600; }
+
+ion-content.products .scroll {
+  padding-right: 13px;
+  padding-left: 13px; }

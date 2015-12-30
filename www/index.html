@@ -22,7 +22,7 @@
         <ion-nav-bar class="bar-balanced">
             <ion-nav-buttons side="right">
                 <img class="logo" src="img/logo.png" />
-                <button class="button button-icon ion-navicon" menu-toggle="right"></button>
+                <button class="button button-icon ion-navicon" menu-toggle="right" style="margin-top: 0"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
                 <div ng-if="isItemActive('/main/products-wholesale')">
@@ -33,9 +33,10 @@
                         <img src="img/icon/view2.png" ng-hide="viewClassName" />
                         <img src="img/icon/view1.png" ng-hide="!viewClassName" />
                     </button>
-                    <button on-tap="showDatePopup()" class="button button-icon button-date">
+                    <label class="filterDate">
                         {{filterDate | date:'d/M'}}
-                    </button>
+                        <input type="date" ng-model="filterDate" ng-change='setDate(filterDate)' />
+                    </label>
                     <div id="search-bar" ng-show="showSearchBar" ng-class="{'open-search-bar': showSearchBar}">
                         <small class="close-search" on-tap="closeNameFilter()"><i class="ion-close-round"></i></small>
                         <input type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' />
@@ -55,7 +56,7 @@
                 <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive('/about')}">אודות</ion-item>
                 <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive('/help')}">עזרה</ion-item>
                 <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive('/contact')}">צור קשר</ion-item>
-                <ion-item class="item-icon-right site-icon" menu-close>אתר הבית</ion-item>
+                <ion-item class="item-icon-right site-icon" menu-close on-tap="openSite()">אתר הבית</ion-item>
                 <ion-item class="item-icon-right share-icon" menu-close on-tap="shareApp()">שיתוף האפליקציה</ion-item>
             </ion-list>
         </ion-content>

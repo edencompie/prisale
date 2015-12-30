@@ -192,19 +192,29 @@ div.contact {
 
     div.fruit-item {
       float: right;
-      margin: 8px 0;
+      margin: 0 0 16px 0;
       width: 100%;
       position: relative;
       background: #fff;
       border: 3px solid #95c11f;
       color: #95c11f;
 
+      div.unchecked {
+        position:absolute;
+        top:0;
+        right:0;
+        width:32px;
+        height:32px;
+        background: url('../img/no-v-green.png') no-repeat;
+        background-size: contain;
+      }
+
       div.checked {
         position:absolute;
         top:0;
         right:0;
-        width:26px;
-        height:26px;
+        width:32px;
+        height:32px;
         background: url('../img/v-green.png') no-repeat;
         background-size: contain;
       }
@@ -274,7 +284,7 @@ div.contact {
         height: 26px;
         line-height: 26px;
         font-size: 16px;
-        border-bottom: 1px solid #95c11f;
+        border-bottom: 2px solid #95c11f;
         color: #95c11f;
       }
     }
@@ -287,6 +297,9 @@ div.contact {
 
         div.checked {
           background-image: url('../img/v-orange.png');
+        }
+        div.unchecked {
+          background-image: url('../img/no-v-orange.png');
         }
         div.buttons{
           background:#ff9900;
@@ -442,7 +455,7 @@ div.contact {
 
 // List top actions
 .top-tabs {
-  padding: 5px 14px 0 14px;
+  padding: 5px 0 0 0;
   color: #95c11f;
 
   .col {
@@ -453,7 +466,7 @@ div.contact {
     padding:3px 0 0 0;
 
     &:not(:last-child) { border-right:0; }
-    &:first-child{ background: #dbe8b3; }
+    &:active,&:hover,&:focus{ background: #dbe8b3; }
 
     img {
       height: 19px;
@@ -461,6 +474,27 @@ div.contact {
   }
 }
 
+.filterDate {
+  color: black;
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 12px;
+  white-space: nowrap;
+  line-height: 20px;
+  width: 53px;
+  height:19px;
+  color: $orangeColor;
+
+  input {
+    width: 53px;
+    height:20px;
+    position: absolute;
+    top:0;bottom: 0;right:0;left:0;
+    display: inline-block; height:30px;
+    opacity: 0;
+  }
+}
 #charts-page {
   .filters {
     direction: rtl;
@@ -560,6 +594,7 @@ div#search-bar {
     padding: 0 20px;
 
     li{
+      color: #458800;
       height: 32px;
       line-height: 32px;
       text-align: right;
@@ -576,4 +611,8 @@ div#search-bar {
 .ispinner .spinner {
   stroke: $orangeColor;
   fill: $orangeColor;
+}
+
+ion-content.products {
+  .scroll { padding-right: 13px; padding-left: 13px; }
 }

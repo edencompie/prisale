@@ -1,9 +1,9 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$location', '$ionicTabsDelegate', '$cordovaSocialSharing', '$rootScope', '$ionicPopup', '$filter'];
+MainController.$inject = ['$window', '$location', '$ionicTabsDelegate', '$cordovaSocialSharing', '$rootScope', '$ionicPopup', '$filter', '$http'];
 
-function MainController($location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter) {
+function MainController($window, $location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter, $http) {
 
     $rootScope.selectTabWithIndex = function(index) {
         $ionicTabsDelegate.select(index);
@@ -96,16 +96,9 @@ function MainController($location, $ionicTabsDelegate, $cordovaSocialSharing, $r
         $rootScope.closeFilterPopup();
     };
 
-    $rootScope.showDatePopup = function() {
-        $rootScope.dateFilter = new Date($filter('date')($rootScope.filterDate, 'yyyy-MM-dd'));
-        $rootScope.DatePopup = $ionicPopup.show({
-            templateUrl: 'views/list/date-popup.html',
-            cssClass: 'date-filter',
-            scope: $rootScope
-        });
-    };
-    $rootScope.closeDatePopup = function() {
-        $rootScope.DatePopup.close();
+    $rootScope.openSite = function() {
+        console.log('openSite', $window);
+        $window.open('http://www.israeli-market.gov.il', '_system');
     };
     $rootScope.setDate = function(date) {
         $rootScope.filterDate = $filter('date')(date, 'yyyy-MM-dd');
@@ -113,4 +106,23 @@ function MainController($location, $ionicTabsDelegate, $cordovaSocialSharing, $r
         $rootScope.closeDatePopup();
     };
 
+    $rootScope.productNames = [];
+    $rootScope.filterDate  = new Date();
+
+    function loadMoreProducts() {
+        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&order=&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.productNames.length/50);
+        $http.get(url)
+            .then(function(items) {
+
+                for(var i =0; i<items.data.length; i++) {
+                    $rootScope.productNames.push(items.data[i].name);
+                }
+
+                if (items.data.length == 50) {
+                    loadMoreProducts();
+                }
+            });
+    }
+
+    loadMoreProducts();
 };

@@ -170,7 +170,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                        <option value=\"column\">השוואה בין מוצרים</option>\r" +
     "\n" +
-    "                        <option value=\"bar\">השוואה בין מקטעים</option>\r" +
+    "                        <!--<option value=\"bar\">השוואה בין מקטעים</option>-->\r" +
     "\n" +
     "                    </select>\r" +
     "\n" +
@@ -309,34 +309,6 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('www/views/list/date-popup.html',
-    "<div>\r" +
-    "\n" +
-    "    <img src=\"img/icon/x.png\" class=\"close\" on-tap=\"closeDatePopup()\" />\r" +
-    "\n" +
-    "    <div class=\"row\">\r" +
-    "\n" +
-    "        <div class=\"col\">\r" +
-    "\n" +
-    "            <span class=\"title\">תאריך</span>\r" +
-    "\n" +
-    "            <input ng-model=\"dateFilter\" type=\"date\" />\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <div class=\"popup-buttons\">\r" +
-    "\n" +
-    "        <button class=\"button button-positive button-block\" on-tap=\"setDate(dateFilter)\">שמור</button>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</div>\r" +
-    "\n"
-  );
-
-
   $templateCache.put('www/views/list/details-popup.html',
     "<div>\r" +
     "\n" +
@@ -354,7 +326,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                מחיר יומי\r" +
+    "                ללא\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -562,37 +534,37 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
   $templateCache.put('www/views/products.html',
     "<ion-view>\r" +
     "\n" +
-    "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer\">\r" +
+    "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer products\">\r" +
     "\n" +
     "        <div class=\"row top-tabs\">\r" +
     "\n" +
     "            <div class=\"col\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
     "\n" +
-    "            <div class=\"col\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />פרטים</div>\r" +
+    "            <div class=\"col\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />הוספת נתונים</div>\r" +
     "\n" +
     "            <div class=\"col\" on-tap=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"><br />סינון ומיון</div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <div class=\"list-container\" ng-class=\"viewClassName\">\r" +
+    "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items\">\r" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items | filter:hideProductsWithoutPrice\">\r" +
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
-    "                    <div ng-if=\"item.checked\" class=\"checked\"></div>\r" +
+    "                    <div ng-class=\"itemChecked(item)\" on-tap=\"itemClicked(item)\"></div>\r" +
     "\n" +
-    "                    <div class=\"image\" on-tap=\"itemClicked(item)\">\r" +
+    "                    <div class=\"image\" on-hold=\"itemClicked(item)\">\r" +
     "\n" +
     "                        <img ng-src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='img/logo.png'\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <h4 on-tap=\"itemClicked(item)\">{{item.name}}</h4>\r" +
+    "                    <h4 on-hold=\"itemClicked(item)\">{{item.name}}</h4>\r" +
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +
-    "                        <table ng-if=\"listDetails == 'price'\">\r" +
+    "                        <table>\r" +
     "\n" +
     "                            <tr><td>מחיר סוג א'</td><td style=\"min-width: 40px\">{{primeQualityPrice(item)}}</td></tr>\r" +
     "\n" +
@@ -632,7 +604,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </div>\r" +
     "\n" +
-    "        </div>\r" +
+    "        </ion-list>\r" +
     "\n" +
     "        <ion-infinite-scroll class=\"ispinner\"\r" +
     "\n" +
@@ -640,7 +612,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                on-infinite=\"loadMore()\"\r" +
     "\n" +
-    "                distance=\"20%\">\r" +
+    "                distance=\"25%\">\r" +
     "\n" +
     "        </ion-infinite-scroll>\r" +
     "\n" +

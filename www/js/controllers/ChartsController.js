@@ -9,7 +9,7 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
         setTimeout(function() { alert('לא נבחרו מוצרים להשוואה') }, 1000);
     }
 
-    $scope.chartType = 'column';
+    $scope.chartType = 'line';
     $scope.price_avg1 = 'DAY';//DAY, WEEK, MONTH, QUARTER, HALF_YEAR, YEAR (bar)
     $scope.price_avg2 = 'WEEK';//WEEK, MONTH, QUARTER, HALF_YEAR, YEAR  (line)
     $scope.priceToShow = 'DAY';//DAY, WEEK (compare)

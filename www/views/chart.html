@@ -6,7 +6,7 @@
                     <select ng-model="chartType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
                         <option value="line">השוואה לאורך זמן</option>
                         <option value="column">השוואה בין מוצרים</option>
-                        <option value="bar">השוואה בין מקטעים</option>
+                        <!--<option value="bar">השוואה בין מקטעים</option>-->
                     </select>
                 </div>
                 <div class="col" ng-if="chartType == 'line' || chartType == 'column'">

@@ -56,8 +56,7 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     });
 
     $urlRouterProvider.otherwise('/main/products-wholesale');
-
-    $ionicConfigProvider.views.transition('none');
+    $ionicConfigProvider.scrolling.jsScrolling(false);//fix on-hold
 
     // Make bottom menu bottom in android
     $ionicConfigProvider.tabs.style('standard');
