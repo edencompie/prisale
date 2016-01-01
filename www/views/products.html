@@ -1,30 +1,30 @@
 <ion-view>
     <ion-content scroll="true" padding="false" class="has-footer products">
         <div class="row top-tabs">
-            <div class="col"><img src="img/icon/basket.png"><br />סל מוצרים</div>
+            <div class="col" on-tap="toggleFilterBySelected()" ng-class="classForFilterBySelected()"><img src="img/icon/basket.png"><br />סל מוצרים</div>
             <div class="col" on-tap="showDetailsPopup()"><img src="img/icon/details.png"><br />הוספת נתונים</div>
             <div class="col" on-tap="showFilterPopup()"><img src="img/icon/filter.png"><br />סינון ומיון</div>
         </div>
         <ion-list class="list-container" ng-class="viewClassName">
-            <div class="fruit-wrapper" ng-repeat="item in items | filter:hideProductsWithoutPrice">
+            <div class="fruit-wrapper" ng-repeat="item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)">
                 <div class="fruit-item">
                     <div ng-class="itemChecked(item)" on-tap="itemClicked(item)"></div>
-                    <div class="image" on-hold="itemClicked(item)">
+                    <div class="image" on-hold="itemClicked(item)" on-tap="goToCharts(item)">
                         <img ng-src="http://62.219.7.38/items/{{item.PicNum}}.png" onerror="this.onerror='';this.src='img/logo.png'">
                     </div>
-                    <h4 on-hold="itemClicked(item)">{{item.name}}</h4>
+                    <h4 on-hold="itemClicked(item)" on-tap="goToCharts(item)">{{item.name}}</h4>
                     <div class="price">
                         <table>
                             <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
                             <tr><td>מחיר מובחר</td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
-                        </table>
-                        <table ng-if="listDetails == 'avgPrice'">
-                            <tr><td>מחיר ממוצע סוג א'</td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
-                            <tr><td>מחיר ממוצע מובחר</td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
-                        </table>
-                        <table ng-if="listDetails == 'percentChange'">
-                            <tr><td>אחוז שינוי סוג א'</td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
-                            <tr><td>אחוז שינוי מובחר</td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
+                            <tbody ng-if="listDetails == 'avgPrice'">
+                                <tr><td>מחיר ממוצע סוג א'</td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
+                                <tr><td>מחיר ממוצע מובחר</td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
+                            </tbody>
+                            <tbody ng-if="listDetails == 'percentChange'">
+                                <tr><td>אחוז שינוי סוג א'</td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
+                                <tr><td>אחוז שינוי מובחר</td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
+                            </tbody>
                         </table>
                     </div>
                     <div class="buttons">
@@ -34,6 +34,8 @@
                     </div>
                 </div>
             </div>
+            <div ng-show="!filteredItems.length && filterBySelected" style="text-align:center">לא נבחרו מוצרים</div>
+            <div ng-show="!filteredItems.length && !filterBySelected" style="text-align:center">בקרוב יעודכנו נתונים</div>
         </ion-list>
         <ion-infinite-scroll class="ispinner"
                 ng-if="moreDataCanBeLoaded()"

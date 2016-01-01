@@ -236,9 +236,15 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </div>\r" +
     "\n" +
-    "            <div class=\"chart\">\r" +
+    "            <div class=\"chart\" ng-show=\"productsCount()\">\r" +
     "\n" +
     "                <highchart id=\"chart1\" config=\"chartConfig\"></highchart>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div ng-hide=\"productsCount()\" style=\"text-align:center; margin-top:30px\">\r" +
+    "\n" +
+    "                לא נבחרו מוצרים\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
@@ -538,7 +544,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"row top-tabs\">\r" +
     "\n" +
-    "            <div class=\"col\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
+    "            <div class=\"col\" on-tap=\"toggleFilterBySelected()\" ng-class=\"classForFilterBySelected()\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
     "\n" +
     "            <div class=\"col\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />הוספת נתונים</div>\r" +
     "\n" +
@@ -548,19 +554,19 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in items | filter:hideProductsWithoutPrice\">\r" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\">\r" +
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
     "                    <div ng-class=\"itemChecked(item)\" on-tap=\"itemClicked(item)\"></div>\r" +
     "\n" +
-    "                    <div class=\"image\" on-hold=\"itemClicked(item)\">\r" +
+    "                    <div class=\"image\" on-hold=\"itemClicked(item)\" on-tap=\"goToCharts(item)\">\r" +
     "\n" +
     "                        <img ng-src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='img/logo.png'\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <h4 on-hold=\"itemClicked(item)\">{{item.name}}</h4>\r" +
+    "                    <h4 on-hold=\"itemClicked(item)\" on-tap=\"goToCharts(item)\">{{item.name}}</h4>\r" +
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +
@@ -570,21 +576,21 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                            <tr><td>מחיר מובחר</td><td style=\"min-width: 40px\">{{topQualityPrice(item)}}</td></tr>\r" +
     "\n" +
-    "                        </table>\r" +
+    "                            <tbody ng-if=\"listDetails == 'avgPrice'\">\r" +
     "\n" +
-    "                        <table ng-if=\"listDetails == 'avgPrice'\">\r" +
+    "                                <tr><td>מחיר ממוצע סוג א'</td><td style=\"min-width: 40px\">{{primeQualityAvgPrice(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>מחיר ממוצע סוג א'</td><td style=\"min-width: 40px\">{{primeQualityAvgPrice(item)}}</td></tr>\r" +
+    "                                <tr><td>מחיר ממוצע מובחר</td><td style=\"min-width: 40px\">{{topQualityAvgPrice(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>מחיר ממוצע מובחר</td><td style=\"min-width: 40px\">{{topQualityAvgPrice(item)}}</td></tr>\r" +
+    "                            </tbody>\r" +
     "\n" +
-    "                        </table>\r" +
+    "                            <tbody ng-if=\"listDetails == 'percentChange'\">\r" +
     "\n" +
-    "                        <table ng-if=\"listDetails == 'percentChange'\">\r" +
+    "                                <tr><td>אחוז שינוי סוג א'</td><td style=\"min-width: 40px\">{{primeQualityPercentChange(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>אחוז שינוי סוג א'</td><td style=\"min-width: 40px\">{{primeQualityPercentChange(item)}}</td></tr>\r" +
+    "                                <tr><td>אחוז שינוי מובחר</td><td style=\"min-width: 40px\">{{topQualityPercentChange(item)}}</td></tr>\r" +
     "\n" +
-    "                            <tr><td>אחוז שינוי מובחר</td><td style=\"min-width: 40px\">{{topQualityPercentChange(item)}}</td></tr>\r" +
+    "                            </tbody>\r" +
     "\n" +
     "                        </table>\r" +
     "\n" +
@@ -603,6 +609,10 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                </div>\r" +
     "\n" +
     "            </div>\r" +
+    "\n" +
+    "            <div ng-show=\"!filteredItems.length && filterBySelected\" style=\"text-align:center\">לא נבחרו מוצרים</div>\r" +
+    "\n" +
+    "            <div ng-show=\"!filteredItems.length && !filterBySelected\" style=\"text-align:center\">בקרוב יעודכנו נתונים</div>\r" +
     "\n" +
     "        </ion-list>\r" +
     "\n" +
@@ -628,7 +638,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-nav-view name=\"content\"></ion-nav-view>\r" +
     "\n" +
-    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-class=\"hideTabs\">\r" +
+    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\">\r" +
     "\n" +
     "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +

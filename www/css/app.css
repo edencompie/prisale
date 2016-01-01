@@ -173,7 +173,8 @@ div.contact {
         padding: 0;
         float: left;
         width: 62%;
-        height: 46px;
+        height: auto;
+        min-height: 46px;
         background: #fff;
         font-size: 12px;
         text-align: center; }
@@ -187,7 +188,7 @@ div.contact {
         float: left;
         width: 62%;
         height: 28px;
-        lin-height: 23px;
+        line-height: 22px;
         text-align: center;
         color: #fff; }
         .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent {
@@ -224,10 +225,19 @@ div.contact {
         background: #ff9900; }
         .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
           color: #ff9900; }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
-        border-color: #ff9900; }
+      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.price, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
+        border-color: #ff9900 !important; }
       .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
         color: #ff9900; }
+  .list-container:not(.two-per-row) .price {
+    padding-top: 10px !important;
+    padding-bottom: 8px !important; }
+  .list-container:not(.two-per-row) h4 {
+    margin-bottom: 0; }
+  .list-container:not(.two-per-row) .price, .list-container:not(.two-per-row) h4, .list-container:not(.two-per-row) .buttons {
+    border-right: 1px #95c11f solid; }
+  .list-container:not(.two-per-row) .image {
+    border-left: none !important; }
   .list-container.two-per-row div.fruit-wrapper {
     width: 50%;
     padding-right: 0px;
@@ -243,7 +253,8 @@ div.contact {
       margin-bottom: 0;
       width: 100%; }
     .list-container.two-per-row div.fruit-wrapper div.fruit-item div.price {
-      height: 40px;
+      min-height: 40px;
+      height: auto;
       width: 100%; }
     .list-container.two-per-row div.fruit-wrapper div.fruit-item div.buttons {
       width: 100%; }
@@ -357,7 +368,7 @@ div.contact {
     padding: 3px 0 0 0; }
     .top-tabs .col:not(:last-child) {
       border-right: 0; }
-    .top-tabs .col:active, .top-tabs .col:hover, .top-tabs .col:focus {
+    .top-tabs .col:active, .top-tabs .col:hover, .top-tabs .col:focus, .top-tabs .col.active {
       background: #dbe8b3; }
     .top-tabs .col img {
       height: 19px; }
@@ -475,3 +486,8 @@ div#search-bar {
 ion-content.products .scroll {
   padding-right: 13px;
   padding-left: 13px; }
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none; }

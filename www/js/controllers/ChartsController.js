@@ -1,13 +1,16 @@
 angular.module('jobhop.controllers')
     .controller('ChartsController', ChartsController);
 
-ChartsController.$inject = ['$rootScope', '$http', '$location', '$filter', '$scope'];
+ChartsController.$inject = ['$rootScope', '$http', '$ionicLoading', '$filter', '$scope'];
 
-function ChartsController($rootScope, $http, $location, $filter, $scope) {
+function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
 
-    if (getCheckedProductIDs().length == 0) {
-        setTimeout(function() { alert('לא נבחרו מוצרים להשוואה') }, 1000);
-    }
+    $ionicLoading.show({ template: 'טוען נתונים' });
+    setTimeout($ionicLoading.hide, 600);
+
+    $scope.productsCount = function() {
+        return getCheckedProductIDs().length;
+    };
 
     $scope.chartType = 'line';
     $scope.price_avg1 = 'DAY';//DAY, WEEK, MONTH, QUARTER, HALF_YEAR, YEAR (bar)
@@ -140,10 +143,18 @@ function ChartsController($rootScope, $http, $location, $filter, $scope) {
         }
     };
 
+    $scope.$on("$destroy", function(){
+        $rootScope.productForChart = undefined;
+    });
+
     //init chart
     $scope.generateChartConfig($scope.chartType, $scope.userType, $scope.price_avg2, $scope.priceToShow, $scope.price_avg1);
 
     function getCheckedProductIDs() {
+        if ($rootScope.productForChart !== undefined) {
+            return [ $rootScope.productForChart.id ];
+        }
+
         var checked = [];
         if ($rootScope.items)
         {

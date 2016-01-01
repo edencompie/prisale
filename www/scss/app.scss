@@ -238,7 +238,8 @@ div.contact {
         padding: 0;
         float: left;
         width: 62%;
-        height: 46px;
+        height: auto;
+        min-height: 46px;
         background: #fff;
         font-size: 12px;
         text-align: center;
@@ -255,7 +256,7 @@ div.contact {
         float: left;
         width: 62%;
         height: 28px;
-        lin-height: 23px;
+        line-height: 22px;
         text-align: center;
         color: #fff;
 
@@ -306,10 +307,17 @@ div.contact {
 
           .push-percent{ color: #ff9900; }
         }
-        div.image,h4{ border-color: #ff9900; }
+        div.image,h4,div.price,div.buttons { border-color: #ff9900 !important; }
         h4{ color: #ff9900; }
       }
     }
+  }
+
+  &:not(.two-per-row) {
+    .price { padding-top: 10px !important; padding-bottom: 8px !important; }
+    h4 { margin-bottom: 0; }
+    .price,h4,.buttons { border-right: 1px #95c11f solid }
+    .image { border-left: none !important; }
   }
 
   &.two-per-row {
@@ -337,7 +345,8 @@ div.contact {
         }
 
         div.price {
-          height: 40px;
+          min-height: 40px;
+          height: auto;
           width: 100%;
         }
 
@@ -466,7 +475,7 @@ div.contact {
     padding:3px 0 0 0;
 
     &:not(:last-child) { border-right:0; }
-    &:active,&:hover,&:focus{ background: #dbe8b3; }
+    &:active,&:hover,&:focus,&.active{ background: #dbe8b3; }
 
     img {
       height: 19px;
@@ -615,4 +624,10 @@ div#search-bar {
 
 ion-content.products {
   .scroll { padding-right: 13px; padding-left: 13px; }
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
 }

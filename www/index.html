@@ -39,7 +39,7 @@
                     </label>
                     <div id="search-bar" ng-show="showSearchBar" ng-class="{'open-search-bar': showSearchBar}">
                         <small class="close-search" on-tap="closeNameFilter()"><i class="ion-close-round"></i></small>
-                        <input type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' />
+                        <input type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' autofocus="autofocus" />
                         <ul ng-show="hasSearchResults()">
                             <li ng-repeat="searchResult in searchResults" on-tap="setNameFilter(searchResult)">{{searchResult}}</li>
                         </ul>

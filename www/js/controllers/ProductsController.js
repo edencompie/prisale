@@ -1,9 +1,11 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
-ProductsController.$inject = ['$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
+ProductsController.$inject = ['$ionicLoading', '$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
 
-function ProductsController($rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
+function ProductsController($ionicLoading, $rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
+
+    $rootScope.productForChart = undefined;
 
     //Toggle 1 or 2 items per row
     $rootScope.viewClassName = 'two-per-row';
@@ -33,15 +35,15 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
     };
     $rootScope.userType = 'wholesale';
     $rootScope.listDetails = 'price';
-    $rootScope.setUserType = function(userType) {
-        if ($location.path() != '/main/products-wholesale') {
-            $location.path('/main/products-wholesale');
-        }
-
-        $rootScope.userType = userType;
-    };
     $scope.hideProductsWithoutPrice = function(item) {
         return item.topQuality[$scope.userType].price || item.primeQuality[$scope.userType].price;
+    };
+    $scope.isSelected = function(item) {
+        if ( ! $scope.filterBySelected) {
+            return true;
+        }
+
+        return item.checked;
     };
     $scope.topQualityPrice = function(item) {
         return item.topQuality[$scope.userType].price > 0 ? item.topQuality[$scope.userType].price+' ש"ח' : '--';
@@ -66,13 +68,13 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
 
     //Load products
     $rootScope.items = [];
-    $rootScope.filterName  = undefined;
+    $rootScope.filterName  = '';
     $rootScope.filterType  = '';
     $rootScope.filterOrder = 'DAILY_CHANGE';
     $rootScope.filterSort  = undefined;
     $scope.no_more_data_to_load = false;
     $rootScope.loadMore = function() {
-        console.log('loadMore', $scope.no_more_data_to_load);
+
         if ($scope.no_more_data_to_load) {
             return;
         }
@@ -83,9 +85,7 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
             return;
         }
 
-        //todo $rootScope.filterName
-
-        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.items.length/50);
+        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name='+$rootScope.filterName+'&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.items.length/50);
         $http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {
@@ -116,19 +116,35 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
         item.checked = ! item.checked;
     };
 
+    $scope.filterBySelected = false;
+    $scope.classForFilterBySelected = function() {
+        return $scope.filterBySelected ? 'active' : '';
+    };
+    $scope.toggleFilterBySelected = function() {
+        $scope.filterBySelected = ! $scope.filterBySelected;
+    };
+
     $scope.itemChecked = function(item) {
         return item.checked ? 'checked' : 'unchecked';
     };
 
+    $rootScope.goToCharts = function(product) {
+        $rootScope.productForChart = product;
+        $location.path('/main/chart');
+    };
 
     $rootScope.openNameFilter = function() {
         $rootScope.showSearchBar = true;
+        setTimeout(function() {
+            if (document.getElementById("search")) {
+                document.getElementById("search").focus();
+            }
+        }, 1000);
     };
 
     $rootScope.closeNameFilter = function() {
         $rootScope.showSearchBar = false;
-        angular.element(document.getElementById('search')).val('');
-        $rootScope.searchInput = '';
+        $rootScope.searchInput = null;
         $rootScope.searchResults = [];
     };
 
@@ -137,7 +153,7 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
     };
 
     $rootScope.showSearchBar = false;
-    $rootScope.searchInput = '';
+    $rootScope.searchInput = null;
     $rootScope.searchResults = [ ];
     $rootScope.prepareSearchResults = function(newValue) {
         $rootScope.searchResults = [];
@@ -153,6 +169,7 @@ function ProductsController($rootScope, $location, $http, $cordovaSocialSharing,
 
     $rootScope.setNameFilter = function(newNameFilter) {
         $rootScope.filterName = newNameFilter;
+        $rootScope.resetProducts();
         $rootScope.closeNameFilter();
     };
 

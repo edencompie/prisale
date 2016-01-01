@@ -1,9 +1,22 @@
 angular.module('jobhop.controllers')
 .controller('MainController', MainController);
 
-MainController.$inject = ['$window', '$location', '$ionicTabsDelegate', '$cordovaSocialSharing', '$rootScope', '$ionicPopup', '$filter', '$http'];
+MainController.$inject = ['$ionicLoading', '$window', '$location', '$ionicTabsDelegate', '$cordovaSocialSharing', '$rootScope', '$ionicPopup', '$filter', '$http'];
 
-function MainController($window, $location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter, $http) {
+function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter, $http) {
+
+
+    $rootScope.setUserType = function(userType) {
+
+        $ionicLoading.show({ template: 'טוען נתונים' });
+        setTimeout($ionicLoading.hide, 600);
+
+        if ($location.path() != '/main/products-wholesale') {
+            $location.path('/main/products-wholesale');
+        }
+
+        $rootScope.userType = userType;
+    };
 
     $rootScope.selectTabWithIndex = function(index) {
         $ionicTabsDelegate.select(index);
@@ -103,7 +116,6 @@ function MainController($window, $location, $ionicTabsDelegate, $cordovaSocialSh
     $rootScope.setDate = function(date) {
         $rootScope.filterDate = $filter('date')(date, 'yyyy-MM-dd');
         $rootScope.resetProducts();
-        $rootScope.closeDatePopup();
     };
 
     $rootScope.productNames = [];

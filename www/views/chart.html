@@ -39,8 +39,11 @@
                     </select>
                 </div>
             </div>
-            <div class="chart">
+            <div class="chart" ng-show="productsCount()">
                 <highchart id="chart1" config="chartConfig"></highchart>
+            </div>
+            <div ng-hide="productsCount()" style="text-align:center; margin-top:30px">
+                לא נבחרו מוצרים
             </div>
         </div>
     </ion-content>
