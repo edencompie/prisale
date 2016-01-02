@@ -26,7 +26,7 @@
             </ion-nav-buttons>
             <ion-nav-buttons side="left">
                 <div ng-if="isItemActive('/main/products-wholesale')">
-                    <button class="button button-icon" on-tap="openNameFilter()">
+                    <button class="button button-icon">
                         <img src="img/icon/search.png" />
                     </button>
                     <button on-tap="changeView()" class="button button-icon" ng-class="viewClassName">
@@ -35,12 +35,16 @@
                     </button>
                     <label class="filterDate">
                         {{filterDate | date:'d/M'}}
-                        <input type="date" ng-model="filterDate" ng-change='setDate(filterDate)' />
+                        <input type="date" ng-model="filterDate" ng-change='setDate(filterDate)' style="z-index: 9999999999;" ng-hide="showSearchBar" />
                     </label>
-                    <div id="search-bar" ng-show="showSearchBar" ng-class="{'open-search-bar': showSearchBar}">
-                        <small class="close-search" on-tap="closeNameFilter()"><i class="ion-close-round"></i></small>
-                        <input type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' autofocus="autofocus" />
-                        <ul ng-show="hasSearchResults()">
+                    <div id="search-bar" ng-class="{'open-search-bar': showSearchBar}">
+                        <small ng-show="showSearchBar" class="close-search" on-tap="closeNameFilter()"><i class="ion-close-round"></i></small>
+                        <form class="search" id="searchForm"><input ng-focus="openNameFilter()" ng-class="{'open-search-bar': showSearchBar}" type="search" id="search" ng-model='searchInput' ng-change='prepareSearchResults(searchInput)' onsearch="
+var appElement = document.querySelector('[ng-app=jobhop]');
+var appScope = angular.element(appElement).scope();
+var controllerScope = appScope.$$childHead;
+controllerScope.setNameFilter(this.value);" autocomplete="off" /></form>
+                        <ul ng-show="showSearchBar" ng-show="hasSearchResults()">
                             <li ng-repeat="searchResult in searchResults" on-tap="setNameFilter(searchResult)">{{searchResult}}</li>
                         </ul>
                     </div>
@@ -62,5 +66,9 @@
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
+<script>
+
+
+</script>
 </body>
 </html>

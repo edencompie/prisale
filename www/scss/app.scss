@@ -62,8 +62,7 @@ body {
 .bar.bar-balanced  {
   direction: ltr;
   background-color: $bgColor;
-  border-color: #ff6600;
-  border-bottom-width: 2px;
+  border-bottom: 1px solid #f60;
   height: $topNavHeight !important;
 
   img.logo {
@@ -245,9 +244,19 @@ div.contact {
         text-align: center;
 
         table{
-          width:100%;
+          margin: 0 auto;
 
-          td { white-space: nowrap; }
+          td { white-space: nowrap; text-align: right; }
+
+          tr {
+            td:first-child {
+              padding-left: 10px;
+            }
+
+            td:not(:first-child) {
+              padding-right: 10px;
+            }
+          }
         }
       }
       div.buttons {
@@ -256,7 +265,7 @@ div.contact {
         float: left;
         width: 62%;
         height: 28px;
-        line-height: 22px;
+        line-height: 20px;
         text-align: center;
         color: #fff;
 
@@ -475,7 +484,7 @@ div.contact {
     padding:3px 0 0 0;
 
     &:not(:last-child) { border-right:0; }
-    &:active,&:hover,&:focus,&.active{ background: #dbe8b3; }
+    &.active{ background: #dbe8b3; }
 
     img {
       height: 19px;
@@ -560,11 +569,13 @@ div#search-bar {
   position: absolute;
   background: $bgColor;
   z-index: 10;
-  top: 10px;
-  height: 33px;
+  top: 0;
+  height: 43px;
   width: 100%;
   text-align: left;
+  padding-top: 10px;
   padding-left: 7px;
+  padding-right: 7px;
 
   &.open-search-bar {
     input {
@@ -572,8 +583,19 @@ div#search-bar {
       animation-duration: 0.5s;
     }
   }
+  &:not(.open-search-bar) {
+    width: 40px;
+    opacity: 0;
+    background: red;
+    padding-left:0;
+    padding-right:0;
+    input {
+      width: 100% !important;
+      height: 100%;
+    }
+  }
   input[type=search] {
-    float: right;
+    float: left;
     width: 92%;
     background: #fff;
     height: 33px;
@@ -585,8 +607,9 @@ div#search-bar {
 
   .close-search {
     float: right;
-    width: 8%;
+    width: 7%;
     display: block;
+    margin-left: 1%;
 
     i {
       color: #000;
@@ -604,8 +627,8 @@ div#search-bar {
 
     li{
       color: #458800;
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       text-align: right;
 
       &:not(:first-child) {

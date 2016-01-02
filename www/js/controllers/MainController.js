@@ -7,7 +7,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
 
     $rootScope.setUserType = function(userType) {
-
+        $rootScope.showSearchBar = false;
         $ionicLoading.show({ template: 'טוען נתונים' });
         setTimeout($ionicLoading.hide, 600);
 
@@ -137,4 +137,17 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
     }
 
     loadMoreProducts();
+
+    $rootScope.$on('$stateChangeSuccess', function(a,b) {
+        // Mark selected tab
+        if (b.name == 'withTabs.productsWholesale') {
+            if ($rootScope.userType == 'wholesale') {
+                $ionicTabsDelegate.select(0);
+            } else {
+                $ionicTabsDelegate.select(1);
+            }
+        }
+
+    });
+
 };

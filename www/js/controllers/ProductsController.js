@@ -1,9 +1,9 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
-ProductsController.$inject = ['$ionicLoading', '$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
+ProductsController.$inject = ['$ionicLoading', '$document', '$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
 
-function ProductsController($ionicLoading, $rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
+function ProductsController($ionicLoading, $document, $rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
 
     $rootScope.productForChart = undefined;
 
@@ -18,6 +18,12 @@ function ProductsController($ionicLoading, $rootScope, $location, $http, $cordov
         $rootScope.items = [];
         $scope.no_more_data_to_load = false;
         $rootScope.loadMore();
+    };
+
+
+    $scope.fridayOrSaturday = function() {
+        var dayInWeek = $filter('date')($rootScope.filterDate, 'EEEE');
+        return (dayInWeek == 'Saturday' || dayInWeek == 'Friday');
     };
 
 
@@ -134,12 +140,11 @@ function ProductsController($ionicLoading, $rootScope, $location, $http, $cordov
     };
 
     $rootScope.openNameFilter = function() {
+        var forms = document.querySelectorAll("form.search");
+        for (i = 0; i < forms.length; i++) {
+            forms[i].reset();
+        }
         $rootScope.showSearchBar = true;
-        setTimeout(function() {
-            if (document.getElementById("search")) {
-                document.getElementById("search").focus();
-            }
-        }, 1000);
     };
 
     $rootScope.closeNameFilter = function() {
@@ -168,6 +173,7 @@ function ProductsController($ionicLoading, $rootScope, $location, $http, $cordov
     };
 
     $rootScope.setNameFilter = function(newNameFilter) {
+        console.log('setNameFilter', newNameFilter);
         $rootScope.filterName = newNameFilter;
         $rootScope.resetProducts();
         $rootScope.closeNameFilter();

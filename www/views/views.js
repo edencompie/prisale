@@ -552,6 +552,20 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
+    "        <div ng-if=\"filterName.length\" style=\"text-align: center; direction:rtl;margin-top: 14px;\" on-tap=\"setNameFilter('')\">\r" +
+    "\n" +
+    "            רשימת מוצרים מכילה רק מוצרים ששמם מתחיל ב<strong>{{filterName}}</strong>.\r" +
+    "\n" +
+    "            לביטול לחץ כאן\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div ng-if=\"fridayOrSaturday()\" style=\"text-align: center; margin-top: 14px;\">\r" +
+    "\n" +
+    "            לא מתקיים מסחר בימים שישי ושבת\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
     "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
     "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\">\r" +

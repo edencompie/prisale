@@ -28,7 +28,7 @@ function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
                 backgroundColor: '#fef7eb',
                 type: 'bar'
             },
-            tooltip: { enabled: false },
+            //tooltip: { enabled: false },
             legend: { enabled: false },
             xAxis: {
                 title: { text: '' },

@@ -38,8 +38,7 @@ body {
 .bar.bar-balanced {
   direction: ltr;
   background-color: #fef7eb;
-  border-color: #ff6600;
-  border-bottom-width: 2px;
+  border-bottom: 1px solid #f60;
   height: 53px !important; }
   .bar.bar-balanced img.logo {
     width: 98px;
@@ -179,16 +178,21 @@ div.contact {
         font-size: 12px;
         text-align: center; }
         .list-container div.fruit-wrapper div.fruit-item div.price table {
-          width: 100%; }
+          margin: 0 auto; }
           .list-container div.fruit-wrapper div.fruit-item div.price table td {
-            white-space: nowrap; }
+            white-space: nowrap;
+            text-align: right; }
+          .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
+            padding-left: 10px; }
+          .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
+            padding-right: 10px; }
       .list-container div.fruit-wrapper div.fruit-item div.buttons {
         position: relative;
         background: #95c11f;
         float: left;
         width: 62%;
         height: 28px;
-        line-height: 22px;
+        line-height: 20px;
         text-align: center;
         color: #fff; }
         .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent {
@@ -368,7 +372,7 @@ div.contact {
     padding: 3px 0 0 0; }
     .top-tabs .col:not(:last-child) {
       border-right: 0; }
-    .top-tabs .col:active, .top-tabs .col:hover, .top-tabs .col:focus, .top-tabs .col.active {
+    .top-tabs .col.active {
       background: #dbe8b3; }
     .top-tabs .col img {
       height: 19px; }
@@ -438,16 +442,27 @@ div#search-bar {
   position: absolute;
   background: #fef7eb;
   z-index: 10;
-  top: 10px;
-  height: 33px;
+  top: 0;
+  height: 43px;
   width: 100%;
   text-align: left;
-  padding-left: 7px; }
+  padding-top: 10px;
+  padding-left: 7px;
+  padding-right: 7px; }
   div#search-bar.open-search-bar input {
     animation-name: example;
     animation-duration: 0.5s; }
+  div#search-bar:not(.open-search-bar) {
+    width: 40px;
+    opacity: 0;
+    background: red;
+    padding-left: 0;
+    padding-right: 0; }
+    div#search-bar:not(.open-search-bar) input {
+      width: 100% !important;
+      height: 100%; }
   div#search-bar input[type=search] {
-    float: right;
+    float: left;
     width: 92%;
     background: #fff;
     height: 33px;
@@ -457,8 +472,9 @@ div#search-bar {
     border: 2px solid #ff6600; }
   div#search-bar .close-search {
     float: right;
-    width: 8%;
-    display: block; }
+    width: 7%;
+    display: block;
+    margin-left: 1%; }
     div#search-bar .close-search i {
       color: #000;
       font-size: 20px;
@@ -471,8 +487,8 @@ div#search-bar {
     padding: 0 20px; }
     div#search-bar ul li {
       color: #458800;
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       text-align: right; }
       div#search-bar ul li:not(:first-child) {
         border-top: 1px solid black; }
