@@ -218,21 +218,6 @@ div.contact {
         font-size: 16px;
         border-bottom: 2px solid #95c11f;
         color: #95c11f; }
-    .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item {
-      border-color: #ff9900;
-      color: #ff9900; }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
-        background-image: url("../img/v-orange.png"); }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.unchecked {
-        background-image: url("../img/no-v-orange.png"); }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
-        background: #ff9900; }
-        .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
-          color: #ff9900; }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.image, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.price, .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
-        border-color: #ff9900 !important; }
-      .list-container div.fruit-wrapper:nth-child(2n) div.fruit-item h4 {
-        color: #ff9900; }
   .list-container:not(.two-per-row) .price {
     padding-top: 10px !important;
     padding-bottom: 8px !important; }
@@ -242,6 +227,21 @@ div.contact {
     border-right: 1px #95c11f solid; }
   .list-container:not(.two-per-row) .image {
     border-left: none !important; }
+  .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item {
+    border-color: #ff9900;
+    color: #ff9900; }
+    .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.checked {
+      background-image: url("../img/v-orange.png"); }
+    .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.unchecked {
+      background-image: url("../img/no-v-orange.png"); }
+    .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
+      background: #ff9900; }
+      .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.buttons .push-percent {
+        color: #ff9900; }
+    .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.image, .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item h4, .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.price, .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item div.buttons {
+      border-color: #ff9900 !important; }
+    .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item h4 {
+      color: #ff9900; }
   .list-container.two-per-row div.fruit-wrapper {
     width: 50%;
     padding-right: 0px;
@@ -249,6 +249,21 @@ div.contact {
     .list-container.two-per-row div.fruit-wrapper:nth-child(2n) {
       padding-right: 7px;
       padding-left: 0px; }
+    .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item {
+      border-color: #ff9900;
+      color: #ff9900; }
+      .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.checked {
+        background-image: url("../img/v-orange.png"); }
+      .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.unchecked {
+        background-image: url("../img/no-v-orange.png"); }
+      .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.buttons {
+        background: #ff9900; }
+        .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.buttons .push-percent {
+          color: #ff9900; }
+      .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.image, .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item h4, .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.price, .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item div.buttons {
+        border-color: #ff9900 !important; }
+      .list-container.two-per-row div.fruit-wrapper:not(:nth-child(4n-2)):not(:nth-child(4n-1)) div.fruit-item h4 {
+        color: #ff9900; }
     .list-container.two-per-row div.fruit-wrapper div.fruit-item div.image {
       height: 108px;
       width: 100%;
@@ -395,7 +410,8 @@ div.contact {
   float: right;
   width: 53px;
   height: 19px;
-  color: #ff6600; }
+  color: #ff6600;
+  margin-left: 5px; }
   .filterDate input {
     width: 53px;
     height: 20px;

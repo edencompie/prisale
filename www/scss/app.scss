@@ -299,27 +299,6 @@ div.contact {
       }
     }
 
-    &:nth-child(2n) {
-
-      div.fruit-item {
-        border-color: #ff9900;
-        color: #ff9900;
-
-        div.checked {
-          background-image: url('../img/v-orange.png');
-        }
-        div.unchecked {
-          background-image: url('../img/no-v-orange.png');
-        }
-        div.buttons{
-          background:#ff9900;
-
-          .push-percent{ color: #ff9900; }
-        }
-        div.image,h4,div.price,div.buttons { border-color: #ff9900 !important; }
-        h4{ color: #ff9900; }
-      }
-    }
   }
 
   &:not(.two-per-row) {
@@ -327,6 +306,31 @@ div.contact {
     h4 { margin-bottom: 0; }
     .price,h4,.buttons { border-right: 1px #95c11f solid }
     .image { border-left: none !important; }
+
+    .fruit-wrapper {
+      &:nth-child(2n) {
+
+        div.fruit-item {
+          border-color: #ff9900;
+          color: #ff9900;
+
+          div.checked {
+            background-image: url('../img/v-orange.png');
+          }
+          div.unchecked {
+            background-image: url('../img/no-v-orange.png');
+          }
+          div.buttons{
+            background:#ff9900;
+
+            .push-percent{ color: #ff9900; }
+          }
+          div.image,h4,div.price,div.buttons { border-color: #ff9900 !important; }
+          h4{ color: #ff9900; }
+        }
+      }
+
+    }
   }
 
   &.two-per-row {
@@ -338,6 +342,28 @@ div.contact {
       &:nth-child(2n) {
         padding-right: 7px;
         padding-left: 0px;
+      }
+
+
+      &:not(:nth-child(4n-2)):not(:nth-child(4n-1)) {
+        div.fruit-item {
+          border-color: #ff9900;
+          color: #ff9900;
+
+          div.checked {
+            background-image: url('../img/v-orange.png');
+          }
+          div.unchecked {
+            background-image: url('../img/no-v-orange.png');
+          }
+          div.buttons{
+            background:#ff9900;
+
+            .push-percent{ color: #ff9900; }
+          }
+          div.image,h4,div.price,div.buttons { border-color: #ff9900 !important; }
+          h4{ color: #ff9900; }
+        }
       }
 
       div.fruit-item {
@@ -514,7 +540,7 @@ div.contact {
   width: 53px;
   height:19px;
   color: $orangeColor;
-
+  margin-left: 5px;
   input {
     width: 53px;
     height:20px;
