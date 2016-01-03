@@ -533,5 +533,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     margin-top: 2px; }
   .platform-ios .bar-balanced #search-bar {
     margin-top: 17px; }
+.platform-ios .tabs-top .tabs {
+  top: 55px !important; }
 .platform-ios #charts-page select {
   padding-right: 23px !important; }
