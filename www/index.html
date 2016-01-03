@@ -10,8 +10,8 @@
     <script src="js/parse-1.6.7.min.js"></script>
     <script src="js/deepLinkingHandler.js"></script>
     <script src="js/extensions.min.js"></script>
-    <script src="lib/highcharts.js"></script>
-    <script src="lib/highcharts-ng/dist/highcharts-ng.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/highcharts-ng.min.js"></script>
     <script src="cordova.js"></script>
     <script src="js/app.min.js"></script>
     <script src="views/views.js"></script>
@@ -30,8 +30,8 @@
                         <img src="img/icon/search.png" />
                     </button>
                     <button on-tap="changeView()" class="button button-icon" ng-class="viewClassName">
-                        <img src="img/icon/view2.png" ng-hide="viewClassName" />
-                        <img src="img/icon/view1.png" ng-hide="!viewClassName" />
+                        <img src="img/icon/view2.png" ng-if="!viewClassName" />
+                        <img src="img/icon/view1.png" ng-if="viewClassName" />
                     </button>
                     <label class="filterDate" style="overflow: hidden;">
                         {{filterDate | date:'d/M'}}

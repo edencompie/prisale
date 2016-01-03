@@ -526,6 +526,8 @@ div.contact {
       padding-left:0;
 
       select {
+        border-color: #95c11f;
+        border-radius: 0;
         padding-right: 18px;
         background: #fff url('../img/select-arrow.png') right center no-repeat;
         background-size: 21px 29px;
@@ -561,7 +563,7 @@ div.contact {
 
 
 @keyframes example {
-  from {width: 0%;}
+  from {width: 2%;}
   to {width: 92%;}
 }
 
@@ -592,6 +594,10 @@ div#search-bar {
     input {
       width: 100% !important;
       height: 100%;
+
+      &:focus {
+        visibility: hidden;
+      }
     }
   }
   input[type=search] {
@@ -653,4 +659,24 @@ input[type=date]::-webkit-inner-spin-button,
 input[type=date]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+
+.platform-ios {
+  .bar-balanced {
+    height: 64px !important;
+    padding-top: 17px;
+
+    img.logo { margin-top:-3px !important; }
+    span.left-buttons { margin-top: -3px !important; }
+    button.button-icon { margin-top: 0 !important; }
+    .filterDate { margin-top: 2px; }
+    #search-bar { margin-top: 17px; }
+  }
+
+  #charts-page {
+    select {
+
+      padding-right: 23px !important;
+    }
+  }
 }

@@ -410,6 +410,8 @@ div.contact {
     padding-right: 0;
     padding-left: 0; }
     #charts-page .filters .col select {
+      border-color: #95c11f;
+      border-radius: 0;
       padding-right: 18px;
       background: #fff url("../img/select-arrow.png") right center no-repeat;
       background-size: 21px 29px;
@@ -435,7 +437,7 @@ div.contact {
 
 @keyframes example {
   from {
-    width: 0%; }
+    width: 2%; }
   to {
     width: 92%; } }
 div#search-bar {
@@ -461,6 +463,8 @@ div#search-bar {
     div#search-bar:not(.open-search-bar) input {
       width: 100% !important;
       height: 100%; }
+      div#search-bar:not(.open-search-bar) input:focus {
+        visibility: hidden; }
   div#search-bar input[type=search] {
     float: left;
     width: 92%;
@@ -507,3 +511,19 @@ input[type=date]::-webkit-inner-spin-button,
 input[type=date]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none; }
+
+.platform-ios .bar-balanced {
+  height: 64px !important;
+  padding-top: 17px; }
+  .platform-ios .bar-balanced img.logo {
+    margin-top: -3px !important; }
+  .platform-ios .bar-balanced span.left-buttons {
+    margin-top: -3px !important; }
+  .platform-ios .bar-balanced button.button-icon {
+    margin-top: 0 !important; }
+  .platform-ios .bar-balanced .filterDate {
+    margin-top: 2px; }
+  .platform-ios .bar-balanced #search-bar {
+    margin-top: 17px; }
+.platform-ios #charts-page select {
+  padding-right: 23px !important; }
