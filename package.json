@@ -2,7 +2,9 @@
   "name": "prisale",
   "version": "1.0.0",
   "description": "prisale",
-  "dependencies": {},
+  "dependencies": {
+    "phonegap-plugin-push": "^1.5.2"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",

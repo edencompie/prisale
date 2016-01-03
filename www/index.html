@@ -2,7 +2,7 @@
 <html ng-app="jobhop" ng-controller="MainController">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="*">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
     <link href="http://fonts.googleapis.com/earlyaccess/opensanshebrew.css" rel="stylesheet">
@@ -33,7 +33,7 @@
                         <img src="img/icon/view2.png" ng-hide="viewClassName" />
                         <img src="img/icon/view1.png" ng-hide="!viewClassName" />
                     </button>
-                    <label class="filterDate">
+                    <label class="filterDate" style="overflow: hidden;">
                         {{filterDate | date:'d/M'}}
                         <input type="date" ng-model="filterDate" ng-change='setDate(filterDate)' style="z-index: 9999999999;" ng-hide="showSearchBar" />
                     </label>
@@ -43,7 +43,7 @@
 var appElement = document.querySelector('[ng-app=jobhop]');
 var appScope = angular.element(appElement).scope();
 var controllerScope = appScope.$$childHead;
-controllerScope.setNameFilter(this.value);" autocomplete="off" /></form>
+controllerScope.setNameFilter(this.value);this.blur();" autocomplete="off" /></form>
                         <ul ng-show="showSearchBar" ng-show="hasSearchResults()">
                             <li ng-repeat="searchResult in searchResults" on-tap="setNameFilter(searchResult)">{{searchResult}}</li>
                         </ul>
