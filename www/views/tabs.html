@@ -1,4 +1,24 @@
 <ion-view>
+    <div class="tabs-top ">
+        <div class="tabs">
+            <a href="javascript:void(0);" class="tab-item" on-tap="toggleFilterBySelected()" ng-class="classForFilterBySelected()"><img src="img/icon/basket.png"> סל מוצרים</a>
+            <a href="javascript:void(0);" class="tab-item" on-tap="showDetailsPopup()"><img src="img/icon/details.png"> הוספת נתונים</a>
+            <a href="javascript:void(0);" class="tab-item" on-tap="showFilterPopup()"><img src="img/icon/filter.png"> סינון ומיון</a>
+
+            <!--<a class="tab-item active" href="#">-->
+                <!--<i class="icon ion-home"></i>-->
+                <!--Test-->
+            <!--</a>-->
+            <!--<a class="tab-item" href="#">-->
+                <!--<i class="icon ion-star"></i>-->
+                <!--Favorites-->
+            <!--</a>-->
+            <!--<a class="tab-item" href="#">-->
+                <!--<i class="icon ion-gear-a"></i>-->
+                <!--Settings-->
+            <!--</a>-->
+        </div>
+    </div>
     <ion-nav-view name="content"></ion-nav-view>
     <ion-tabs class="tabs-balanced tabs-icon-top">
         <ion-tab title="מחיר סיטונאי" icon-on="buyer" icon-off="buyer" on-select="setUserType('wholesale')"></ion-tab>

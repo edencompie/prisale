@@ -1,10 +1,6 @@
 <ion-view>
     <ion-content scroll="true" padding="false" class="has-footer products">
-        <div class="row top-tabs">
-            <div class="col" on-tap="toggleFilterBySelected()" ng-class="classForFilterBySelected()"><img src="img/icon/basket.png"><br />סל מוצרים</div>
-            <div class="col" on-tap="showDetailsPopup()"><img src="img/icon/details.png"><br />הוספת נתונים</div>
-            <div class="col" on-tap="showFilterPopup()"><img src="img/icon/filter.png"><br />סינון ומיון</div>
-        </div>
+        <div style="margin-top: 25px; float: left; width: 100%;"></div>
         <div ng-if="filterName.length" style="text-align: center; direction:rtl;margin-top: 14px;" on-tap="setNameFilter('')">
             רשימת מוצרים מכילה רק מוצרים ששמם מתחיל ב<strong>{{filterName}}</strong>.
             לביטול לחץ כאן

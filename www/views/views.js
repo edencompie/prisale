@@ -542,15 +542,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-content scroll=\"true\" padding=\"false\" class=\"has-footer products\">\r" +
     "\n" +
-    "        <div class=\"row top-tabs\">\r" +
-    "\n" +
-    "            <div class=\"col\" on-tap=\"toggleFilterBySelected()\" ng-class=\"classForFilterBySelected()\"><img src=\"img/icon/basket.png\"><br />סל מוצרים</div>\r" +
-    "\n" +
-    "            <div class=\"col\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"><br />הוספת נתונים</div>\r" +
-    "\n" +
-    "            <div class=\"col\" on-tap=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"><br />סינון ומיון</div>\r" +
-    "\n" +
-    "        </div>\r" +
+    "        <div style=\"margin-top: 25px; float: left; width: 100%;\"></div>\r" +
     "\n" +
     "        <div ng-if=\"filterName.length\" style=\"text-align: center; direction:rtl;margin-top: 14px;\" on-tap=\"setNameFilter('')\">\r" +
     "\n" +
@@ -649,6 +641,46 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('www/views/tabs.html',
     "<ion-view>\r" +
+    "\n" +
+    "    <div class=\"tabs-top \">\r" +
+    "\n" +
+    "        <div class=\"tabs\">\r" +
+    "\n" +
+    "            <a href=\"javascript:void(0);\" class=\"tab-item\" on-tap=\"toggleFilterBySelected()\" ng-class=\"classForFilterBySelected()\"><img src=\"img/icon/basket.png\"> סל מוצרים</a>\r" +
+    "\n" +
+    "            <a href=\"javascript:void(0);\" class=\"tab-item\" on-tap=\"showDetailsPopup()\"><img src=\"img/icon/details.png\"> הוספת נתונים</a>\r" +
+    "\n" +
+    "            <a href=\"javascript:void(0);\" class=\"tab-item\" on-tap=\"showFilterPopup()\"><img src=\"img/icon/filter.png\"> סינון ומיון</a>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <!--<a class=\"tab-item active\" href=\"#\">-->\r" +
+    "\n" +
+    "                <!--<i class=\"icon ion-home\"></i>-->\r" +
+    "\n" +
+    "                <!--Test-->\r" +
+    "\n" +
+    "            <!--</a>-->\r" +
+    "\n" +
+    "            <!--<a class=\"tab-item\" href=\"#\">-->\r" +
+    "\n" +
+    "                <!--<i class=\"icon ion-star\"></i>-->\r" +
+    "\n" +
+    "                <!--Favorites-->\r" +
+    "\n" +
+    "            <!--</a>-->\r" +
+    "\n" +
+    "            <!--<a class=\"tab-item\" href=\"#\">-->\r" +
+    "\n" +
+    "                <!--<i class=\"icon ion-gear-a\"></i>-->\r" +
+    "\n" +
+    "                <!--Settings-->\r" +
+    "\n" +
+    "            <!--</a>-->\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
     "\n" +
     "    <ion-nav-view name=\"content\"></ion-nav-view>\r" +
     "\n" +

@@ -361,20 +361,27 @@ div.contact {
     margin-bottom: 7px;
     display: inline-block; }
 
-.top-tabs {
+.tabs-top {
+  top: 43px;
   padding: 5px 0 0 0;
   color: #95c11f; }
-  .top-tabs .col {
+  @media screen and (max-width: 355px) {
+    .tabs-top a {
+      font-size: 13px; } }
+  .tabs-top a {
+    color: #95c11f;
+    direction: rtl;
     border: 2px solid #95c11f;
     background: #fff;
     text-align: center;
     font-weight: 600;
     padding: 3px 0 0 0; }
-    .top-tabs .col:not(:last-child) {
+    .tabs-top a:not(:last-child) {
       border-right: 0; }
-    .top-tabs .col.active {
+    .tabs-top a.active {
       background: #dbe8b3; }
-    .top-tabs .col img {
+    .tabs-top a img {
+      margin-bottom: -3px;
       height: 19px; }
 
 .filterDate {

@@ -123,10 +123,10 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     };
 
     $scope.filterBySelected = false;
-    $scope.classForFilterBySelected = function() {
+    $rootScope.classForFilterBySelected = function() {
         return $scope.filterBySelected ? 'active' : '';
     };
-    $scope.toggleFilterBySelected = function() {
+    $rootScope.toggleFilterBySelected = function() {
         $scope.filterBySelected = ! $scope.filterBySelected;
     };
 
@@ -173,7 +173,6 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     };
 
     $rootScope.setNameFilter = function(newNameFilter) {
-        console.log('setNameFilter', newNameFilter);
         $rootScope.filterName = newNameFilter;
         $rootScope.resetProducts();
         $rootScope.closeNameFilter();

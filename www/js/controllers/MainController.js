@@ -119,7 +119,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
         $window.open('http://www.israeli-market.gov.il', '_system');
     };
     $rootScope.setDate = function(date) {
-        $rootScope.filterDate = $filter('date')(date, 'yyyy-MM-dd');
+        $rootScope.filterDate = date;
         $rootScope.resetProducts();
     };
 

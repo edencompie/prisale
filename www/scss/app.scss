@@ -472,11 +472,19 @@ div.contact {
 
 
 // List top actions
-.top-tabs {
+.tabs-top {
+  top: 43px;
   padding: 5px 0 0 0;
   color: #95c11f;
 
-  .col {
+  @media screen and (max-width: 355px) {
+    a {
+      font-size: 13px;
+    }
+  }
+  a {
+    color: #95c11f;
+    direction: rtl;
     border:2px solid #95c11f;
     background:#fff;
     text-align:center;
@@ -487,8 +495,10 @@ div.contact {
     &.active{ background: #dbe8b3; }
 
     img {
+      margin-bottom: -3px;
       height: 19px;
     }
+
   }
 }
 
