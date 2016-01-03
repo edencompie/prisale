@@ -63,7 +63,12 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
         if (isEnabled) {
             var ProductNotify = Parse.Object.extend("product_notify");
             var productNotify = new ProductNotify();
+
+            var install = new Parse.Object("_Installation");
+            install.id = window.localStorage.getItem("instId");
+
             productNotify.set('productID', item.id);
+            productNotify.set('InstallID', install);
             productNotify.set('percent', parseInt(percent));
             productNotify.save(null, function(object) {
                 $rootScope.productsNotifications[item.id] = object;

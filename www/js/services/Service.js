@@ -2,9 +2,8 @@ angular.module('jobhop.services', [])
     .factory('Installation', function() {
         return function() {
             console.log('Enter service');
-            if(!window.localStorage.getItem('device_token')) {
+            if(!window.localStorage.getItem('instId')) {
                 console.log('Passed flag');
-                window.localStorage.setItem('device_token', true);
                 var Push = window.PushNotification.init({ "android": {
                     'senderID': '633301545419',
                     'sound': 'true',
@@ -37,6 +36,7 @@ angular.module('jobhop.services', [])
                     if(window.device.platform !== 'iOS') {
                         finalInstId = generateParseUUID(instId); // The original instId is not acceptable by parse.
                     }
+                    window.localStorage.setItem('instId', finalInstId);
                     // I use toLowerCase() because the platformType window.device.platform will produce upper cased names like: "Android" while parse accepts "android".
                     Parse.Cloud.run('Install', { 'deviceToken': deviceToken, 'instId': finalInstId, 'deviceType': platformType.toLowerCase() }, {
                         success: function(response) {

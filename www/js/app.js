@@ -66,23 +66,32 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 Run.$inject = ['$rootScope', '$ionicPlatform', '$window', '$state', 'Installation'];
 
 function Run($rootScope, $ionicPlatform, $window, $state, Installation) {
-
-    var productsNotifications = [],
-        ProductNotify = Parse.Object.extend("product_notify"),
-        query = new Parse.Query(ProductNotify);
-
-    //query.equalTo('percent', 100);
     $rootScope.appReady = false; //todo
-    query.find({
-        success:function(list) {
-            for (var i = 0; i < list.length; i++) {
-                productsNotifications[list[i].get('productID')] = list[i];
-            }
 
-            $rootScope.productsNotifications = productsNotifications;
-            $rootScope.appReady = true;
-        }
-    });
+    if (window.localStorage.getItem("instId")) {
+        var productsNotifications = [],
+            ProductNotify = Parse.Object.extend("product_notify"),
+            query = new Parse.Query(ProductNotify);
+
+        var install = new Parse.Object("_Installation");
+        install.id = window.localStorage.getItem("instId");
+
+        query.equalTo("InstallID", install);
+        query.find({
+            success:function(list) {
+                console.log('success', list);
+                for (var i = 0; i < list.length; i++) {
+                    productsNotifications[list[i].get('productID')] = list[i];
+                }
+                $rootScope.productsNotifications = productsNotifications;
+                $rootScope.appReady = true;
+            }
+        });
+
+    } else {
+        $rootScope.productsNotifications = [];
+        $rootScope.appReady = true;
+    }
 
     $ionicPlatform.ready(function() {
       Installation();

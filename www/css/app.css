@@ -385,6 +385,7 @@ div.contact {
   margin-top: 12px;
   white-space: nowrap;
   line-height: 20px;
+  float: right;
   width: 53px;
   height: 19px;
   color: #ff6600; }
