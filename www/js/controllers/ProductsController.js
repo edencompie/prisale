@@ -85,6 +85,13 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
             return;
         }
 
+        if ($scope.fridayOrSaturday()) {
+            $rootScope.items = [];
+            $scope.no_more_data_to_load = true;
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            return;
+        }
+
         // Workaround to make sure productsNotifications are ready
         if ($rootScope.productsNotifications === undefined) {
             setTimeout($rootScope.loadMore, 300);
@@ -116,6 +123,11 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     });*/
     $rootScope.moreDataCanBeLoaded = function() {
         return ! $scope.no_more_data_to_load;
+    };
+
+    $scope.itemHolded = function(item) {
+        navigator.vibrate(100);
+        item.checked = ! item.checked;
     };
 
     $scope.itemClicked = function(item) {

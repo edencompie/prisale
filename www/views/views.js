@@ -96,7 +96,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "            תמונת מצב מהימנה לכלל העוסקים בשרשרת הערך (חקלאים, סיטונאים וקמעונאים)\r" +
+    "            תמונת מצב מהימנה לכלל העוסקים בשרשרת הערך (חקלאים, סיטונים וקמעונאים)\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -176,17 +176,17 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                </div>\r" +
     "\n" +
-    "                <div class=\"col\" ng-if=\"chartType == 'line' || chartType == 'column'\">\r" +
+    "                <!--<div class=\"col\" ng-if=\"chartType == 'line' || chartType == 'column'\">-->\r" +
     "\n" +
-    "                    <select ng-model=\"userType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\r" +
+    "                    <!--<select ng-model=\"userType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">-->\r" +
     "\n" +
-    "                        <option value=\"agriculturalPrice\">מחיר סיטונאי</option>\r" +
+    "                        <!--<option value=\"agriculturalPrice\">מחיר סיטוני</option>-->\r" +
     "\n" +
-    "                        <option value=\"wholesalePrice\">מחיר חקלאי</option>\r" +
+    "                        <!--<option value=\"wholesalePrice\">מחיר חקלאי</option>-->\r" +
     "\n" +
-    "                    </select>\r" +
+    "                    <!--</select>-->\r" +
     "\n" +
-    "                </div>\r" +
+    "                <!--</div>-->\r" +
     "\n" +
     "                <div class=\"col\" ng-if=\"chartType == 'line'\">\r" +
     "\n" +
@@ -270,13 +270,13 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <p style=\"font-size: 16px\">\r" +
     "\n" +
-    "    חברת השוק הסיטונאי בע\"מ<br />\r" +
+    "                שוק סיטוק הסיטוני בע\"מ<br />\r" +
     "\n" +
     "                אפעל 35, פתח תקווה\r" +
     "\n" +
     "            </p>\r" +
     "\n" +
-    "            <p>מייל: <span style=\"font-size:13px; white-space: nowrap\">contact@israeli-market.org.il</span>\r" +
+    "            <p>מייל: <span style=\"font-size:13px; white-space: nowrap\">marketoffice@israeli-market.gov.il</span>\r" +
     "\n" +
     "            <br />\r" +
     "\n" +
@@ -324,7 +324,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"col\">\r" +
     "\n" +
-    "            <span class=\"title\">פרטים</span>\r" +
+    "            <span class=\"title\">הוספת פרטים</span>\r" +
     "\n" +
     "            <label>\r" +
     "\n" +
@@ -352,7 +352,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                אחוז שינוי במחיר\r" +
+    "                אחוז שינוי יומי במחיר\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -426,16 +426,6 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <label>\r" +
     "\n" +
-    "                <input ng-model=\"orderFilter\" value=\"DAILY_CHANGE\" type=\"radio\" name=\"order-by\" checked=\"checked\">\r" +
-    "\n" +
-    "                <span class=\"style\"></span>\r" +
-    "\n" +
-    "                אחוז שינוי יומי\r" +
-    "\n" +
-    "            </label>\r" +
-    "\n" +
-    "            <label>\r" +
-    "\n" +
     "                <input ng-model=\"orderFilter\" value=\"ABC\" type=\"radio\" name=\"order-by\">\r" +
     "\n" +
     "                <span class=\"style\"></span>\r" +
@@ -451,6 +441,16 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                <span class=\"style\"></span>\r" +
     "\n" +
     "                מחיר\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"orderFilter\" value=\"DAILY_CHANGE\" type=\"radio\" name=\"order-by\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                אחוז שינוי יומי\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -548,7 +548,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            רשימת מוצרים מכילה רק מוצרים ששמם מתחיל ב<strong>{{filterName}}</strong>.\r" +
     "\n" +
-    "            לביטול לחץ כאן\r" +
+    "            לביטול <u>לחץ כאן</u>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -560,19 +560,19 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\">\r" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\" ng-if=\"!fridayOrSaturday()\">\r" +
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
     "                    <div ng-class=\"itemChecked(item)\" on-tap=\"itemClicked(item)\"></div>\r" +
     "\n" +
-    "                    <div class=\"image\" on-hold=\"itemClicked(item)\" on-tap=\"goToCharts(item)\">\r" +
+    "                    <div class=\"image\" on-hold=\"itemHolded(item)\" on-tap=\"goToCharts(item)\">\r" +
     "\n" +
     "                        <img ng-src=\"http://62.219.7.38/items/{{item.PicNum}}.png\" onerror=\"this.onerror='';this.src='img/logo.png'\">\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <h4 on-hold=\"itemClicked(item)\" on-tap=\"goToCharts(item)\">{{item.name}}</h4>\r" +
+    "                    <h4 on-hold=\"itemHolded(item)\" on-tap=\"goToCharts(item)\">{{item.name}}</h4>\r" +
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +
@@ -616,9 +616,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </div>\r" +
     "\n" +
-    "            <div ng-show=\"!filteredItems.length && filterBySelected\" style=\"text-align:center\">לא נבחרו מוצרים</div>\r" +
+    "            <div ng-show=\"!filteredItems.length && filterBySelected && !fridayOrSaturday()\" style=\"text-align:center\">לא נבחרו מוצרים</div>\r" +
     "\n" +
-    "            <div ng-show=\"!filteredItems.length && !filterBySelected\" style=\"text-align:center\">בקרוב יעודכנו נתונים</div>\r" +
+    "            <div ng-show=\"!filteredItems.length && !filterBySelected && !fridayOrSaturday()\" style=\"text-align:center\">בקרוב יעודכנו נתונים</div>\r" +
     "\n" +
     "        </ion-list>\r" +
     "\n" +
@@ -660,7 +660,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-tabs class=\"tabs-balanced tabs-icon-top\">\r" +
     "\n" +
-    "        <ion-tab title=\"מחיר סיטונאי\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
+    "        <ion-tab title=\"מחיר סיטוני\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +
     "        <ion-tab title=\"מחיר חקלאי\" icon-on=\"farmer\" icon-off=\"farmer\" on-select=\"setUserType('agriculture')\"></ion-tab>\r" +
     "\n" +

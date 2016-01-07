@@ -25,11 +25,6 @@
         <div class="col">
             <span class="title">מיון</span>
             <label>
-                <input ng-model="orderFilter" value="DAILY_CHANGE" type="radio" name="order-by" checked="checked">
-                <span class="style"></span>
-                אחוז שינוי יומי
-            </label>
-            <label>
                 <input ng-model="orderFilter" value="ABC" type="radio" name="order-by">
                 <span class="style"></span>
                 א'-ב'
@@ -38,6 +33,11 @@
                 <input ng-model="orderFilter" value="PRICE" type="radio" name="order-by">
                 <span class="style"></span>
                 מחיר
+            </label>
+            <label>
+                <input ng-model="orderFilter" value="DAILY_CHANGE" type="radio" name="order-by">
+                <span class="style"></span>
+                אחוז שינוי יומי
             </label>
         </div>
     </div>

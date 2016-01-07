@@ -34,8 +34,8 @@
                         <img src="img/icon/view1.png" ng-if="viewClassName" />
                     </button>
                     <label class="filterDate" style="overflow: hidden;">
-                        {{filterDate | date:'d/M'}}
-                        <input type="date" ng-model="filterDate" ng-change='setDate(filterDate)' style="z-index: 9999999999;" ng-hide="showSearchBar" />
+                        {{filterDate | date:'dd/MM/yy'}}
+                        <input id="date_filter_input" type="date" ng-model="filterDate" ng-change='setDate(filterDate)' style="z-index: 9999999999;" ng-hide="showSearchBar" />
                     </label>
                     <div id="search-bar" ng-class="{'open-search-bar': showSearchBar}">
                         <small ng-show="showSearchBar" class="close-search" on-tap="closeNameFilter()"><i class="ion-close-round"></i></small>

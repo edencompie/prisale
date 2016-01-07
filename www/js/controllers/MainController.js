@@ -132,7 +132,9 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
             .then(function(items) {
 
                 for(var i =0; i<items.data.length; i++) {
-                    $rootScope.productNames.push(items.data[i].name);
+                    if (items.data[i].topQuality.wholesale.price || items.data[i].primeQuality.wholesale.price) {
+                        $rootScope.productNames.push(items.data[i].name);
+                    }
                 }
 
                 if (items.data.length == 50) {
@@ -154,5 +156,20 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
         }
 
     });
+
+
+    //document.addEventListener("deviceready", onDeviceReady, false);
+    //
+    //function onDeviceReady(){
+    //    document.addEventListener("backbutton", function(e){
+    //        if($location.path() == '/main/products-wholesale'){
+    //            e.preventDefault();
+    //            navigator.app.exitApp();
+    //        }
+    //        else {
+    //            $location.path('/main/products-wholesale');
+    //        }
+    //    }, false);
+    //}
 
 };

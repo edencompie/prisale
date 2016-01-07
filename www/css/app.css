@@ -111,7 +111,7 @@ div.bordered {
     transform: translate(-50%, 0); }
 
 div.contact {
-  width: 240px;
+  width: 260px;
   display: inline-block;
   margin-top: 45px;
   font-size: 14px;
@@ -159,7 +159,7 @@ div.contact {
       .list-container div.fruit-wrapper div.fruit-item div.image {
         float: right;
         width: 38%;
-        height: 110px;
+        height: 108px;
         background: white;
         text-align: center;
         padding: 15px;
@@ -183,15 +183,20 @@ div.contact {
             white-space: nowrap;
             text-align: right; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
-            padding-left: 10px; }
+            padding-left: 2px; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
-            padding-right: 10px; }
+            padding-right: 2px; }
+          @media screen and (min-width: 355px) {
+            .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
+              padding-left: 10px; }
+            .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
+              padding-right: 10px; } }
       .list-container div.fruit-wrapper div.fruit-item div.buttons {
         position: relative;
         background: #95c11f;
         float: left;
         width: 62%;
-        height: 28px;
+        height: 24px;
         line-height: 20px;
         text-align: center;
         color: #fff; }
@@ -200,13 +205,13 @@ div.contact {
           color: #95c11f;
           position: absolute;
           right: 37px;
-          top: 5px;
-          font-size: 10px; }
+          top: 3px;
+          font-size: 8px; }
           .list-container div.fruit-wrapper div.fruit-item div.buttons .push-percent small {
             font-size: 8px; }
         .list-container div.fruit-wrapper div.fruit-item div.buttons img {
           margin: 3px 30px 0 30px;
-          height: 24px; }
+          height: 20px; }
       .list-container div.fruit-wrapper div.fruit-item h4 {
         text-align: center;
         float: left;
@@ -328,11 +333,11 @@ div.contact {
       background-image: url("../img/radio-checked.png"); }
     .popup-container .popup input[type=radio] + span.style {
       display: inline-block;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       background-image: url("../img/radio-unchecked.png");
-      background-size: contain;
-      margin-top: 1px; }
+      background-size: cover;
+      background-repeat: no-repeat; }
   .popup-container .popup input[type=checkbox] {
     display: none; }
     .popup-container .popup input[type=checkbox]:checked + span.style {
@@ -348,10 +353,11 @@ div.contact {
   border: #ff6600 1px solid;
   width: 50%; }
 .popup-container.list-filter .popup label, .popup-container.details .popup label, .popup-container.date-filter .popup label {
-  line-height: 16px;
+  height: 15px;
   display: block;
   width: 100%;
-  font-size: 15px; }
+  font-size: 15px;
+  margin-bottom: 5px; }
 .popup-container.list-filter .popup span.title, .popup-container.details .popup span.title, .popup-container.date-filter .popup span.title {
   font-weight: 600;
   font-size: 14px;
@@ -408,12 +414,15 @@ div.contact {
   white-space: nowrap;
   line-height: 20px;
   float: right;
-  width: 53px;
+  width: 92px;
   height: 19px;
   color: #ff6600;
   margin-left: 5px; }
+  @media screen and (max-width: 339px) {
+    .filterDate {
+      width: 52px; } }
   .filterDate input {
-    width: 53px;
+    width: 92px;
     height: 20px;
     position: absolute;
     top: 0;

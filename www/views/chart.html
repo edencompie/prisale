@@ -9,12 +9,12 @@
                         <!--<option value="bar">השוואה בין מקטעים</option>-->
                     </select>
                 </div>
-                <div class="col" ng-if="chartType == 'line' || chartType == 'column'">
-                    <select ng-model="userType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
-                        <option value="agriculturalPrice">מחיר סיטונאי</option>
-                        <option value="wholesalePrice">מחיר חקלאי</option>
-                    </select>
-                </div>
+                <!--<div class="col" ng-if="chartType == 'line' || chartType == 'column'">-->
+                    <!--<select ng-model="userType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">-->
+                        <!--<option value="agriculturalPrice">מחיר סיטוני</option>-->
+                        <!--<option value="wholesalePrice">מחיר חקלאי</option>-->
+                    <!--</select>-->
+                <!--</div>-->
                 <div class="col" ng-if="chartType == 'line'">
                     <select ng-model="price_avg2" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
                         <option value="WEEK">שבוע</option>
