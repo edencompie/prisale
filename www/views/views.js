@@ -560,7 +560,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\" ng-if=\"!fridayOrSaturday()\">\r" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\" ng-if=\"!fridayOrSaturday()\" on-finish-render>\r" +
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
@@ -572,7 +572,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <h4 on-hold=\"itemHolded(item)\" on-tap=\"goToCharts(item)\">{{item.name}}</h4>\r" +
+    "                    <h4 on-hold=\"itemHolded(item)\" on-tap=\"goToCharts(item)\" ng-class=\"{ 'makeHigh': isNextToHeightProduct(item) }\">{{item.name}}</h4>\r" +
     "\n" +
     "                    <div class=\"price\">\r" +
     "\n" +

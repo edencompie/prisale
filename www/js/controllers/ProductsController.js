@@ -1,6 +1,19 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
+angular.module('jobhop').directive('onFinishRender', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element) {
+            if (scope.$last === true) {
+                element.ready(function () {
+
+                });
+            }
+        }
+    }
+});
+
 ProductsController.$inject = ['$ionicLoading', '$document', '$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
 
 function ProductsController($ionicLoading, $document, $rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
@@ -12,6 +25,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     $rootScope.changeView = function() {
         $rootScope.viewClassName = $rootScope.viewClassName == 'two-per-row' ? '' : 'two-per-row';
     };
+
 
 
     $rootScope.resetProducts = function() {
@@ -122,6 +136,10 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         //}
     });*/
     $rootScope.moreDataCanBeLoaded = function() {
+        return ! $scope.no_more_data_to_load;
+    };
+
+    $rootScope.isNextToHeightProduct = function(item) {
         return ! $scope.no_more_data_to_load;
     };
 

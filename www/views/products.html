@@ -9,13 +9,13 @@
             לא מתקיים מסחר בימים שישי ושבת
         </div>
         <ion-list class="list-container" ng-class="viewClassName">
-            <div class="fruit-wrapper" ng-repeat="item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)" ng-if="!fridayOrSaturday()">
+            <div class="fruit-wrapper" ng-repeat="item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)" ng-if="!fridayOrSaturday()" on-finish-render>
                 <div class="fruit-item">
                     <div ng-class="itemChecked(item)" on-tap="itemClicked(item)"></div>
                     <div class="image" on-hold="itemHolded(item)" on-tap="goToCharts(item)">
                         <img ng-src="http://62.219.7.38/items/{{item.PicNum}}.png" onerror="this.onerror='';this.src='img/logo.png'">
                     </div>
-                    <h4 on-hold="itemHolded(item)" on-tap="goToCharts(item)">{{item.name}}</h4>
+                    <h4 on-hold="itemHolded(item)" on-tap="goToCharts(item)" ng-class="{ 'makeHigh': isNextToHeightProduct(item) }">{{item.name}}</h4>
                     <div class="price">
                         <table>
                             <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>

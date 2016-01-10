@@ -157,19 +157,4 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
     });
 
-
-    //document.addEventListener("deviceready", onDeviceReady, false);
-    //
-    //function onDeviceReady(){
-    //    document.addEventListener("backbutton", function(e){
-    //        if($location.path() == '/main/products-wholesale'){
-    //            e.preventDefault();
-    //            navigator.app.exitApp();
-    //        }
-    //        else {
-    //            $location.path('/main/products-wholesale');
-    //        }
-    //    }, false);
-    //}
-
 };

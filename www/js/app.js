@@ -96,4 +96,10 @@ function Run($rootScope, $ionicPlatform, $window, $state, Installation) {
     $ionicPlatform.ready(function() {
       Installation();
     });
+
+    $ionicPlatform.registerBackButtonAction(function(e) {
+        e.preventDefault();
+        console.log('prevented');
+        navigator.app.exitApp();
+    }, 1000);
 };

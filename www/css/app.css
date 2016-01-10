@@ -163,6 +163,7 @@ div.contact {
         background: white;
         text-align: center;
         padding: 15px;
+        padding-bottom: 0;
         border-left: 1px solid #95c11f; }
         .list-container div.fruit-wrapper div.fruit-item div.image img {
           max-height: 100%;
@@ -218,7 +219,7 @@ div.contact {
         width: 62%;
         background: #fff;
         margin-top: 0;
-        height: 26px;
+        min-height: 26px;
         line-height: 26px;
         font-size: 16px;
         border-bottom: 2px solid #95c11f;
@@ -247,6 +248,13 @@ div.contact {
       border-color: #ff9900 !important; }
     .list-container:not(.two-per-row) .fruit-wrapper:nth-child(2n) div.fruit-item h4 {
       color: #ff9900; }
+  .list-container.two-per-row h4 {
+    height: 54px;
+    display: flex !important;
+    justify-content: flex-end !important;
+    flex-direction: column !important;
+    margin-top: -20px !important;
+    background: none !important; }
   .list-container.two-per-row div.fruit-wrapper {
     width: 50%;
     padding-right: 0px;
@@ -562,3 +570,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   top: 55px !important; }
 .platform-ios #charts-page select {
   padding-right: 23px !important; }
+
+.appReady {
+  visibility: visible !important; }

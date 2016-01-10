@@ -46,7 +46,10 @@
     "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
-    "android",
+    {
+      "platform": "android",
+      "locator": "wp8"
+    },
     "ios"
   ]
 }
