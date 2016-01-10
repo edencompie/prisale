@@ -366,6 +366,8 @@ div.contact {
   width: 100%;
   font-size: 15px;
   margin-bottom: 5px; }
+.popup-container.list-filter .popup label:not(:last-child), .popup-container.details .popup label:not(:last-child), .popup-container.date-filter .popup label:not(:last-child) {
+  margin-bottom: 10px; }
 .popup-container.list-filter .popup span.title, .popup-container.details .popup span.title, .popup-container.date-filter .popup span.title {
   font-weight: 600;
   font-size: 14px;
