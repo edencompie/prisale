@@ -13,6 +13,28 @@ var Config = {
 
 // Jobs
 Parse.Cloud.job('priceStatus', function(request, response) {
+
+	var SingleInstQuery = new Parse.Query(Parse.Installation).equalTo('objectId', 'inugDHH0Dd');
+	Parse.Push.send({
+		where: SingleInstQuery,
+		data: {
+			title: 'Prisale update:',
+			alert: 'ניסוי2'
+		}
+	}, {
+		success: function(a) {
+			console.log('---');
+			console.log(a);
+			console.log('---');
+			response.success('Success with push to:yaniv');
+		},
+		error: function(error) {
+			response.error(error.message);
+		}
+	});
+
+
+	return;
 	var page = 0;
 	var date = (new Date()).toISOString().split('T')[0];
 	var ProductsRequest = new Parse.Promise;

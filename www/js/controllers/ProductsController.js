@@ -108,7 +108,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
         // Workaround to make sure productsNotifications are ready
         if ($rootScope.productsNotifications === undefined) {
-            setTimeout($rootScope.loadMore, 300);
+            setTimeout($rootScope.loadMore, 150);
             return;
         }
 

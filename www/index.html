@@ -16,7 +16,7 @@
     <script src="js/app.min.js"></script>
     <script src="views/views.js"></script>
 </head>
-<body style="visibility: hidden" ng-show="appReady" ng-class="{ 'appReady': appReady }">
+<body ng-class="{ 'appReady': appReady }" style="visibility: hidden">
 <ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced">
@@ -66,9 +66,5 @@ controllerScope.setNameFilter(this.value);this.blur();" autocomplete="off" /></f
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
-<script>
-
-
-</script>
 </body>
 </html>

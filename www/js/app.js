@@ -63,9 +63,9 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 };
 
-Run.$inject = ['$rootScope', '$ionicPlatform', '$window', '$state', 'Installation'];
+Run.$inject = ['$rootScope', '$ionicPlatform', '$location', 'Installation'];
 
-function Run($rootScope, $ionicPlatform, $window, $state, Installation) {
+function Run($rootScope, $ionicPlatform, $location, Installation) {
     $rootScope.appReady = false; //todo
 
     if (window.localStorage.getItem("instId")) {
@@ -98,8 +98,13 @@ function Run($rootScope, $ionicPlatform, $window, $state, Installation) {
     });
 
     $ionicPlatform.registerBackButtonAction(function(e) {
-        e.preventDefault();
-        console.log('prevented');
-        navigator.app.exitApp();
-    }, 1000);
+
+        if ($location.path() == '/main/products-wholesale') {
+            navigator.app.exitApp();
+        } else {
+            e.preventDefault();
+            $location.url('/main/products-wholesale');
+            $rootScope.$apply();
+        }
+    }, 500);
 };

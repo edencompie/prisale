@@ -575,3 +575,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
 
 .appReady {
   visibility: visible !important; }
+
+body {
+  background: #FDF7EB; }
+  body.appReady {
+    visibility: visible !important; }
