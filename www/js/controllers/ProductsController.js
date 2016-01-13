@@ -90,7 +90,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     $rootScope.items = [];
     $rootScope.filterName  = '';
     $rootScope.filterType  = '';
-    $rootScope.filterOrder = 'DAILY_CHANGE';
+    $rootScope.filterOrder = 'ABC';
     $rootScope.filterSort  = undefined;
     $scope.no_more_data_to_load = false;
     $rootScope.loadMore = function() {
@@ -112,7 +112,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
             return;
         }
 
-        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name='+$rootScope.filterName+'&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder+'&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.items.length/50);
+        var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name='+$rootScope.filterName+'&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder.toString().replace('_desc', '')+'&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.items.length/50)+'&desc='+($rootScope.filterOrder.indexOf('desc') == -1 ? '0' : '1');
         $http.get(url)
             .then(function(items) {
                 if (items.data.length < 50) {

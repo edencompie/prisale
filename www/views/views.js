@@ -430,7 +430,17 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                א'-ב'\r" +
+    "                א'-ב' (נמוך - גבוה)\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"orderFilter\" value=\"ABC_desc\" type=\"radio\" name=\"order-by\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                א'-ב' (גבוה - נמוך)\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -440,7 +450,17 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                מחיר\r" +
+    "                מחיר (נמוך - גבוה)\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"orderFilter\" value=\"PRICE_desc\" type=\"radio\" name=\"order-by\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                מחיר (גבוה - נמוך)\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -450,7 +470,17 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                אחוז שינוי יומי\r" +
+    "                אחוז שינוי יומי (נמוך - גבוה)\r" +
+    "\n" +
+    "            </label>\r" +
+    "\n" +
+    "            <label>\r" +
+    "\n" +
+    "                <input ng-model=\"orderFilter\" value=\"DAILY_CHANGE_desc\" type=\"radio\" name=\"order-by\">\r" +
+    "\n" +
+    "                <span class=\"style\"></span>\r" +
+    "\n" +
+    "                אחוז שינוי יומי (גבוה - נמוך)\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
