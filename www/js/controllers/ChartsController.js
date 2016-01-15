@@ -89,7 +89,7 @@ function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
                     }
 
                     //lineWidth: 5
-                    $scope.chartConfig.options.yAxis.title.text = 'ש"ח';
+                    $scope.chartConfig.options.yAxis.title.text = 'מחיר סוג א\' (ש"ח)';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
                     $scope.chartConfig.options.xAxis.title.text = '';
                     $scope.chartConfig.options.chart.type = 'line';
@@ -142,7 +142,7 @@ function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
                     });
 
                     $scope.chartConfig.options.chart.type = 'column';
-                    $scope.chartConfig.options.yAxis.title.text = 'ש"ח';
+                    $scope.chartConfig.options.yAxis.title.text = 'מחיר סוג א\' (ש"ח)';
                     $scope.chartConfig.options.xAxis.title.text = '';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
                     $scope.chartConfig.options.legend.enabled = false;

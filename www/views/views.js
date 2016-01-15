@@ -270,7 +270,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <p style=\"font-size: 16px\">\r" +
     "\n" +
-    "                שוק סיטוק הסיטוני בע\"מ<br />\r" +
+    "                שוק סיטוני לישראל בע\"מ<br />\r" +
     "\n" +
     "                אפעל 35, פתח תקווה\r" +
     "\n" +
@@ -300,11 +300,33 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <h2 style=\"padding: 0 16px;\">עזרה</h2>\r" +
     "\n" +
-    "            <p>לורם איפסום או בקיצור ליפסום (בלטינית: lorem ipsum) הוא מלל מקובל וחסר משמעות המשמש \"ממלא מקום\" בעת עריכה, בתחום הדפוס, ההדפסה והפרסום.</p>\r" +
+    "\r" +
     "\n" +
-    "            <p>הטקסט משמש כלי לייצוג דפוס שאמור להתווסף למוצר הפרסום בעתיד. המדובר במלל ארוך במיוחד שניתן לבדוק עמו גופנים, וכן התאמת המלל לעמודים המעוצבים ובדיקת סוגי וגדלי גופן והתאמתם למוצר הסופי.</p>\r" +
+    "            <p>משתמשים יקרים,<br /><br />\r" +
     "\n" +
-    "            <p>בשל הדמיון של המילים בלורם איפסום ללטינית קלאסית, רבים חושבים שיש משמעות לטקסט, אולם לא נועדה להיות לו כל משמעות. המטרה היא רק \"תפיסת מקום\" על ידי מלל חסר משמעות (ראו דוגמה בהמשך).</p>\r" +
+    "\r" +
+    "\n" +
+    "                עשינו את המיטב כדי ליצור עבורכם את האפליקציה העדכנית והקלה ביותר לשימוש.\r" +
+    "\n" +
+    "            </p>\r" +
+    "\n" +
+    "            <p>חילקנו את האפליקציה בצורה הבאה:</p>\r" +
+    "\n" +
+    "            <ul style=\"list-style-type: decimal; margin-right: 25px;\">\r" +
+    "\n" +
+    "                <li>סרגל תחתון - מעבר בין המקטעים השונים וצפיה בגרפים.</li>\r" +
+    "\n" +
+    "                <li>סרגל עליון - סקירה לפי תאריך התוצרת, חיפוש לפי שם המוצר, ושינוי תצוגת הנתונים.</li>\r" +
+    "\n" +
+    "                <li>לחיצה קצרה על התוצרת תוביל מיד לגרף המחירים של תוצרת זו.</li>\r" +
+    "\n" +
+    "                <li>כדי לבחור מספר מוצרים ולצפות בגרפים שלהם זה לצד זה, יש ללחוץ על כל מוצר לחיצה ארוכה. הלחיצה הארוכה מוסיפה את התוצרת לסל המוצרים, ולאחר מכן ניתן לעבור לטאב הגרפים.</li>\r" +
+    "\n" +
+    "                <li>השוואה גרפית בין המוצרים אפשרית הן לאורך זמן והן לפי המחיר היומי .   </li>\r" +
+    "\n" +
+    "                </ul>\r" +
+    "\n" +
+    "<p style=\"margin-top: 10px\">                    אנו מאחלים לכם שימוש מהנה ופורה באפליקציה.</p>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -324,7 +346,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"col\">\r" +
     "\n" +
-    "            <span class=\"title\">הוספת פרטים</span>\r" +
+    "            <span class=\"title\">הוספת נתונים</span>\r" +
     "\n" +
     "            <label>\r" +
     "\n" +
@@ -342,7 +364,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                מחיר ממוצע\r" +
+    "                מחיר ממוצע שבועי\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -430,7 +452,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                א'-ב' (נמוך - גבוה)\r" +
+    "                שם המוצר (א'-ת')\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -440,7 +462,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <span class=\"style\"></span>\r" +
     "\n" +
-    "                א'-ב' (גבוה - נמוך)\r" +
+    "                שם המוצר (ת'-א')\r" +
     "\n" +
     "            </label>\r" +
     "\n" +
@@ -582,15 +604,21 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <div ng-if=\"fridayOrSaturday()\" style=\"text-align: center; margin-top: 14px;\">\r" +
+    "        <div ng-if=\"fridayOrSaturday() && !isFutureDate()\" style=\"text-align: center; margin-top: 14px;\">\r" +
     "\n" +
     "            לא מתקיים מסחר בימים שישי ושבת\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
+    "        <div ng-if=\"isFutureDate()\" style=\"text-align: center; margin-top: 14px;\">\r" +
+    "\n" +
+    "            לא קיים מידע עבור תאריך עתידי\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
     "        <ion-list class=\"list-container\" ng-class=\"viewClassName\">\r" +
     "\n" +
-    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\" ng-if=\"!fridayOrSaturday()\" on-finish-render>\r" +
+    "            <div class=\"fruit-wrapper\" ng-repeat=\"item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)\" ng-if=\"!fridayOrSaturday() && !isFutureDate()\" on-finish-render>\r" +
     "\n" +
     "                <div class=\"fruit-item\">\r" +
     "\n" +
@@ -646,9 +674,9 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </div>\r" +
     "\n" +
-    "            <div ng-show=\"!filteredItems.length && filterBySelected && !fridayOrSaturday()\" style=\"text-align:center\">לא נבחרו מוצרים</div>\r" +
+    "            <div ng-show=\"!filteredItems.length && filterBySelected && !fridayOrSaturday() && !isFutureDate()\" style=\"text-align:center\">לא נבחרו מוצרים</div>\r" +
     "\n" +
-    "            <div ng-show=\"!filteredItems.length && !filterBySelected && !fridayOrSaturday()\" style=\"text-align:center\">בקרוב יעודכנו נתונים</div>\r" +
+    "            <div ng-show=\"!filteredItems.length && !filterBySelected && !fridayOrSaturday() && !isFutureDate() && !moreDataCanBeLoaded()\" style=\"text-align:center\">בקרוב יעודכנו נתונים</div>\r" +
     "\n" +
     "        </ion-list>\r" +
     "\n" +

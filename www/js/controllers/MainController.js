@@ -79,18 +79,8 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
         $rootScope.closePushNotificationPopup();
     }
 
-    // TODO
-    var APP_NAME = 'jobhopapp';
-    var APP_COUNTRY = 'il';
-    var APP_ID = '1020643523';
-
     $rootScope.shareApp = function() {
-        $cordovaSocialSharing.share(
-            'מצורף קישור לאפליקציית פריסייל החדשה',
-            false,
-            false,
-            'http://itunes.apple.com/' + APP_COUNTRY + '/app/' + APP_NAME + '/id' + APP_ID + '?mt=8'
-        );
+        $window.open('http://brihgttech.co.il/other/presale.html', '_system');
     };
 
 

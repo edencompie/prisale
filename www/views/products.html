@@ -5,11 +5,14 @@
             רשימת מוצרים מכילה רק מוצרים ששמם מתחיל ב<strong>{{filterName}}</strong>.
             לביטול <u>לחץ כאן</u>
         </div>
-        <div ng-if="fridayOrSaturday()" style="text-align: center; margin-top: 14px;">
+        <div ng-if="fridayOrSaturday() && !isFutureDate()" style="text-align: center; margin-top: 14px;">
             לא מתקיים מסחר בימים שישי ושבת
         </div>
+        <div ng-if="isFutureDate()" style="text-align: center; margin-top: 14px;">
+            לא קיים מידע עבור תאריך עתידי
+        </div>
         <ion-list class="list-container" ng-class="viewClassName">
-            <div class="fruit-wrapper" ng-repeat="item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)" ng-if="!fridayOrSaturday()" on-finish-render>
+            <div class="fruit-wrapper" ng-repeat="item in filteredItems = (items | filter:hideProductsWithoutPrice | filter:isSelected)" ng-if="!fridayOrSaturday() && !isFutureDate()" on-finish-render>
                 <div class="fruit-item">
                     <div ng-class="itemChecked(item)" on-tap="itemClicked(item)"></div>
                     <div class="image" on-hold="itemHolded(item)" on-tap="goToCharts(item)">
@@ -37,8 +40,8 @@
                     </div>
                 </div>
             </div>
-            <div ng-show="!filteredItems.length && filterBySelected && !fridayOrSaturday()" style="text-align:center">לא נבחרו מוצרים</div>
-            <div ng-show="!filteredItems.length && !filterBySelected && !fridayOrSaturday()" style="text-align:center">בקרוב יעודכנו נתונים</div>
+            <div ng-show="!filteredItems.length && filterBySelected && !fridayOrSaturday() && !isFutureDate()" style="text-align:center">לא נבחרו מוצרים</div>
+            <div ng-show="!filteredItems.length && !filterBySelected && !fridayOrSaturday() && !isFutureDate() && !moreDataCanBeLoaded()" style="text-align:center">בקרוב יעודכנו נתונים</div>
         </ion-list>
         <ion-infinite-scroll class="ispinner"
                 ng-if="moreDataCanBeLoaded()"

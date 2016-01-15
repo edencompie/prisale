@@ -263,11 +263,11 @@ div.contact {
           @media screen and (min-width: 355px) {
             tr {
               td:first-child {
-                padding-left: 10px;
+                padding-left: 7px;
               }
 
               td:not(:first-child) {
-                padding-right: 10px;
+                padding-right: 7px;
               }
             }
           }
@@ -463,6 +463,7 @@ div.contact {
       }
 
       +span.style{
+        margin-bottom: -2px;
         display: inline-block;
         width: 15px;
         height: 15px;
@@ -760,3 +761,4 @@ body {
   }
 }
 
+g.highcharts-axis text.highcharts-yaxis-title { direction: rtl }

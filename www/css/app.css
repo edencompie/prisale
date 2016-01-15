@@ -189,9 +189,9 @@ div.contact {
             padding-right: 2px; }
           @media screen and (min-width: 355px) {
             .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
-              padding-left: 10px; }
+              padding-left: 7px; }
             .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
-              padding-right: 10px; } }
+              padding-right: 7px; } }
       .list-container div.fruit-wrapper div.fruit-item div.buttons {
         position: relative;
         background: #95c11f;
@@ -340,6 +340,7 @@ div.contact {
     .popup-container .popup input[type=radio]:checked + span.style {
       background-image: url("../img/radio-checked.png"); }
     .popup-container .popup input[type=radio] + span.style {
+      margin-bottom: -2px;
       display: inline-block;
       width: 15px;
       height: 15px;
@@ -580,3 +581,6 @@ body {
   background: #FDF7EB; }
   body.appReady {
     visibility: visible !important; }
+
+g.highcharts-axis text.highcharts-yaxis-title {
+  direction: rtl; }

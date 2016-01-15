@@ -40,6 +40,13 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         return (dayInWeek == 'Saturday' || dayInWeek == 'Friday');
     };
 
+    $scope.isFutureDate = function() {
+      return $rootScope.filterDate > new Date();
+      console.log('$rootScope.filterDate', $rootScope.filterDate);
+        var dayInWeek = $filter('date')($rootScope.filterDate, 'EEEE');
+        return (dayInWeek == 'Saturday' || dayInWeek == 'Friday');
+    };
+
 
     $scope.shareProduct = function(product) {
         $cordovaSocialSharing.share(
@@ -93,9 +100,14 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
     $rootScope.filterOrder = 'ABC';
     $rootScope.filterSort  = undefined;
     $scope.no_more_data_to_load = false;
+    $scope.xhr_in_progress = false;
     $rootScope.loadMore = function() {
 
         if ($scope.no_more_data_to_load) {
+            return;
+        }
+
+        if ($scope.xhr_in_progress) {
             return;
         }
 
@@ -112,6 +124,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
             return;
         }
 
+        $scope.xhr_in_progress = true;
         var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name='+$rootScope.filterName+'&item_type='+$rootScope.filterType+'&order='+$rootScope.filterOrder.toString().replace('_desc', '')+'&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.items.length/50)+'&desc='+($rootScope.filterOrder.indexOf('desc') == -1 ? '0' : '1');
         $http.get(url)
             .then(function(items) {
@@ -121,9 +134,13 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
                 for(var i =0; i<items.data.length; i++) {
                     items.data[i].percent = $rootScope.productsNotifications[items.data[i].id] ? $rootScope.productsNotifications[items.data[i].id].get('percent') : null;
+                    if (window.localStorage[items.data[i].id] == '1'){
+                      items.data[i].checked = true;
+                    }
                     $rootScope.items.push(items.data[i]);
                 }
 
+                $scope.xhr_in_progress = false;
                 $scope.$broadcast('scroll.infiniteScrollComplete');
             });
     };
@@ -145,11 +162,12 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
     $scope.itemHolded = function(item) {
         navigator.vibrate(100);
-        item.checked = ! item.checked;
+        $scope.itemClicked(item);
     };
 
     $scope.itemClicked = function(item) {
         item.checked = ! item.checked;
+        window.localStorage[item.id] = Number(item.checked);
     };
 
     $scope.filterBySelected = false;
