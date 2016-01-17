@@ -1,19 +1,6 @@
 angular.module('jobhop.controllers')
     .controller('ProductsController', ProductsController);
 
-angular.module('jobhop').directive('onFinishRender', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element) {
-            if (scope.$last === true) {
-                element.ready(function () {
-
-                });
-            }
-        }
-    }
-});
-
 ProductsController.$inject = ['$ionicLoading', '$document', '$rootScope', '$location', '$http', '$cordovaSocialSharing', '$filter', '$scope'];
 
 function ProductsController($ionicLoading, $document, $rootScope, $location, $http, $cordovaSocialSharing, $filter, $scope) {
@@ -60,7 +47,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         $rootScope.listDetails = listDetails;
         $rootScope.closeDetailsPopup();
     };
-    $rootScope.userType = 'wholesale';
+
     $rootScope.listDetails = 'price';
     $scope.hideProductsWithoutPrice = function(item) {
         return item.topQuality[$scope.userType].price || item.primeQuality[$scope.userType].price;
@@ -142,6 +129,13 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
                 $scope.xhr_in_progress = false;
                 $scope.$broadcast('scroll.infiniteScrollComplete');
+            }, function() {
+                alert('לא ניתן לטעון נתונים עקב בעיית תקשורת');
+                setInterval(function() {
+                    if (navigator.app) {
+                        navigator.app.exitApp();
+                    }
+                }, 500);
             });
     };
 

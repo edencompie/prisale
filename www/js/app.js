@@ -19,22 +19,34 @@ function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     Parse.initialize("mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48", "YygfF1qpxWlma7ab6WytNFOMjWl1vWV1fs8yLRMi");
 
     $stateProvider
-    .state('about', {
-        url: '/about',
-        templateUrl: 'views/about.html'
-    })
-    .state('contact', {
-        url: '/contact',
-        templateUrl: 'views/contact.html'
-    })
-    .state('help', {
-        url: '/help',
-        templateUrl: 'views/help.html'
-    })
     .state('withTabs', {
         url: '/main',
         abstract: true,
         templateUrl: 'views/tabs.html'
+    })
+    .state('withTabs.about', {
+        url: '/about',
+        views: {
+            'content': {
+                templateUrl: 'views/about.html'
+            }
+        }
+    })
+    .state('withTabs.contact', {
+        url: '/contact',
+        views: {
+            'content': {
+                templateUrl: 'views/contact.html'
+            }
+        }
+    })
+    .state('withTabs.help', {
+        url: '/help',
+        views: {
+            'content': {
+                templateUrl: 'views/help.html'
+            }
+        }
     })
     .state('withTabs.productsWholesale', {
         url: '/products-wholesale',

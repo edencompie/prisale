@@ -80,7 +80,9 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
     }
 
     $rootScope.shareApp = function() {
-        $window.open('http://brihgttech.co.il/other/presale.html', '_system');
+        $cordovaSocialSharing.share(
+        'לעידכון מעניין על '+product.name+', אנא התקינו את אפליקצית פריסייל:  http://brihgttech.co.il/other/presale.html'
+        );
     };
 
 
@@ -111,12 +113,14 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
     $rootScope.setDate = function(date) {
         $rootScope.filterDate = date;
         $rootScope.resetProducts();
+        $rootScope.productNames = [];
+        $rootScope.loadMoreProducts();
     };
 
     $rootScope.productNames = [];
     $rootScope.filterDate  = new Date();
 
-    function loadMoreProducts() {
+    $rootScope.loadMoreProducts = function() {
         var url = 'http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&order=&date='+$filter('date')($rootScope.filterDate, 'yyyy-MM-dd')+'&page='+parseInt($rootScope.productNames.length/50);
         $http.get(url)
             .then(function(items) {
@@ -128,13 +132,20 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
                 }
 
                 if (items.data.length == 50) {
-                    loadMoreProducts();
+                    $rootScope.loadMoreProducts();
                 }
+            }, function() {
+                alert('לא ניתן לטעון נתונים עקב בעיית תקשורת');
+                setInterval(function() {
+                    if (navigator.app) {
+                        navigator.app.exitApp();
+                    }
+                }, 500);
             });
     }
 
-    loadMoreProducts();
-
+    $rootScope.loadMoreProducts();
+    $rootScope.userType = 'wholesale';
     $rootScope.$on('$stateChangeSuccess', function(a,b) {
         // Mark selected tab
         if (b.name == 'withTabs.productsWholesale') {

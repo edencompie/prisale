@@ -716,7 +716,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <ion-nav-view name=\"content\"></ion-nav-view>\r" +
     "\n" +
-    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\">\r" +
+    "    <ion-tabs class=\"tabs-balanced tabs-icon-top\" ng-show=\"isItemActive('/main/products-wholesale') || isItemActive('/main/chart')\">\r" +
     "\n" +
     "        <ion-tab title=\"מחיר סיטוני\" icon-on=\"buyer\" icon-off=\"buyer\" on-select=\"setUserType('wholesale')\"></ion-tab>\r" +
     "\n" +

@@ -153,6 +153,12 @@ function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
 
     $scope.$on("$destroy", function(){
         $rootScope.productForChart = undefined;
+
+        if ($rootScope.userType == 'wholesale') {
+          $ionicTabsDelegate.select(0);
+        } else {
+          $ionicTabsDelegate.select(1);
+        }
     });
 
     //init chart

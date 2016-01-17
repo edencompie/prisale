@@ -57,9 +57,9 @@ controllerScope.setNameFilter(this.value);this.blur();" autocomplete="off" /></f
         <ion-content>
             <ion-list>
                 <ion-item class="item-icon-right home-icon" menu-close ui-sref="withTabs.productsWholesale" ng-class="{active: isItemActive('/main/products-wholesale')}">ראשי</ion-item>
-                <ion-item class="item-icon-right about-icon" menu-close ui-sref="about" ng-class="{active: isItemActive('/about')}">אודות</ion-item>
-                <ion-item class="item-icon-right help-icon" menu-close ui-sref="help" ng-class="{active: isItemActive('/help')}">עזרה</ion-item>
-                <ion-item class="item-icon-right contact-icon" menu-close ui-sref="contact" ng-class="{active: isItemActive('/contact')}">צור קשר</ion-item>
+                <ion-item class="item-icon-right about-icon" menu-close ui-sref="withTabs.about" ng-class="{active: isItemActive('/main/about')}">אודות</ion-item>
+                <ion-item class="item-icon-right help-icon" menu-close ui-sref="withTabs.help" ng-class="{active: isItemActive('/main/help')}">עזרה</ion-item>
+                <ion-item class="item-icon-right contact-icon" menu-close ui-sref="withTabs.contact " ng-class="{active: isItemActive('/main/contact')}">צור קשר</ion-item>
                 <ion-item class="item-icon-right site-icon" menu-close on-tap="openSite()">אתר הבית</ion-item>
                 <ion-item class="item-icon-right share-icon" menu-close on-tap="shareApp()">שיתוף האפליקציה</ion-item>
             </ion-list>
