@@ -21,15 +21,15 @@
                     <h4 on-hold="itemHolded(item)" on-tap="goToCharts(item)" ng-class="{ 'makeHigh': isNextToHeightProduct(item) }">{{item.name}}</h4>
                     <div class="price">
                         <table>
-                            <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
-                            <tr><td>מחיר מובחר</td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
+                            <tr><td>מחיר סוג א'</td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
+                            <tr><td>מחיר מובחר</td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
                             <tbody ng-if="listDetails == 'avgPrice'">
-                                <tr><td>מחיר ממוצע סוג א'</td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
-                                <tr><td>מחיר ממוצע מובחר</td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
+                                <tr><td>מחיר ממוצע סוג א'</td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
+                                <tr><td>מחיר ממוצע מובחר</td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
                             </tbody>
                             <tbody ng-if="listDetails == 'percentChange'">
-                                <tr><td>אחוז שינוי סוג א'</td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
-                                <tr><td>אחוז שינוי מובחר</td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
+                                <tr><td>אחוז שינוי סוג א'</td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
+                                <tr><td>אחוז שינוי מובחר</td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
                             </tbody>
                         </table>
                     </div>

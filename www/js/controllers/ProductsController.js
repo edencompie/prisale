@@ -53,7 +53,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         return item.topQuality[$scope.userType].price || item.primeQuality[$scope.userType].price;
     };
     $scope.isSelected = function(item) {
-        if ( ! $scope.filterBySelected) {
+        if ( ! $rootScope.filterBySelected) {
             return true;
         }
 
@@ -164,12 +164,11 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         window.localStorage[item.id] = Number(item.checked);
     };
 
-    $scope.filterBySelected = false;
     $rootScope.classForFilterBySelected = function() {
-        return $scope.filterBySelected ? 'active' : '';
+        return $rootScope.filterBySelected ? 'active' : '';
     };
     $rootScope.toggleFilterBySelected = function() {
-        $scope.filterBySelected = ! $scope.filterBySelected;
+        $rootScope.filterBySelected = ! $rootScope.filterBySelected;
     };
 
     $scope.itemChecked = function(item) {

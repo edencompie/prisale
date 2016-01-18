@@ -11,10 +11,17 @@ var Config = {
 	'parseAppId': 'mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48'
 };
 
+
+
+
+
+
+
+
 // Jobs
 Parse.Cloud.job('priceStatus', function(request, response) {
 
-	var SingleInstQuery = new Parse.Query(Parse.Installation).equalTo('objectId', 'inugDHH0Dd');
+	/*var SingleInstQuery = new Parse.Query(Parse.Installation).equalTo('objectId', 'inugDHH0Dd');
 	Parse.Push.send({
 		where: SingleInstQuery,
 		data: {
@@ -34,29 +41,39 @@ Parse.Cloud.job('priceStatus', function(request, response) {
 	});
 
 
-	return;
-	var page = 0;
-	var date = (new Date()).toISOString().split('T')[0];
-	var ProductsRequest = new Parse.Promise;
-	var Products = [];
-	makeRequest(page, date);
-	function makeRequest(page, date) {
-		var requestURL = "http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&order=&date="+date+"&page="+page;
-		Parse.Cloud.httpRequest({
-			'url': requestURL
-		}).then(function(httpResponse) {
-			var jsonResponse = JSON.parse(httpResponse.text);
-			if(jsonResponse.length < 50) {
-				Products = Products.concat(jsonResponse);
-				ProductsRequest.resolve(Products);
-			} else {
-				Products = Products.concat(jsonResponse);
-				makeRequest(++page, date);
-			}
-		}, function(httpResponse) {
-			ProductsRequest.reject(httpResponse.status);
-		});
+	return;*/
+
+
+
+
+
+	var currentPage = 0;
+	var dateString = (new Date()).toISOString().split('T')[0];
+	var allProducts = [];
+	makeRequest(currentPage, dateString);
+	function makeRequest(page, dateString) {
+		var requestURL = "http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&name=&item_type=&order=&date="+dateString+"&page="+page;
+		Parse.Cloud.httpRequest({ url: requestURL})
+			.then(function(httpResponse) {
+				var newProducts = JSON.parse(httpResponse.text);
+				allProducts = allProducts.concat(newProducts);
+
+				if(newProducts.length == 50) {
+					// More products to load
+					currentPage++;
+					makeRequest(currentPage, dateString);
+				} else {
+					// No more products to load
+					prepareNotifications();
+				}
+			});
 	}
+
+	function prepareNotifications() {
+
+	}
+
+	//var ProductsRequest = new Parse.Promise;
 	ProductsRequest.then(function(APIProducts) {
 		// Notice that response success must emit a string(use toString) take a look here: http://stackoverflow.com/questions/32583128/parse-job-status-message-must-be-a-string
 		var OrginizedAPIProducts = {};
@@ -157,6 +174,10 @@ Parse.Cloud.job('priceStatus', function(request, response) {
 		response.error(error);
 	});
 });
+
+
+
+
 
 
 // Runables

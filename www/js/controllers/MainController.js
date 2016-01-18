@@ -81,7 +81,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
     $rootScope.shareApp = function() {
         $cordovaSocialSharing.share(
-        'אפליקצית פריסייל להורדה:  http://brihgttech.co.il/other/presale.html'
+        'אפליקצית פריסייל להורדה:  http://brihgttech.co.il/other/prisale.html'
         );
     };
 
@@ -143,6 +143,12 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
                 }, 500);
             });
     }
+
+    $rootScope.filterBySelected = false;
+    $rootScope.logoClicked = function() {
+        $rootScope.filterBySelected = false;
+        $location.path('/main/products-wholesale');
+    };
 
     $rootScope.loadMoreProducts();
     $rootScope.userType = 'wholesale';
