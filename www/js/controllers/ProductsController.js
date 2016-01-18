@@ -37,7 +37,7 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
     $scope.shareProduct = function(product) {
         $cordovaSocialSharing.share(
-     'לעידכון מעניין על '+product.name+', אנא התקינו את אפליקצית פריסייל:  http://brihgttech.co.il/other/presale.html'
+     'לעידכון מעניין על '+product.name+', אנא התקינו את אפליקצית פריסייל:  http://brighttech.co.il/other/prisale.html'
 );
     };
 

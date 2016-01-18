@@ -81,7 +81,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
     $rootScope.shareApp = function() {
         $cordovaSocialSharing.share(
-        'אפליקצית פריסייל להורדה:  http://brihgttech.co.il/other/prisale.html'
+        'אפליקצית פריסייל להורדה:  http://brighttech.co.il/other/prisale.html'
         );
     };
 

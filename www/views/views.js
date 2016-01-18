@@ -22,7 +22,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "\n" +
     "                התאגדה חברת שוק סיטוני\r" +
     "\n" +
-    "<span>                לישראל – תוצרת</span>\r" +
+    "<span style=\"display: inline-block\">                לישראל – תוצרת</span>\r" +
     "\n" +
     "                הארץ.\r" +
     "\n" +
