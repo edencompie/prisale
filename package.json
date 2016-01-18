@@ -1,6 +1,6 @@
 {
   "name": "prisale",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "prisale",
   "dependencies": {
     "phonegap-plugin-push": "^1.5.2"
@@ -44,10 +44,7 @@
     "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
-    {
-      "platform": "android",
-      "locator": "wp8"
-    },
+    "android",
     "ios"
   ]
 }

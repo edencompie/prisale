@@ -37,8 +37,8 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
 
     $scope.shareProduct = function(product) {
         $cordovaSocialSharing.share(
-            'עדכון מעניין מאפליקציית פריסייל על '
-            +product.name+"\nhttp://google.com");
+     'לעידכון מעניין על '+product.name+', אנא התקינו את אפליקצית פריסייל:  http://brihgttech.co.il/other/presale.html'
+);
     };
 
 

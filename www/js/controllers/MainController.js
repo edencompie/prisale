@@ -81,7 +81,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
     $rootScope.shareApp = function() {
         $cordovaSocialSharing.share(
-        'לעידכון מעניין על '+product.name+', אנא התקינו את אפליקצית פריסייל:  http://brihgttech.co.il/other/presale.html'
+        'אפליקצית פריסייל להורדה:  http://brihgttech.co.il/other/presale.html'
         );
     };
 

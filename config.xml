@@ -1,11 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.prisale20565" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.prisale20565" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="15">
     <name>פריסייל</name>
-    <description>
-      פריסייל
+    <description>
+
+
+      פריסייל
+
     </description>
-    <author email="raz@jobhop.co.il" href="https://www.jobhop.co.il/">
-      Raz Roditti
+    <author email="raz@jobhop.co.il" href="https://www.jobhop.co.il/">
+
+
+      Raz Roditti
+
+
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -65,4 +72,8 @@
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
     <preference name="xwalkMode" value="embedded" />
     <preference name="xwalkMultipleApk" value="true" />
+    <engine name="android" spec="~4.1.1" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="~1.4.0" />
+    <plugin name="cordova-plugin-vibration" spec="~2.0.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.1.1" />
 </widget>
