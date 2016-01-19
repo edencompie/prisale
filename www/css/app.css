@@ -302,6 +302,9 @@ div.contact {
 .has-header {
   top: 54px; }
 
+.popup-container select {
+  border-color: #ff6600;
+  border-radius: 0; }
 .popup-container .popup-head {
   display: none; }
 .popup-container .popup-buttons {

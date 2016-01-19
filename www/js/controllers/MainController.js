@@ -69,6 +69,7 @@ function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $
 
             productNotify.set('productID', item.id);
             productNotify.set('InstallID', install);
+            productNotify.set('installID', window.localStorage.getItem("instId"));
             productNotify.set('percent', parseInt(percent));
             productNotify.save(null, function(object) {
                 $rootScope.productsNotifications[item.id] = object;

@@ -430,6 +430,10 @@ div.contact {
 // Popups
 .popup-container {
 
+  select {
+    border-color: $orangeColor;
+    border-radius: 0;
+  }
   .popup-head{ display:none; }
   .popup-buttons {
     padding-bottom: 0;
