@@ -103,6 +103,8 @@ body {
       color: #458800;
       opacity: 1;
       font-size: 16px;
+      width: 50%;
+      max-width: none;
 
       i {
         background: 50% no-repeat;
@@ -247,7 +249,14 @@ div.contact {
         table{
           margin: 0 auto;
 
-          td { white-space: nowrap; text-align: right; }
+          td {
+            white-space: nowrap; text-align: right;
+
+            i.ion-information-circled {
+              margin-right: 6px;
+              font-size: 14px;
+            }
+          }
 
 
 

@@ -5,6 +5,16 @@ MainController.$inject = ['$ionicLoading', '$window', '$location', '$ionicTabsDe
 
 function MainController($ionicLoading, $window, $location, $ionicTabsDelegate, $cordovaSocialSharing, $rootScope, $ionicPopup, $filter, $http) {
 
+    $rootScope.showPricePopup = function() {
+        $rootScope.PricePopup = $ionicPopup.show({
+            templateUrl: 'views/list/price-popup.html'
+            // cssClass: 'list-filter',
+            // scope: $rootScope
+        });
+    };
+    $rootScope.closePricePopup = function() {
+        $rootScope.PricePopup.close();
+    };
 
     $rootScope.setUserType = function(userType) {
         $rootScope.showSearchBar = false;

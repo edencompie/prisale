@@ -1,10 +1,10 @@
 angular.module('jobhop.controllers')
     .controller('ChartsController', ChartsController);
 
-ChartsController.$inject = ['$rootScope', '$http', '$ionicLoading', '$filter', '$scope'];
+ChartsController.$inject = ['$rootScope', '$http', '$ionicLoading', '$filter', '$scope', '$ionicTabsDelegate'];
 
-function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope) {
-
+function ChartsController($rootScope, $http, $ionicLoading, $filter, $scope, $ionicTabsDelegate) {
+console.log('chart loaded');
     $ionicLoading.show({ template: 'טוען נתונים' });
     setTimeout($ionicLoading.hide, 600);
 

@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "prisale",
   "dependencies": {
-    "phonegap-plugin-push": "^1.5.2"
+    "phonegap-plugin-push": "^1.5.2",
+    "grunt-contrib-sass": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -18,7 +19,7 @@
     "cordova-plugin-console",
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
-    "com.ionic.keyboard",
+    "ionic-plugin-keyboard",
     "cordova-plugin-file-transfer",
     "cordova-plugin-geolocation",
     {

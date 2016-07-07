@@ -60,22 +60,42 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         return item.checked;
     };
     $scope.topQualityPrice = function(item) {
-        return item.topQuality[$scope.userType].price > 0 ? item.topQuality[$scope.userType].price+' ש"ח' : '--';
+        return parseFloat(item.topQuality[$scope.userType].price) > 0 ? item.topQuality[$scope.userType].price.replace('*', '') +' ש"ח' : '--';
     };
     $scope.primeQualityPrice = function(item) {
-        return item.primeQuality[$scope.userType].price > 0 ? item.primeQuality[$scope.userType].price+' ש"ח' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].price) > 0 ? item.primeQuality[$scope.userType].price.replace('*', '') +' ש"ח' : '--';
     };
     $scope.topQualityAvgPrice = function(item) {
-        return item.topQuality[$scope.userType].weeklyAvg > 0 ? item.topQuality[$scope.userType].weeklyAvg+' ש"ח' : '--';
+        return parseFloat(item.topQuality[$scope.userType].weeklyAvg) > 0 ? item.topQuality[$scope.userType].weeklyAvg.replace('*', '') +' ש"ח' : '--';
     };
     $scope.primeQualityAvgPrice = function(item) {
-        return item.primeQuality[$scope.userType].weeklyAvg > 0 ? item.primeQuality[$scope.userType].weeklyAvg+' ש"ח' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].weeklyAvg) > 0 ? item.primeQuality[$scope.userType].weeklyAvg.replace('*', '') +' ש"ח' : '--';
     };
     $scope.topQualityPercentChange = function(item) {
-        return item.topQuality[$scope.userType].percentChange > 0 ? item.topQuality[$scope.userType].percentChange+'%' : '--';
+        return parseFloat(item.topQuality[$scope.userType].percentChange) > 0 ? item.topQuality[$scope.userType].percentChange.replace('*', '') +'%' : '--';
     };
     $scope.primeQualityPercentChange = function(item) {
-        return item.primeQuality[$scope.userType].percentChange > 0 ? item.primeQuality[$scope.userType].percentChange+'%' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].percentChange) > 0 ? item.primeQuality[$scope.userType].percentChange.replace('*', '') +'%' : '--';
+    };
+
+
+    $scope.topQualityPriceHasComment = function(item) {
+        return item.topQuality[$scope.userType].price.indexOf('*', '') !== -1;
+    };
+    $scope.primeQualityPriceHasComment = function(item) {
+        return item.primeQuality[$scope.userType].price.indexOf('*', '') !== -1;
+    };
+    $scope.topQualityAvgPriceHasComment = function(item) {
+        return item.topQuality[$scope.userType].weeklyAvg.indexOf('*', '') !== -1;
+    };
+    $scope.primeQualityAvgPriceHasComment = function(item) {
+        return item.primeQuality[$scope.userType].weeklyAvg.indexOf('*', '') !== -1;
+    };
+    $scope.topQualityPercentChangeHasComment = function(item) {
+        return item.topQuality[$scope.userType].percentChange.indexOf('*', '') !== -1;
+    };
+    $scope.primeQualityPercentChangeHasComment = function(item) {
+        return item.primeQuality[$scope.userType].percentChange.indexOf('*', '') !== -1;
     };
 
 

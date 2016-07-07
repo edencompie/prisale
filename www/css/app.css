@@ -69,7 +69,9 @@ body {
     border-bottom: none;
     color: #458800;
     opacity: 1;
-    font-size: 16px; }
+    font-size: 16px;
+    width: 50%;
+    max-width: none; }
     .tabs-balanced.tabs-bottom .tab-nav a i {
       background: 50% no-repeat;
       background-size: contain;
@@ -183,6 +185,9 @@ div.contact {
           .list-container div.fruit-wrapper div.fruit-item div.price table td {
             white-space: nowrap;
             text-align: right; }
+            .list-container div.fruit-wrapper div.fruit-item div.price table td i.ion-information-circled {
+              margin-right: 6px;
+              font-size: 14px; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
             padding-left: 2px; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
