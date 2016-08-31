@@ -186,8 +186,9 @@ div.contact {
             white-space: nowrap;
             text-align: right; }
             .list-container div.fruit-wrapper div.fruit-item div.price table td i.ion-information-circled {
-              margin-right: 6px;
-              font-size: 14px; }
+              margin-right: -72px;
+              font-size: 16px;
+              position: absolute; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:first-child {
             padding-left: 2px; }
           .list-container div.fruit-wrapper div.fruit-item div.price table tr td:not(:first-child) {
