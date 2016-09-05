@@ -57,12 +57,16 @@ console.log('chart loaded');
     $scope.generateChartConfig = function(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow) {
         var productIDs = getCheckedProductIDs();
 
+        for (var i=0; i<productIDs.length; i++) {
+            productIDs[i] = productIDs[i]+typesToShow;
+        }
+
         if ( ! productIDs.length) {
             return;
         }
 
         if (chartType == 'line') {
-            $http.get('http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&productIds='+productIDs.join(typesToShow+',')+'&price_avg2='+price_avg2)
+            $http.get('http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&productIds='+productIDs.join(',')+'&price_avg2='+price_avg2)
                 .success(function(data) {
                     $scope.chartConfig.series = [];
                     $scope.chartConfig.options.xAxis.categories = [];
