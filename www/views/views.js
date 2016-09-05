@@ -87,20 +87,20 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "        <div id=\"charts-page\">\n" +
     "            <div class=\"filters row\">\n" +
     "                <div class=\"col\">\n" +
-    "                    <select ng-model=\"chartType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\n" +
+    "                    <select ng-model=\"chartType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
     "                        <option value=\"line\">השוואה לאורך זמן</option>\n" +
     "                        <option value=\"column\">השוואה בין מוצרים</option>\n" +
     "                        <!--<option value=\"bar\">השוואה בין מקטעים</option>-->\n" +
     "                    </select>\n" +
     "                </div>\n" +
     "                <!--<div class=\"col\" ng-if=\"chartType == 'line' || chartType == 'column'\">-->\n" +
-    "                    <!--<select ng-model=\"userType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">-->\n" +
+    "                    <!--<select ng-model=\"userType\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">-->\n" +
     "                        <!--<option value=\"agriculturalPrice\">מחיר סיטוני</option>-->\n" +
     "                        <!--<option value=\"wholesalePrice\">מחיר חקלאי</option>-->\n" +
     "                    <!--</select>-->\n" +
     "                <!--</div>-->\n" +
     "                <div class=\"col\" ng-if=\"chartType == 'line'\">\n" +
-    "                    <select ng-model=\"price_avg2\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\n" +
+    "                    <select ng-model=\"price_avg2\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
     "                        <option value=\"WEEK\">שבוע</option>\n" +
     "                        <option value=\"MONTH\">חודש</option>\n" +
     "                        <option value=\"QUARTER\">רבעון</option>\n" +
@@ -108,7 +108,7 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                    </select>\n" +
     "                </div>\n" +
     "                <div class=\"col\" ng-if=\"chartType == 'bar'\">\n" +
-    "                    <select ng-model=\"price_avg1\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\n" +
+    "                    <select ng-model=\"price_avg1\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
     "                        <option value=\"DAY\">ממוצע יומי</option>\n" +
     "                        <option value=\"WEEK\">ממוצע שבועי</option>\n" +
     "                        <option value=\"MONTH\">ממוצע חודשי</option>\n" +
@@ -117,9 +117,16 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                    </select>\n" +
     "                </div>\n" +
     "                <div class=\"col\" ng-if=\"chartType == 'column'\">\n" +
-    "                    <select ng-model=\"priceToShow\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)\">\n" +
+    "                    <select ng-model=\"priceToShow\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
     "                        <option value=\"DAY\">ממוצע יומי</option>\n" +
     "                        <option value=\"WEEK\">ממוצע שבועי</option>\n" +
+    "                    </select>\n" +
+    "                </div>\n" +
+    "                <div class=\"col\">\n" +
+    "                    <select ng-model=\"typesToShow\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
+    "                        <option value=\"M\">מחיר מובחר</option>\n" +
+    "                        <option value=\"\">מחיר סוג א</option>\n" +
+    "                        <option value=\"B\">מחיר מובחר וסוג א</option>\n" +
     "                    </select>\n" +
     "                </div>\n" +
     "            </div>\n" +

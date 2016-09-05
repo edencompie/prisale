@@ -3,20 +3,20 @@
         <div id="charts-page">
             <div class="filters row">
                 <div class="col">
-                    <select ng-model="chartType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
+                    <select ng-model="chartType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">
                         <option value="line">השוואה לאורך זמן</option>
                         <option value="column">השוואה בין מוצרים</option>
                         <!--<option value="bar">השוואה בין מקטעים</option>-->
                     </select>
                 </div>
                 <!--<div class="col" ng-if="chartType == 'line' || chartType == 'column'">-->
-                    <!--<select ng-model="userType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">-->
+                    <!--<select ng-model="userType" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">-->
                         <!--<option value="agriculturalPrice">מחיר סיטוני</option>-->
                         <!--<option value="wholesalePrice">מחיר חקלאי</option>-->
                     <!--</select>-->
                 <!--</div>-->
                 <div class="col" ng-if="chartType == 'line'">
-                    <select ng-model="price_avg2" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
+                    <select ng-model="price_avg2" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">
                         <option value="WEEK">שבוע</option>
                         <option value="MONTH">חודש</option>
                         <option value="QUARTER">רבעון</option>
@@ -24,7 +24,7 @@
                     </select>
                 </div>
                 <div class="col" ng-if="chartType == 'bar'">
-                    <select ng-model="price_avg1" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
+                    <select ng-model="price_avg1" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">
                         <option value="DAY">ממוצע יומי</option>
                         <option value="WEEK">ממוצע שבועי</option>
                         <option value="MONTH">ממוצע חודשי</option>
@@ -33,9 +33,16 @@
                     </select>
                 </div>
                 <div class="col" ng-if="chartType == 'column'">
-                    <select ng-model="priceToShow" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1)">
+                    <select ng-model="priceToShow" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">
                         <option value="DAY">ממוצע יומי</option>
                         <option value="WEEK">ממוצע שבועי</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select ng-model="typesToShow" ng-change="generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)">
+                        <option value="M">מחיר מובחר</option>
+                        <option value="">מחיר סוג א</option>
+                        <option value="B">מחיר מובחר וסוג א</option>
                     </select>
                 </div>
             </div>

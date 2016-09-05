@@ -16,11 +16,13 @@ console.log('chart loaded');
     $scope.price_avg1 = 'DAY';//DAY, WEEK, MONTH, QUARTER, HALF_YEAR, YEAR (bar)
     $scope.price_avg2 = 'WEEK';//WEEK, MONTH, QUARTER, HALF_YEAR, YEAR  (line)
     $scope.priceToShow = 'DAY';//DAY, WEEK (compare)
+    $scope.typesToShow = '';//B=both, M=movhar, empty=typeA
     $scope.userType = 'agriculturalPrice';//agriculturalPrice, wholesalePrice
 
 
     $scope.chartConfig = {
         options: {
+            direction: 'rtl',
             credits: {
                 enabled: false
             },
@@ -52,7 +54,7 @@ console.log('chart loaded');
         title: { text: null }
     };
 
-    $scope.generateChartConfig = function(chartType, userType, price_avg2, priceToShow, price_avg1) {
+    $scope.generateChartConfig = function(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow) {
         var productIDs = getCheckedProductIDs();
 
         if ( ! productIDs.length) {
@@ -60,7 +62,7 @@ console.log('chart loaded');
         }
 
         if (chartType == 'line') {
-            $http.get('http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&productIds='+productIDs.join(',')+'&price_avg2='+price_avg2)
+            $http.get('http://62.219.7.38/api/Public?pwd=ck32HGDESf13ekcs&productIds='+productIDs.join(typesToShow+',')+'&price_avg2='+price_avg2)
                 .success(function(data) {
                     $scope.chartConfig.series = [];
                     $scope.chartConfig.options.xAxis.categories = [];
@@ -162,7 +164,7 @@ console.log('chart loaded');
     });
 
     //init chart
-    $scope.generateChartConfig($scope.chartType, $scope.userType, $scope.price_avg2, $scope.priceToShow, $scope.price_avg1);
+    $scope.generateChartConfig($scope.chartType, $scope.userType, $scope.price_avg2, $scope.priceToShow, $scope.price_avg1, $scope.typesToShow);
 
     function getCheckedProductIDs() {
         if ($rootScope.productForChart !== undefined) {
