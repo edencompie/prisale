@@ -21,15 +21,15 @@
                     <h4 on-hold="itemHolded(item)" on-tap="goToCharts(item)" ng-class="{ 'makeHigh': isNextToHeightProduct(item) }">{{item.name}}</h4>
                     <div class="price">
                         <table>
-                            <tr on-tap="topQualityPriceHasComment(item) && showPricePopup()"><td> מחיר סוג א'<i class="ion-information-circled" ng-if="topQualityPriceHasComment(item)"></i></td><td style="min-width: 40px">{{topQualityPrice(item)}}</td></tr>
-                            <tr on-tap="primeQualityPriceHasComment(item) && showPricePopup()"><td>מחיר מובחר <i class="ion-information-circled" ng-if="primeQualityPriceHasComment(item)"></i></td><td style="min-width: 40px">{{primeQualityPrice(item)}}</td></tr>
+                            <tr on-tap="topQualityPriceHasComment(item) && showPricePopup()"><td> מחיר סוג א'</td><td style="min-width: 40px">{{topQualityPrice(item)}} <i class="ion-alert" ng-if="topQualityPriceHasComment(item)"></i></td></tr>
+                            <tr on-tap="primeQualityPriceHasComment(item) && showPricePopup()"><td>מחיר מובחר </td><td style="min-width: 40px">{{primeQualityPrice(item)}} <i class="ion-alert" ng-if="primeQualityPriceHasComment(item)"></i></td></tr>
                             <tbody ng-if="listDetails == 'avgPrice'">
-                                <tr on-tap="topQualityAvgPriceHasComment(item) && showPricePopup()"><td>מחיר ממוצע סוג א' <i class="ion-information-circled" ng-if="topQualityAvgPriceHasComment(item)"></i></td><td style="min-width: 40px">{{topQualityAvgPrice(item)}}</td></tr>
-                                <tr on-tap="primeQualityAvgPriceHasComment(item) && showPricePopup()"><td>מחיר ממוצע מובחר <i class="ion-information-circled" ng-if="primeQualityAvgPriceHasComment(item)"></i></td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}}</td></tr>
+                                <tr on-tap="topQualityAvgPriceHasComment(item) && showPricePopup()"><td>מחיר ממוצע סוג א' </td><td style="min-width: 40px">{{topQualityAvgPrice(item)}} <i class="ion-alert" ng-if="topQualityAvgPriceHasComment(item)"></i></td></tr>
+                                <tr on-tap="primeQualityAvgPriceHasComment(item) && showPricePopup()"><td>מחיר ממוצע מובחר </td><td style="min-width: 40px">{{primeQualityAvgPrice(item)}} <i class="ion-alert" ng-if="primeQualityAvgPriceHasComment(item)"></i></td></tr>
                             </tbody>
                             <tbody ng-if="listDetails == 'percentChange'">
-                                <tr on-tap="topQualityPercentChangeHasComment(item) && showPricePopup()"><td>אחוז שינוי סוג א' <i class="ion-information-circled" ng-if="topQualityPercentChangeHasComment(item)"></i></td><td style="min-width: 40px">{{topQualityPercentChange(item)}}</td></tr>
-                                <tr on-tap="primeQualityPercentChangeHasComment(item) && showPricePopup()"><td>אחוז שינוי מובחר <i class="ion-information-circled" ng-if="primeQualityPercentChangeHasComment(item)"></i></td><td style="min-width: 40px">{{primeQualityPercentChange(item)}}</td></tr>
+                                <tr on-tap="topQualityPercentChangeHasComment(item) && showPricePopup()"><td>אחוז שינוי סוג א' </td><td style="min-width: 40px">{{topQualityPercentChange(item)}} <i class="ion-alert" ng-if="topQualityPercentChangeHasComment(item)"></i></td></tr>
+                                <tr on-tap="primeQualityPercentChangeHasComment(item) && showPricePopup()"><td>אחוז שינוי מובחר </td><td style="min-width: 40px">{{primeQualityPercentChange(item)}} <i class="ion-alert" ng-if="primeQualityPercentChangeHasComment(item)"></i></td></tr>
                             </tbody>
                         </table>
                     </div>

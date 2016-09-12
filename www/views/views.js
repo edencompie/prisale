@@ -125,8 +125,8 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                <div class=\"col\">\n" +
     "                    <select ng-model=\"typesToShow\" ng-change=\"generateChartConfig(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow)\">\n" +
     "                        <option value=\"M\">מחיר מובחר</option>\n" +
-    "                        <option value=\"\">מחיר סוג א</option>\n" +
-    "                        <option value=\"B\">מחיר מובחר וסוג א</option>\n" +
+    "                        <option value=\"\">מחיר סוג א'</option>\n" +
+    "                        <option value=\"B\">מחיר מובחר וסוג א'</option>\n" +
     "                    </select>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -355,15 +355,15 @@ angular.module('jobhop.views').run(['$templateCache', function($templateCache) {
     "                    <h4 on-hold=\"itemHolded(item)\" on-tap=\"goToCharts(item)\" ng-class=\"{ 'makeHigh': isNextToHeightProduct(item) }\">{{item.name}}</h4>\n" +
     "                    <div class=\"price\">\n" +
     "                        <table>\n" +
-    "                            <tr on-tap=\"topQualityPriceHasComment(item) && showPricePopup()\"><td> מחיר סוג א'<i class=\"ion-information-circled\" ng-if=\"topQualityPriceHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{topQualityPrice(item)}}</td></tr>\n" +
-    "                            <tr on-tap=\"primeQualityPriceHasComment(item) && showPricePopup()\"><td>מחיר מובחר <i class=\"ion-information-circled\" ng-if=\"primeQualityPriceHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{primeQualityPrice(item)}}</td></tr>\n" +
+    "                            <tr on-tap=\"topQualityPriceHasComment(item) && showPricePopup()\"><td> מחיר סוג א'</td><td style=\"min-width: 40px\">{{topQualityPrice(item)}} <i class=\"ion-alert\" ng-if=\"topQualityPriceHasComment(item)\"></i></td></tr>\n" +
+    "                            <tr on-tap=\"primeQualityPriceHasComment(item) && showPricePopup()\"><td>מחיר מובחר </td><td style=\"min-width: 40px\">{{primeQualityPrice(item)}} <i class=\"ion-alert\" ng-if=\"primeQualityPriceHasComment(item)\"></i></td></tr>\n" +
     "                            <tbody ng-if=\"listDetails == 'avgPrice'\">\n" +
-    "                                <tr on-tap=\"topQualityAvgPriceHasComment(item) && showPricePopup()\"><td>מחיר ממוצע סוג א' <i class=\"ion-information-circled\" ng-if=\"topQualityAvgPriceHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{topQualityAvgPrice(item)}}</td></tr>\n" +
-    "                                <tr on-tap=\"primeQualityAvgPriceHasComment(item) && showPricePopup()\"><td>מחיר ממוצע מובחר <i class=\"ion-information-circled\" ng-if=\"primeQualityAvgPriceHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{primeQualityAvgPrice(item)}}</td></tr>\n" +
+    "                                <tr on-tap=\"topQualityAvgPriceHasComment(item) && showPricePopup()\"><td>מחיר ממוצע סוג א' </td><td style=\"min-width: 40px\">{{topQualityAvgPrice(item)}} <i class=\"ion-alert\" ng-if=\"topQualityAvgPriceHasComment(item)\"></i></td></tr>\n" +
+    "                                <tr on-tap=\"primeQualityAvgPriceHasComment(item) && showPricePopup()\"><td>מחיר ממוצע מובחר </td><td style=\"min-width: 40px\">{{primeQualityAvgPrice(item)}} <i class=\"ion-alert\" ng-if=\"primeQualityAvgPriceHasComment(item)\"></i></td></tr>\n" +
     "                            </tbody>\n" +
     "                            <tbody ng-if=\"listDetails == 'percentChange'\">\n" +
-    "                                <tr on-tap=\"topQualityPercentChangeHasComment(item) && showPricePopup()\"><td>אחוז שינוי סוג א' <i class=\"ion-information-circled\" ng-if=\"topQualityPercentChangeHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{topQualityPercentChange(item)}}</td></tr>\n" +
-    "                                <tr on-tap=\"primeQualityPercentChangeHasComment(item) && showPricePopup()\"><td>אחוז שינוי מובחר <i class=\"ion-information-circled\" ng-if=\"primeQualityPercentChangeHasComment(item)\"></i></td><td style=\"min-width: 40px\">{{primeQualityPercentChange(item)}}</td></tr>\n" +
+    "                                <tr on-tap=\"topQualityPercentChangeHasComment(item) && showPricePopup()\"><td>אחוז שינוי סוג א' </td><td style=\"min-width: 40px\">{{topQualityPercentChange(item)}} <i class=\"ion-alert\" ng-if=\"topQualityPercentChangeHasComment(item)\"></i></td></tr>\n" +
+    "                                <tr on-tap=\"primeQualityPercentChangeHasComment(item) && showPricePopup()\"><td>אחוז שינוי מובחר </td><td style=\"min-width: 40px\">{{primeQualityPercentChange(item)}} <i class=\"ion-alert\" ng-if=\"primeQualityPercentChangeHasComment(item)\"></i></td></tr>\n" +
     "                            </tbody>\n" +
     "                        </table>\n" +
     "                    </div>\n" +
