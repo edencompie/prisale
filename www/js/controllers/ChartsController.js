@@ -17,7 +17,7 @@ console.log('chart loaded');
     $scope.price_avg2 = 'WEEK';//WEEK, MONTH, QUARTER, HALF_YEAR, YEAR  (line)
     $scope.priceToShow = 'DAY';//DAY, WEEK (compare)
     $scope.typesToShow = '';//B=both, M=movhar, empty=typeA
-    $scope.userType = 'agriculturalPrice';//agriculturalPrice, wholesalePrice
+    $scope.userType = 'wholesalePrice';//agriculturalPrice, wholesalePrice
 
 
     $scope.chartConfig = {
@@ -40,6 +40,11 @@ console.log('chart loaded');
             yAxis: {
                 title: { text: '', style: { color: '#ff6600' } },
                 labels: { enabled: true }
+            },
+            plotOptions: {
+                series: {
+                    connectNulls: true
+                }
             }
         },
         plotOptions: {
@@ -70,6 +75,16 @@ console.log('chart loaded');
                 .success(function(data) {
                     $scope.chartConfig.series = [];
                     $scope.chartConfig.options.xAxis.categories = [];
+
+                    // Handle categories
+                    if (data.length != 0) {
+                        data[0].prices.forEach(function(priceData) {
+                            $scope.chartConfig.options.xAxis.categories.push(
+                                $filter('date')(priceData.date, 'd.M.yy')
+                            );
+                        });
+                    }
+
                     data.forEach(function(item) {
                         var record = {
                             data: [],
@@ -77,6 +92,25 @@ console.log('chart loaded');
                             lineWidth: 4,
                             marker: { enabled: false }
                         };
+
+                        // Fill empty prices at the end
+                        for (var i=0; i<$scope.chartConfig.options.xAxis.categories.length; i++) {
+                            if (item.prices[i] === undefined || item.prices[i].price === null) {
+                                if (i > 0) {
+                                    if (item.prices[i] === undefined) {
+                                        item.prices[i] = {};
+                                    }
+                                    item.prices[i].price = item.prices[i - 1].price;
+                                }
+                            }
+                        }
+
+                        // Fill empty prices at the start
+                        for (var i=$scope.chartConfig.options.xAxis.categories.length-2; i>=0; i--) {
+                            if (item.prices[i].price === null) {
+                                item.prices[i].price = item.prices[i + 1].price;
+                            }
+                        }
 
                         // Set prices
                         item.prices.forEach(function(priceData) {
