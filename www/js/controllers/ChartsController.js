@@ -16,7 +16,7 @@ console.log('chart loaded');
     $scope.price_avg1 = 'DAY';//DAY, WEEK, MONTH, QUARTER, HALF_YEAR, YEAR (bar)
     $scope.price_avg2 = 'WEEK';//WEEK, MONTH, QUARTER, HALF_YEAR, YEAR  (line)
     $scope.priceToShow = 'DAY';//DAY, WEEK (compare)
-    $scope.typesToShow = '';//B=both, M=movhar, empty=typeA
+    $scope.typesToShow = 'B';//B=both, M=movhar, empty=typeA
     $scope.userType = 'wholesalePrice';//agriculturalPrice, wholesalePrice
 
 
@@ -182,8 +182,9 @@ console.log('chart loaded');
                     });
 
                     $scope.chartConfig.options.chart.type = 'column';
-                    $scope.chartConfig.options.yAxis.title.text = 'מחיר (ש"ח)';
                     $scope.chartConfig.options.xAxis.title.text = '';
+                    $scope.chartConfig.options.xAxis.labels = { rotation: -45 };
+                    $scope.chartConfig.options.yAxis.title.text = 'מחיר (ש"ח)';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
                     $scope.chartConfig.options.legend.enabled = false;
 
