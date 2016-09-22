@@ -120,6 +120,7 @@ console.log('chart loaded');
                     });
 
                     // Handle categories
+/*
                     if (data.length != 0) {
                         data[0].prices.forEach(function(priceData) {
                             $scope.chartConfig.options.xAxis.categories.push(
@@ -127,11 +128,16 @@ console.log('chart loaded');
                             );
                         });
                     }
+*/
 
                     //lineWidth: 5
                     $scope.chartConfig.options.yAxis.title.text = 'מחיר (ש"ח)';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
                     $scope.chartConfig.options.xAxis.title.text = '';
+                    $scope.chartConfig.options.xAxis.min = 0.5;
+                    $scope.chartConfig.options.xAxis.max = $scope.chartConfig.options.xAxis.categories.length - 1.5;
+                    $scope.chartConfig.options.xAxis.startOnTick = false;
+                    $scope.chartConfig.options.xAxis.endOnTick = false;
                     $scope.chartConfig.options.chart.type = 'line';
                     $scope.chartConfig.options.legend.enabled = true;
                     console.log('$scope.chartConfig', $scope.chartConfig);
