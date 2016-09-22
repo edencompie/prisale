@@ -138,9 +138,9 @@ console.log('chart loaded');
                     }
 */
 
-                    //lineWidth: 5
                     $scope.chartConfig.options.yAxis.title.text = 'מחיר (ש"ח)';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
+                    $scope.chartConfig.options.yAxis.min = 0;
                     $scope.chartConfig.options.xAxis.title.text = '';
                     $scope.chartConfig.options.xAxis.min = 0.5;
                     $scope.chartConfig.options.xAxis.max = $scope.chartConfig.options.xAxis.categories.length - 1.5;
