@@ -202,7 +202,13 @@ console.log('chart loaded');
                     $scope.chartConfig.options.yAxis.title.text = 'מחיר (ש"ח)';
                     $scope.chartConfig.options.yAxis.labels.enabled = true;
                     $scope.chartConfig.options.legend.enabled = false;
+                    if ($scope.chartConfig.options.xAxis.min) {
+                        delete $scope.chartConfig.options.xAxis.min;
+                    }
 
+                    if ($scope.chartConfig.options.xAxis.max) {
+                        delete $scope.chartConfig.options.xAxis.max;
+                    }
                 });
         }
     };
