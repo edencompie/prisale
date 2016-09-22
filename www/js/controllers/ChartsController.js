@@ -60,6 +60,14 @@ console.log('chart loaded');
     };
 
     $scope.generateChartConfig = function(chartType, userType, price_avg2, priceToShow, price_avg1, typesToShow) {
+        $scope.chartType   = chartType;
+        $scope.userType    = userType;
+        $scope.price_avg2  = price_avg2;
+        $scope.priceToShow = priceToShow;
+        $scope.price_avg1  = price_avg1;
+        $scope.typesToShow = typesToShow;
+
+
         var productIDs = getCheckedProductIDs();
 
         for (var i=0; i<productIDs.length; i++) {
@@ -137,6 +145,7 @@ console.log('chart loaded');
                     $scope.chartConfig.options.xAxis.min = 0.5;
                     $scope.chartConfig.options.xAxis.max = $scope.chartConfig.options.xAxis.categories.length - 1.5;
                     $scope.chartConfig.options.xAxis.startOnTick = false;
+                    $scope.chartConfig.options.xAxis.labels = { rotation: -45 };
                     $scope.chartConfig.options.xAxis.endOnTick = false;
                     $scope.chartConfig.options.chart.type = 'line';
                     $scope.chartConfig.options.legend.enabled = true;
