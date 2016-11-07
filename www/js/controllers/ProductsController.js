@@ -60,42 +60,42 @@ function ProductsController($ionicLoading, $document, $rootScope, $location, $ht
         return item.checked;
     };
     $scope.topQualityPrice = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].price) > 0 ? item.topQuality[$scope.userType].price.replace('*', '') +' ש"ח' : '--';
+        return parseFloat(item.topQuality[$scope.userType].price) > 0 ? item.topQuality[$scope.userType].price.toString().replace('*', '') +' ש"ח' : '--';
     };
     $scope.primeQualityPrice = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].price) > 0 ? item.primeQuality[$scope.userType].price.replace('*', '') +' ש"ח' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].price) > 0 ? item.primeQuality[$scope.userType].price.toString().replace('*', '') +' ש"ח' : '--';
     };
     $scope.topQualityAvgPrice = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].weeklyAvg) > 0 ? item.topQuality[$scope.userType].weeklyAvg.replace('*', '') +' ש"ח' : '--';
+        return parseFloat(item.topQuality[$scope.userType].weeklyAvg) > 0 ? item.topQuality[$scope.userType].weeklyAvg.toString().replace('*', '') +' ש"ח' : '--';
     };
     $scope.primeQualityAvgPrice = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].weeklyAvg) > 0 ? item.primeQuality[$scope.userType].weeklyAvg.replace('*', '') +' ש"ח' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].weeklyAvg) > 0 ? item.primeQuality[$scope.userType].weeklyAvg.toString().replace('*', '') +' ש"ח' : '--';
     };
     $scope.topQualityPercentChange = function(item) {
-        return parseFloat(item.topQuality[$scope.userType].percentChange) > 0 ? item.topQuality[$scope.userType].percentChange.replace('*', '') +'%' : '--';
+        return parseFloat(item.topQuality[$scope.userType].percentChange) > 0 ? item.topQuality[$scope.userType].percentChange.toString().replace('*', '') +'%' : '--';
     };
     $scope.primeQualityPercentChange = function(item) {
-        return parseFloat(item.primeQuality[$scope.userType].percentChange) > 0 ? item.primeQuality[$scope.userType].percentChange.replace('*', '') +'%' : '--';
+        return parseFloat(item.primeQuality[$scope.userType].percentChange) > 0 ? item.primeQuality[$scope.userType].percentChange.toString().replace('*', '') +'%' : '--';
     };
 
 
     $scope.topQualityPriceHasComment = function(item) {
-        return item.topQuality[$scope.userType].price.indexOf('*', '') !== -1;
+        return item.topQuality[$scope.userType].price && item.topQuality[$scope.userType].price.toString().indexOf('*', '') !== -1;
     };
     $scope.primeQualityPriceHasComment = function(item) {
-        return item.primeQuality[$scope.userType].price.indexOf('*', '') !== -1;
+        return item.primeQuality[$scope.userType].price && item.primeQuality[$scope.userType].price.toString().indexOf('*', '') !== -1;
     };
     $scope.topQualityAvgPriceHasComment = function(item) {
-        return item.topQuality[$scope.userType].weeklyAvg.indexOf('*', '') !== -1;
+        return item.topQuality[$scope.userType].weeklyAvg && item.topQuality[$scope.userType].weeklyAvg.toString().indexOf('*', '') !== -1;
     };
     $scope.primeQualityAvgPriceHasComment = function(item) {
-        return item.primeQuality[$scope.userType].weeklyAvg.indexOf('*', '') !== -1;
+        return item.primeQuality[$scope.userType].weeklyAvg && item.primeQuality[$scope.userType].weeklyAvg.toString().indexOf('*', '') !== -1;
     };
     $scope.topQualityPercentChangeHasComment = function(item) {
-        return item.topQuality[$scope.userType].percentChange.indexOf('*', '') !== -1;
+        return item.topQuality[$scope.userType].percentChange && item.topQuality[$scope.userType].percentChange.toString().indexOf('*', '') !== -1;
     };
     $scope.primeQualityPercentChangeHasComment = function(item) {
-        return item.primeQuality[$scope.userType].percentChange.indexOf('*', '') !== -1;
+        return item.primeQuality[$scope.userType].percentChange && item.primeQuality[$scope.userType].percentChange.toString().indexOf('*', '') !== -1;
     };
 
 
