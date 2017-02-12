@@ -16,7 +16,13 @@ Config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'
 
 function Config($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-    Parse.initialize("mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48", "YygfF1qpxWlma7ab6WytNFOMjWl1vWV1fs8yLRMi");
+    var parseApplicationId = 'tnDCVQ67MaJXJtP4cU9CXh92kEiPPSOUrHczLVrA';
+    var javaScriptKey = 'NjwUlG7tuIcdom2t7Om4qddSPOEHckzkGrVPNirO';
+    var parseServerUrl = 'https://pg-app-jwdb7zyhb0f3bvdlqixwqd1ku7vdsr.scalabl.cloud/1/';
+    Parse.serverURL = parseServerUrl;
+    Parse.initialize(parseApplicationId, javaScriptKey);
+
+    // Parse.initialize("mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48", "YygfF1qpxWlma7ab6WytNFOMjWl1vWV1fs8yLRMi");
 
     $stateProvider
     .state('withTabs', {
