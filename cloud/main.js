@@ -8,7 +8,7 @@ var Config = {
 	'appVersion': '0.0.1',
 	'localeIdentifier': 'he_IL',
 	'badge': 0,
-	'parseAppId': 'mZDlpzWNmOc9ZWGuxWTZAgl2UcorL2JxwdB6RG48'
+	'parseAppId': 'tnDCVQ67MaJXJtP4cU9CXh92kEiPPSOUrHczLVrA'
 };
 
 
